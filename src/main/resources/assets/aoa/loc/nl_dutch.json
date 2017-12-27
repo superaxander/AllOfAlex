@@ -1,0 +1,54 @@
+{
+  "aoa": {
+    "desc": {
+      "bouncy_pearl": "A teleporation pearl that bounces. What else did you expect?",
+      "bridging_pearl": "A pearl that makes bridges. What else did you expect?",
+      "mining_pearl": "A pearl that mines. What else did you expect?",
+      "more_info": "Hold shift for more information",
+      "pearl": "A pearl that teleports you. What else did you expect?",
+      "rideable_pearl": "A rideable teleportation pearl. What else did you expect?",
+      "set_to": "Waypoint set to: ",
+      "spawn_pearl": "A pearl that teleports you to spawn. What else did you expect?",
+      "spiky_pearl": "A pearl that hurts others. What else did you expect?",
+      "waypoint_pearl": "A pearl that teleports you to a waypoint. What else did you expect?",
+      "waypoint_pearl_usage": "Right-click to teleport, shift-right-click to set the waypoint to your current location",
+      "drill1": "Max hardness: %d",
+      "drill2": "Inventory Size: %d",
+      "drill3": "Speed: %.2f tiles/tick",
+      "drill4": "Fuel usage modifier: %.2f"
+    },
+    "item": {
+      "blue_berry_bush": "Blauwe Bessen Struik",
+      "blue_berry_bush.berry": "Blauwe Bes",
+      "dry_farmland": "Landbouwgrond",
+      "grass": "Gras",
+      "large_ugly_plant": "Grote Plant",
+      "long_grass": "Lang Gras",
+      "red_berry_bush": "Rode Bessen Struik",
+      "red_berry_bush.berry": "Rode Bess",
+      "shears": "Heggenschaar",
+      "ugly_plant": "Plant",
+      "item_cannon": "Item Kanon",
+      "funnel": "Item Trechter",
+      "bouncy_pearl": "Bouncy Teleportation Pearl",
+      "bridging_pearl": "Bridging Pearl",
+      "mining_pearl": "Mining Pearl",
+      "pearl": "Teleportation Pearl",
+      "rideable_pearl": "Rideable Teleportation Pearl",
+      "slime": "Slime",
+      "spawn_pearl": "Spawn Pearl",
+      "spiky_pearl": "Spiky Pearl",
+      "waypoint_pearl": "Waypoint Pearl",
+      "drill_basic": "Basic Drill",
+      "drill_bit_basic": "Basic Drill Bit",
+      "drill_bit_copper": "Copper Drill Bit",
+      "drill_copper": "Copper Drill",
+      "pearl_ore": "Pearl Ore",
+      "phantom": "Phantom Tile"
+    },
+    "key": {
+      "rotate": "Draaien",
+      "set_waypoint": "Set waypoint"
+    }
+  }
+}

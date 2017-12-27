@@ -1,0 +1,159 @@
+{
+  "loc.": {
+    "nl_dutch": "/loc/nl_dutch.json",
+    "de_german": "/loc/de_german.json",
+    "us_english": "/loc/us_english.json"
+  },
+  "tex.": {
+    "drill_basic.": {
+      "active": "/tiles/drill_basic_lit.png",
+      "*": "/tiles/drill_basic.png"
+    },
+    "drill_copper.": {
+      "active": "/tiles/drill_copper_lit.png",
+      "*": "/tiles/drill_copper.png"
+    },
+    "cooldown": "/items/cooldown.png",
+    "tiles.": {
+      "pearl_ore": "/tiles/pearl_ore.png",
+      "phantom": "/tiles/phantom.png",
+      "slime": "/tiles/slime.png",
+      "item_cannon.": {
+        "*": "/tiles/cannon_base.png",
+        "item": "/items/cannon_item.png",
+        "head": "/tiles/cannon_head.png"
+      },
+      "funnel.": {
+        "down": "/tiles/funnel_down.png",
+        "right": "/tiles/funnel_right.png"
+      },
+      "drill_basic.": {
+        "*": {
+          "subtexture": {
+            "file": "/tiles/drill_basic.png",
+            "0.1": [0, 24, 12, 12],
+            "0.2": [0, 12, 12, 12],
+            "0.3": [0, 0, 12, 12],
+            "1.0": [12, 36, 12, 12],
+            "1.1": [12, 24, 12, 12],
+            "1.2": [12, 12, 12, 12],
+            "1.3": [12, 0, 12, 12],
+            "2.1": [24, 24, 12, 12],
+            "2.2": [24, 12, 12, 12],
+            "2.3": [24, 0, 12, 12]
+          }
+        },
+        "active.": {
+          "subtexture": {
+            "file": "/tiles/drill_basic_lit.png",
+            "0.1": [0, 24, 12, 12],
+            "0.2": [0, 12, 12, 12],
+            "0.3": [0, 0, 12, 12],
+            "1.0": [12, 36, 12, 12],
+            "1.1": [12, 24, 12, 12],
+            "1.2": [12, 12, 12, 12],
+            "1.3": [12, 0, 12, 12],
+            "2.1": [24, 24, 12, 12],
+            "2.2": [24, 12, 12, 12],
+            "2.3": [24, 0, 12, 12]
+          }
+        },
+        "item": "/items/drill_basic_item.png"
+      },
+      "drill_copper.": {
+        "*": {
+          "subtexture": {
+            "file": "/tiles/drill_copper.png",
+            "0.1": [0, 24, 12, 12],
+            "0.2": [0, 12, 12, 12],
+            "0.3": [0, 0, 12, 12],
+            "1.0": [12, 36, 12, 12],
+            "1.1": [12, 24, 12, 12],
+            "1.2": [12, 12, 12, 12],
+            "1.3": [12, 0, 12, 12],
+            "2.1": [24, 24, 12, 12],
+            "2.2": [24, 12, 12, 12],
+            "2.3": [24, 0, 12, 12]
+          }
+        },
+        "active.": {
+          "subtexture": {
+            "file": "/tiles/drill_copper_lit.png",
+            "0.1": [0, 24, 12, 12],
+            "0.2": [0, 12, 12, 12],
+            "0.3": [0, 0, 12, 12],
+            "1.0": [12, 36, 12, 12],
+            "1.1": [12, 24, 12, 12],
+            "1.2": [12, 12, 12, 12],
+            "1.3": [12, 0, 12, 12],
+            "2.1": [24, 24, 12, 12],
+            "2.2": [24, 12, 12, 12],
+            "2.3": [24, 0, 12, 12]
+          }
+        },
+        "item": "/items/drill_copper_item.png"
+      }
+    },
+    "items.": {
+      "blue_berry_bush.": {
+        "berry": "/items/blue_berry_bush.berry.png"
+      },
+      "red_berry_bush.": {
+        "berry": "/items/red_berry_bush.berry.png"
+      },
+      "shears": "/items/shears.png",
+      "drill_bit_basic": "/items/drill_bit_basic.png",
+      "drill_bit_copper": "/items/drill_bit_copper.png",
+      "bouncy_pearl": "/items/bouncy_pearl.png",
+      "bridging_pearl": "/items/bridging_pearl.png",
+      "mining_pearl": "/items/mining_pearl.png",
+      "pearl": "/items/pearl.png",
+      "rideable_pearl": "/items/rideable_pearl.png",
+      "spawn_pearl": "/items/spawn_pearl.png",
+      "spiky_pearl": "/items/spiky_pearl.png",
+      "waypoint_pearl": "/items/waypoint_pearl.png"
+    },
+    "particles.": {
+      "blood": "/particles/blood.png",
+      "teleportation": "/particles/teleportation.png"
+    },
+    "blue_berry_bush.": {
+      "1": "/tiles/blue_berry_bush_1.png",
+      "2": "/tiles/blue_berry_bush_2.png"
+    },
+    "blue_berry_bush_empty.": {
+      "1": "/tiles/blue_berry_bush_empty_1.png",
+      "2": "/tiles/blue_berry_bush_empty_2.png"
+    },
+    "dry_farmland.": {
+      "1": "/tiles/dry_farmland_1.png",
+      "2": "/tiles/dry_farmland_2.png"
+    },
+    "grass.": {
+      "1": "/tiles/grass_1.png",
+      "2": "/tiles/grass_2.png",
+      "3": "/tiles/grass_3.png",
+      "4": "/tiles/grass_4.png"
+    },
+    "large_ugly_plant.": {
+      "1": "/tiles/large_ugly_plant_1.png"
+    },
+    "long_grass.": {
+      "1": "/tiles/long_grass_1.png",
+      "2": "/tiles/long_grass_2.png",
+      "3": "/tiles/long_grass_3.png",
+      "4": "/tiles/long_grass_4.png"
+    },
+    "red_berry_bush.": {
+      "1": "/tiles/red_berry_bush_1.png",
+      "2": "/tiles/red_berry_bush_2.png"
+    },
+    "red_berry_bush_empty.": {
+      "1": "/tiles/red_berry_bush_empty_1.png",
+      "2": "/tiles/red_berry_bush_empty_2.png"
+    },
+    "ugly_plant.": {
+      "1": "/tiles/ugly_plant_1.png"
+    }
+  }
+}
