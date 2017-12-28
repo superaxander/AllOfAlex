@@ -24,8 +24,8 @@ public class DamageableRenderer<T extends Item & IDamageable> extends DefaultIte
             float x0 = x + scale * (1 / 12f);
             float y0 = y + scale * (10 / 12f);
             float width = scale * (10 / 12f);
-            g.fillRect(x0, y0, width, 1, Colors.RED);
-            g.fillRect(x0, y0, width * (128 - instance.getMeta()) / item.getHighestPossibleMeta(), 1, Colors.GREEN);
+            g.fillRect(x0, y0, width, scale / 12, Colors.RED);
+            g.fillRect(x0, y0, width * (128 - instance.getMeta()) / item.getHighestPossibleMeta(), scale /12, Colors.GREEN);
         }
     }
 }

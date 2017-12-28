@@ -44,10 +44,13 @@
       "drill_bit_copper": "Copper Drill Bit",
       "drill_copper": "Copper Drill",
       "pearl_ore": "Pearl Ore",
-      "phantom": "Phantom Tile"
+      "phantom": "Phantom Tile",
+      "bomb":"Bombe",
+      "mining_bomb":"Bergbau Bombe",
+      "bomb_launcher": "Bombe Abschußapparat"
     },
     "key": {
-      "rotate": "Rotieren"
+      "rotate": "Rotieren",
       "set_waypoint": "Set waypoint"
     }
   }

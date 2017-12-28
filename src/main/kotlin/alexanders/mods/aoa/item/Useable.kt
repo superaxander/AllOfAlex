@@ -23,18 +23,21 @@ interface Useable {
         if (player.inv[player.selectedSlot] != null) {
 
             if (net.isClient) {
-                net.sendToServer(ItemUsePacket(angle(x, y), player.uniqueId, Keys.KEY_SET_WAYPOINT.isDown))
+                net.sendToServer(ItemUsePacket(angle(), player.uniqueId, Keys.KEY_SET_WAYPOINT.isDown))
             } else {
-                ItemUsePacket(angle(x, y), player.uniqueId, Keys.KEY_SET_WAYPOINT.isDown).handle(game, null)
+                ItemUsePacket(angle(), player.uniqueId, Keys.KEY_SET_WAYPOINT.isDown).handle(game, null)
             }
         }
         return false
     }
 
-    private fun angle(mouseX: Int, mouseY: Int): FloatArray {
-        val w = Display.getWidth()
-        val h = Display.getHeight()
-        val radians = Math.atan2(mouseY - (h / 2.0), mouseX - (w / 2.0))
-        return floatArrayOf(Math.cos(radians).toFloat(), Math.sin(radians).toFloat())
+    companion object {
+        fun angle(): FloatArray {
+            val w = Display.getWidth()
+            val h = Display.getHeight()
+            val i = RockBottomAPI.getGame().input
+            val radians = Math.atan2(i.mouseY - (h / 2.0), i.mouseX - (w / 2.0))
+            return floatArrayOf(Math.cos(radians).toFloat(), Math.sin(radians).toFloat())
+        }
     }
 }

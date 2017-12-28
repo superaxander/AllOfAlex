@@ -10,11 +10,11 @@ import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
-class PearlOreTile : TileBasic(Resources.PEARL_ORE_RESOURCE) {
+class PearlOreTile : TileBasic(Resources.pearlOreResource) {
     init {
         this.setHardness(5f)
-        addEffectiveTool(ToolType.PICKAXE, 2)
+        addEffectiveTool(ToolType.PICKAXE, 1)
     }
 
-    override fun getDrops(world: IWorld, x: Int, y: Int, layer: TileLayer, destroyer: Entity) = mutableListOf(ItemInstance(Items.pearlItem))
+    override fun getDrops(world: IWorld, x: Int, y: Int, layer: TileLayer, destroyer: Entity?) = mutableListOf(ItemInstance(Items.pearlItem))
 }

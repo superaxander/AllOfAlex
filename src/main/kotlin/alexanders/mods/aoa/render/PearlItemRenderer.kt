@@ -1,6 +1,6 @@
 package alexanders.mods.aoa.render
 
-import alexanders.mods.aoa.init.Resources.COOLDOWN_RESOURCE
+import alexanders.mods.aoa.init.Resources.cooldownResource
 import de.ellpeck.rockbottom.api.IGameInstance
 import de.ellpeck.rockbottom.api.IGraphics
 import de.ellpeck.rockbottom.api.assets.IAssetManager
@@ -17,7 +17,7 @@ class PearlItemRenderer(resourceName: IResourceName) : DefaultItemRenderer<Item>
             return
 
         if (instance.additionalData != null && instance.additionalData.getInt("cooldown") > 0) {
-            val image = manager.getTexture(COOLDOWN_RESOURCE)
+            val image = manager.getTexture(cooldownResource)
             image.draw(x, y, scale, (scale / 60 * instance.additionalData.getInt("cooldown")), filter)
         }
     }

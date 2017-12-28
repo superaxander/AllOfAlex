@@ -26,9 +26,11 @@ class ItemUsePacket(private var mouseDirection: FloatArray?, private var uuid: U
         game.enqueueAction({ gameInstance, _ ->
             val p = gameInstance.world.getEntity(uuid) as AbstractEntityPlayer
             val itemInstance = p.inv[p.selectedSlot]
-            val itemType = itemInstance.item
-            if (itemType is Useable && mouseDirection != null) {
-                itemType.use(itemInstance, mouseDirection as FloatArray, p, shiftPressed)
+            if(itemInstance != null) {
+                val itemType = itemInstance.item
+                if (itemType is Useable && mouseDirection != null) {
+                    itemType.use(itemInstance, mouseDirection as FloatArray, p, shiftPressed)
+                }
             }
         }, null)
     }

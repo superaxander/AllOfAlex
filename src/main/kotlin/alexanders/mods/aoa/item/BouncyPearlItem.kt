@@ -1,8 +1,8 @@
 package alexanders.mods.aoa.item
 
 import alexanders.mods.aoa.entity.BouncyPearlEntity
-import alexanders.mods.aoa.init.Resources.BOUNCY_PEARL_DESC_RESOURCE
-import alexanders.mods.aoa.init.Resources.BOUNCY_PEARL_RESOURCE
+import alexanders.mods.aoa.init.Resources.bouncyPearlDescResource
+import alexanders.mods.aoa.init.Resources.bouncyPearlResource
 import alexanders.mods.aoa.net.CooldownUpdatePacket
 import alexanders.mods.aoa.render.PearlItemRenderer
 import de.ellpeck.rockbottom.api.assets.IAssetManager
@@ -15,8 +15,8 @@ import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
-class BouncyPearlItem() : ItemBasic(BOUNCY_PEARL_RESOURCE), Useable {
-    val renderer = PearlItemRenderer(BOUNCY_PEARL_RESOURCE)
+class BouncyPearlItem() : ItemBasic(bouncyPearlResource), Useable {
+    val renderer = PearlItemRenderer(bouncyPearlResource)
     override fun use(itemInstance: ItemInstance, mouseDirection: FloatArray, player: AbstractEntityPlayer) {
         if (itemInstance.additionalData == null) {
             itemInstance.additionalData = DataSet()
@@ -39,7 +39,7 @@ class BouncyPearlItem() : ItemBasic(BOUNCY_PEARL_RESOURCE), Useable {
 
     override fun describeItem(manager: IAssetManager, instance: ItemInstance, desc: MutableList<String>, isAdvanced: Boolean) {
         super.describeItem(manager, instance, desc, isAdvanced)
-        desc.add(manager.localize(BOUNCY_PEARL_DESC_RESOURCE))
+        desc.add(manager.localize(bouncyPearlDescResource))
     }
 
     override fun getRenderer(): IItemRenderer<*> {

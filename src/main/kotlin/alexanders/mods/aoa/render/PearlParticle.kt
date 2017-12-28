@@ -1,6 +1,6 @@
 package alexanders.mods.aoa.render
 
-import alexanders.mods.aoa.init.Resources.BLOOD_PARTICLE_RESOURCE
+import alexanders.mods.aoa.init.Resources.bloodParticleResource
 import de.ellpeck.rockbottom.api.IGameInstance
 import de.ellpeck.rockbottom.api.IGraphics
 import de.ellpeck.rockbottom.api.assets.IAssetManager
@@ -16,7 +16,7 @@ open class PearlParticle(val name: IResourceName, world: IWorld, x: Double, y: D
         fun randomSignedDouble(): Double = if (Util.RANDOM.nextBoolean()) Util.RANDOM.nextDouble() else -Util.RANDOM.nextDouble()
     }
 
-    constructor(world: IWorld) : this(BLOOD_PARTICLE_RESOURCE, world = world, x = .0, y = .0, maxLife = 0) // Is this needed
+    constructor(world: IWorld) : this(bloodParticleResource, world = world, x = .0, y = .0, maxLife = 0) // Is this needed
 
     override fun render(game: IGameInstance, manager: IAssetManager, g: IGraphics, x: Float, y: Float, filter: Int) {
         super.render(game, manager, g, x, y, filter)

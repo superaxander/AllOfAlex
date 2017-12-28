@@ -1,7 +1,7 @@
 package alexanders.mods.aoa.item
 
-import alexanders.mods.aoa.init.Resources.SPAWN_PEARL_DESC_RESOURCE
-import alexanders.mods.aoa.init.Resources.SPAWN_PEARL_RESOURCE
+import alexanders.mods.aoa.init.Resources.spawnPearlDescResource
+import alexanders.mods.aoa.init.Resources.spawnPearlResource
 import alexanders.mods.aoa.net.CooldownUpdatePacket
 import alexanders.mods.aoa.net.EntityPositionUpdatePacket
 import alexanders.mods.aoa.render.PearlItemRenderer
@@ -17,8 +17,8 @@ import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
-class SpawnPearlItem() : ItemBasic(SPAWN_PEARL_RESOURCE), Useable {
-    val renderer = PearlItemRenderer(SPAWN_PEARL_RESOURCE)
+class SpawnPearlItem() : ItemBasic(spawnPearlResource), Useable {
+    val renderer = PearlItemRenderer(spawnPearlResource)
     override fun use(itemInstance: ItemInstance, mouseDirection: FloatArray, player: AbstractEntityPlayer) {
         if (itemInstance.additionalData == null) {
             itemInstance.additionalData = DataSet()
@@ -41,7 +41,7 @@ class SpawnPearlItem() : ItemBasic(SPAWN_PEARL_RESOURCE), Useable {
 
     override fun describeItem(manager: IAssetManager, instance: ItemInstance, desc: MutableList<String>, isAdvanced: Boolean) {
         super.describeItem(manager, instance, desc, isAdvanced)
-        desc.add(manager.localize(SPAWN_PEARL_DESC_RESOURCE))
+        desc.add(manager.localize(spawnPearlDescResource))
     }
 
     override fun getRenderer(): IItemRenderer<*> {

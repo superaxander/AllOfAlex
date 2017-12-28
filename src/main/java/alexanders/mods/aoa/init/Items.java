@@ -2,8 +2,10 @@ package alexanders.mods.aoa.init;
 
 import alexanders.mods.aoa.item.*;
 
+import static alexanders.mods.aoa.init.Resources.*;
+
 public class Items {
-    public static ShearsItem shears;
+    public static ShearsItem shearsItem;
     public static SpeedBoostItem berryBlue;
     public static JumpBoostItem berryRed;
     public static DrillBitItem drillBitBasic;
@@ -16,13 +18,16 @@ public class Items {
     public static SpawnPearlItem spawnPearlItem;
     public static WaypointPearlItem waypointPearlItem;
     public static BridgingPearlItem bridgingPearlItem;
+    public static BombItem bombItem;
+    public static MiningBombItem miningBombItem;
+    public static BombLauncherItem bombLauncherItem;
 
     public static void init() {
-        shears = new ShearsItem(Resources.shears);
-        berryBlue = new SpeedBoostItem(Resources.blueBerryBush.addSuffix(".berry"));
-        berryRed = new JumpBoostItem(Resources.redBerryBush.addSuffix(".berry"));
-        drillBitBasic = new DrillBitItem(Resources.drill_bit_basic);
-        drillBitCopper = new DrillBitItem(Resources.drill_bit_copper);
+        shearsItem = new ShearsItem(shears);
+        berryBlue = new SpeedBoostItem(blueBerryBush.addSuffix(".berry"));
+        berryRed = new JumpBoostItem(redBerryBush.addSuffix(".berry"));
+        drillBitBasic = new DrillBitItem(drill_bit_basic);
+        drillBitCopper = new DrillBitItem(drill_bit_copper);
         pearlItem = new PearlItem();
         bouncyPearlItem = new BouncyPearlItem();
         rideablePearlItem = new RideablePearlItem();
@@ -31,7 +36,10 @@ public class Items {
         spawnPearlItem = new SpawnPearlItem();
         waypointPearlItem = new WaypointPearlItem();
         bridgingPearlItem = new BridgingPearlItem();
-        shears.register();
+        bombItem = new BombItem(bombResource);
+        miningBombItem = new MiningBombItem(miningBombResource);
+        bombLauncherItem = new BombLauncherItem(bombLauncherResource);
+        shearsItem.register();
         berryBlue.register();
         berryRed.register();
         drillBitBasic.register();
@@ -44,5 +52,8 @@ public class Items {
         spawnPearlItem.register();
         waypointPearlItem.register();
         bridgingPearlItem.register();
+        bombItem.register();
+        miningBombItem.register();
+        bombLauncherItem.register();
     }
 }

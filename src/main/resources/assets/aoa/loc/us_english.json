@@ -44,7 +44,10 @@
       "drill_bit_copper": "Copper Drill Bit",
       "drill_copper": "Copper Drill",
       "pearl_ore": "Pearl Ore",
-      "phantom": "Phantom Tile"
+      "phantom": "Phantom Tile",
+      "bomb": "Bomb",
+      "mining_bomb": "Mining Bomb",
+      "bomb_launcher": "Bomb Launcher"
     },
     "key": {
       "rotate": "Rotate",

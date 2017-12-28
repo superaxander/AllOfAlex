@@ -1,13 +1,13 @@
 package alexanders.mods.aoa.tile
 
-import alexanders.mods.aoa.init.Resources.PHANTOM_TILE_RESOURCE
+import alexanders.mods.aoa.init.Resources.phantomTileResource
 import de.ellpeck.rockbottom.api.tile.TileBasic
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity
 import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
-class PhantomTile : TileBasic(PHANTOM_TILE_RESOURCE) {
+class PhantomTile : TileBasic(phantomTileResource) {
     override fun provideTileEntity(world: IWorld, x: Int, y: Int, layer: TileLayer): TileEntity {
         val e = world.getTileEntity(x, y)
         if (e != null)

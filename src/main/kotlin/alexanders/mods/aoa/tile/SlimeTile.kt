@@ -11,7 +11,7 @@ import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
-class SlimeTile : TileBasic(Resources.SLIME_RESOURCE) {
+class SlimeTile : TileBasic(Resources.slimeResource) {
     init {
         this.setHardness(.5f)
         this.addEffectiveTool(ToolType.PICKAXE, 0)

@@ -37,15 +37,16 @@ public class ShearsItem extends ItemBasic implements IDamageable {
         if (RockBottomAPI.getNet().isServer() || !RockBottomAPI.getNet().isActive()) {
             TileState state = world.getState(layer, x, y);
             Tile t = state.getTile();
-            if (t instanceof VariantTile || t == GameContent.TILE_LEAVES) {
-                t.doBreak(world, x, y, TileLayer.MAIN, player, true, true);
+            if (t instanceof VariantTile || t == GameContent.TILE_GRASS_TUFT || t == GameContent.TILE_FLOWER || t == GameContent.TILE_LEAVES) {
+                t.doBreak(world, x, y, layer, player, true, true);
                 instance.setMeta(instance.getMeta() + 1);
                 if (instance.getMeta() >= 128) {
                     IInventory inv = player.getInv();
                     inv.set(inv.getItemIndex(instance), null);
                 }
+                return true;
             }
         }
-        return true;
+        return layer == TileLayer.MAIN;
     }
 }

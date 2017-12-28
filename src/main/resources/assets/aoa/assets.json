@@ -95,6 +95,9 @@
       }
     },
     "items.": {
+      "bomb":"/items/bomb.png",
+      "mining_bomb": "/items/mining_bomb.png",
+      "bomb_launcher":"/items/bomb_launcher.png",
       "blue_berry_bush.": {
         "berry": "/items/blue_berry_bush.berry.png"
       },

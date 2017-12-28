@@ -12,9 +12,6 @@ import de.ellpeck.rockbottom.api.item.ItemInstance
 import de.ellpeck.rockbottom.api.world.IWorld
 import java.util.*
 
-//TODO: fix all the errors
-//TODO: worldgen
-
 class BouncyPearlEntity(world: IWorld, player: UUID? = null, mouseDirection: FloatArray = floatArrayOf(0f, 0f)) : EntityItem(world, ItemInstance(bouncyPearlItem)) {
     init {
         if (this.additionalData == null) {

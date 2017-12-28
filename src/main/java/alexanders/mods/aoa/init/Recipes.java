@@ -9,6 +9,6 @@ public class Recipes {
     public static void init() {
         GameContent.TILE_STONE.addResource("stone");
         GameContent.TILE_LOG.addResource("log");
-        new BasicRecipe(new ItemInstance(Items.shears), new ResUseInfo("stone", 6), new ResUseInfo("log", 3)).registerManual();
+        new BasicRecipe(new ItemInstance(Items.shearsItem), new ResUseInfo("stone", 6), new ResUseInfo("log", 3)).registerManual();
     }
 }

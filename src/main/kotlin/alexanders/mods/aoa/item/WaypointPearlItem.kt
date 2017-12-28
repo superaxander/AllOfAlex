@@ -16,8 +16,8 @@ import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
-class WaypointPearlItem() : ItemBasic(WAYPOINT_PEARL_RESOURCE), Useable {
-    val renderer = PearlItemRenderer(WAYPOINT_PEARL_RESOURCE)
+class WaypointPearlItem() : ItemBasic(waypointPearlResource), Useable {
+    val renderer = PearlItemRenderer(waypointPearlResource)
     override fun use(itemInstance: ItemInstance, mouseDirection: FloatArray, player: AbstractEntityPlayer, shiftPressed: Boolean) {
         if (itemInstance.additionalData == null) {
             itemInstance.additionalData = DataSet()
@@ -45,18 +45,18 @@ class WaypointPearlItem() : ItemBasic(WAYPOINT_PEARL_RESOURCE), Useable {
 
     override fun describeItem(manager: IAssetManager, instance: ItemInstance, desc: MutableList<String>, isAdvanced: Boolean) {
         super.describeItem(manager, instance, desc, isAdvanced)
-        desc.add(manager.localize(WAYPOINT_PEARL_DESC_RESOURCE))
+        desc.add(manager.localize(waypointPearlDescResource))
         if (isAdvanced) {
-            desc.add(manager.localize(WAYPOINT_PEARL_USAGE_DESC_RESOURCE))
+            desc.add(manager.localize(waypointPearlUsageDescResource))
             if (instance.additionalData == null) {
                 instance.additionalData = DataSet()
                 instance.additionalData.addInt("cooldown", 0)
                 instance.additionalData.addDouble("waypoint_x", RockBottomAPI.getGame().world.spawnX + .5)
                 instance.additionalData.addDouble("waypoint_y", RockBottomAPI.getGame().world.getLowestAirUpwards(TileLayer.MAIN, RockBottomAPI.getGame().world.spawnX, 0) + .5)
             }
-            desc.add("${manager.localize(SET_TO_DESC_RESOURCE)}${instance.additionalData.getDouble("waypoint_x")}, ${instance.additionalData.getDouble("waypoint_y")}")
+            desc.add("${manager.localize(setToDescResource)}${instance.additionalData.getDouble("waypoint_x")}, ${instance.additionalData.getDouble("waypoint_y")}")
         } else {
-            desc.add(manager.localize(MORE_INFO_DESC_RESOURCE))
+            desc.add(manager.localize(moreInfoDescResource))
         }
     }
 
