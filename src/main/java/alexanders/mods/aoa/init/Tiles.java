@@ -1,8 +1,10 @@
 package alexanders.mods.aoa.init;
 
 import alexanders.mods.aoa.tile.*;
+import de.ellpeck.rockbottom.api.tile.TileBasic;
 
 import static alexanders.mods.aoa.AllOfAlex.createRes;
+import static alexanders.mods.aoa.init.Resources.*;
 
 public class Tiles {
     public static ItemCannonTile itemCannon;
@@ -19,23 +21,72 @@ public class Tiles {
     public static PhantomTile phantomTile;
     public static PearlOreTile pearlOre;
     public static SlimeTile slime;
+    public static TileBasic bricksBlue;
+    public static TileBasic bricksGreen;
+    public static TileBasic bricksGrey;
+    public static TileBasic bricksOrangeBrown;
+    public static TileBasic bricksPurple;
+    public static TileBasic bricksRed;
+    public static TileBasic bricksYellow;
+    public static TileBasic bricksYellowBrown;
+    public static TileBasic colourisedWoodAqua;
+    public static TileBasic colourisedWoodGoldBrown;
+    public static TileBasic colourisedWoodGreen;
+    public static TileBasic colourisedWoodGreenBrown;
+    public static TileBasic colourisedWoodPinkPurple;
+    public static TileBasic crystalBlue;
+    public static TileBasic crystalGreen;
+    public static TileBasic crystalPurple;
+    public static TileBasic crystalRed;
+    public static TileBasic crystalYellow;
+    public static TileBasic smoothStoneBlue;
+    public static TileBasic smoothStoneGreen;
+    public static TileBasic smoothStoneGrey;
+    public static TileBasic smoothStoneOrange;
+    public static TileBasic smoothStonePurple;
+    public static TileBasic smoothStoneYellow;
 
 
     public static void init() {
         itemCannon = new ItemCannonTile(createRes("item_cannon"));
         funnelTile = new FunnelTile(createRes("funnel"));
-        FoliageAssets.dry_farmland.tile = dryFarmland = new VariantTile(Resources.dryFarmland);
-        FoliageAssets.grass.tile = grass = new VariantTile(Resources.grass);
-        FoliageAssets.long_grass.tile = longGrass = new VariantTile(Resources.longGrass);
-        FoliageAssets.blue_berry_bush.tile = blueBerryBush = new BerryBushTile(Resources.blueBerryBush);
-        FoliageAssets.red_berry_bush.tile = redBerryBush = new BerryBushTile(Resources.redBerryBush);
-        FoliageAssets.ugly_plant.tile = uglyPlant = new VariantTile(Resources.uglyPlant);
-        FoliageAssets.large_ugly_plant.tile = largeUglyPlant = new VariantTile(Resources.largeUglyPlant);
+        FoliageAssets.dry_farmland.tile = dryFarmland = new VariantTile(resourceDryFarmland);
+        FoliageAssets.grass.tile = grass = new VariantTile(resourceGrass);
+        FoliageAssets.long_grass.tile = longGrass = new VariantTile(resourceLongGrass);
+        FoliageAssets.blue_berry_bush.tile = blueBerryBush = new BerryBushTile(resourceBlueBerryBush);
+        FoliageAssets.red_berry_bush.tile = redBerryBush = new BerryBushTile(resourceRedBerryBush);
+        FoliageAssets.ugly_plant.tile = uglyPlant = new VariantTile(resourceUglyPlant);
+        FoliageAssets.large_ugly_plant.tile = largeUglyPlant = new VariantTile(resourceLargeUglyPlant);
         drillBasic = new TileDrill(Resources.drill_basic, 30, .25f, .5f, 10);
         drillCopper = new TileDrill(Resources.drill_copper, 42, .5f, .25f, 20);
         phantomTile = new PhantomTile();
         pearlOre = new PearlOreTile();
         slime = new SlimeTile();
+
+        bricksBlue = new TileBasic(resourceBricksBlue);
+        bricksGreen = new TileBasic(resourceBricksGreen);
+        bricksGrey = new TileBasic(resourceBricksGrey);
+        bricksOrangeBrown = new TileBasic(resourceBricksOrangeBrown);
+        bricksPurple = new TileBasic(resourceBricksPurple);
+        bricksRed = new TileBasic(resourceBricksRed);
+        bricksYellow = new TileBasic(resourceBricksYellow);
+        bricksYellowBrown = new TileBasic(resourceBricksYellowBrown);
+        colourisedWoodAqua = new TileBasic(resourceColourisedWoodAqua);
+        colourisedWoodGoldBrown = new TileBasic(resourceColourisedWoodGoldBrown);
+        colourisedWoodGreen = new TileBasic(resourceColourisedWoodGreen);
+        colourisedWoodGreenBrown = new TileBasic(resourceColourisedWoodGreenBrown);
+        colourisedWoodPinkPurple = new TileBasic(resourceColourisedWoodPinkPurple);
+        crystalBlue = new TileBasic(resourceCrystalBlue);
+        crystalGreen = new TileBasic(resourceCrystalGreen);
+        crystalPurple = new TileBasic(resourceCrystalPurple);
+        crystalRed = new TileBasic(resourceCrystalRed);
+        crystalYellow = new TileBasic(resourceCrystalYellow);
+        smoothStoneBlue = new TileBasic(resourceSmoothStoneBlue);
+        smoothStoneGreen = new TileBasic(resourceSmoothStoneGreen);
+        smoothStoneGrey = new TileBasic(resourceSmoothStoneGrey);
+        smoothStoneOrange = new TileBasic(resourceSmoothStoneOrange);
+        smoothStonePurple = new TileBasic(resourceSmoothStonePurple);
+        smoothStoneYellow = new TileBasic(resourceSmoothStoneYellow);
 
         itemCannon.register();
         funnelTile.register();
@@ -51,5 +102,30 @@ public class Tiles {
         phantomTile.register();
         pearlOre.register();
         slime.register();
+        
+        bricksBlue.register();
+        bricksGreen.register();
+        bricksGrey.register();
+        bricksOrangeBrown.register();
+        bricksPurple.register();
+        bricksRed.register();
+        bricksYellow.register();
+        bricksYellowBrown.register();
+        colourisedWoodAqua.register();
+        colourisedWoodGoldBrown.register();
+        colourisedWoodGreen.register();
+        colourisedWoodGreenBrown.register();
+        colourisedWoodPinkPurple.register();
+        crystalBlue.register();
+        crystalGreen.register();
+        crystalPurple.register();
+        crystalRed.register();
+        crystalYellow.register();
+        smoothStoneBlue.register();
+        smoothStoneGreen.register();
+        smoothStoneGrey.register();
+        smoothStoneOrange.register();
+        smoothStonePurple.register();
+        smoothStoneYellow.register();
     }
 }

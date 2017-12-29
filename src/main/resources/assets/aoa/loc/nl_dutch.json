@@ -1,21 +1,21 @@
 {
   "aoa": {
     "desc": {
-      "bouncy_pearl": "A teleporation pearl that bounces. What else did you expect?",
-      "bridging_pearl": "A pearl that makes bridges. What else did you expect?",
-      "mining_pearl": "A pearl that mines. What else did you expect?",
-      "more_info": "Hold shift for more information",
-      "pearl": "A pearl that teleports you. What else did you expect?",
-      "rideable_pearl": "A rideable teleportation pearl. What else did you expect?",
-      "set_to": "Waypoint set to: ",
-      "spawn_pearl": "A pearl that teleports you to spawn. What else did you expect?",
-      "spiky_pearl": "A pearl that hurts others. What else did you expect?",
-      "waypoint_pearl": "A pearl that teleports you to a waypoint. What else did you expect?",
-      "waypoint_pearl_usage": "Right-click to teleport, shift-right-click to set the waypoint to your current location",
-      "drill1": "Max hardness: %d",
-      "drill2": "Inventory Size: %d",
-      "drill3": "Speed: %.2f tiles/tick",
-      "drill4": "Fuel usage modifier: %.2f"
+      "bouncy_pearl": "Een teleportatie parel die stuitert. Wat verwachtte je?",
+      "bridging_pearl": "Een parel die bruggen maakt. Wat verwachtte je?",
+      "mining_pearl": "Een parel die tegels mijnt. Wat verwachtte je?",
+      "more_info": "Houd shift ingedrukt voor meer informatie",
+      "pearl": "Een parel die je teleporteert. Wat verwachtte je?",
+      "rideable_pearl": "Een berijdbare teleportatie parel. Wat verwachtte je?",
+      "set_to": "Routepunt gezet op: ",
+      "spawn_pearl": "Een parel die je naar de spawn teleporteert. Wat verwachtte je?",
+      "spiky_pearl": "Een parel die anderen pijn kan doen. Wat verwachtte je?",
+      "waypoint_pearl": "Een parel die je naar een routepunt teleporteert. Wat verwachtte je?",
+      "waypoint_pearl_usage": "Rechtsklik om te teleporteren, gebruik shift + rechtsklik om het routepunt gelijk te stellen aan je huidige locatie.",
+      "drill1": "Max hardheid: %d",
+      "drill2": "Inventaris Grootte: %d",
+      "drill3": "Snelheid: %.2f tegels/tick",
+      "drill4": "Brandstof gebruik verminigvuldiger: %.2f"
     },
     "item": {
       "blue_berry_bush": "Blauwe Bessen Struik",
@@ -30,28 +30,60 @@
       "ugly_plant": "Plant",
       "item_cannon": "Item Kanon",
       "funnel": "Item Trechter",
-      "bouncy_pearl": "Bouncy Teleportation Pearl",
-      "bridging_pearl": "Bridging Pearl",
-      "mining_pearl": "Mining Pearl",
-      "pearl": "Teleportation Pearl",
-      "rideable_pearl": "Rideable Teleportation Pearl",
-      "slime": "Slime",
-      "spawn_pearl": "Spawn Pearl",
-      "spiky_pearl": "Spiky Pearl",
-      "waypoint_pearl": "Waypoint Pearl",
-      "drill_basic": "Basic Drill",
-      "drill_bit_basic": "Basic Drill Bit",
-      "drill_bit_copper": "Copper Drill Bit",
-      "drill_copper": "Copper Drill",
-      "pearl_ore": "Pearl Ore",
-      "phantom": "Phantom Tile",
+      "bouncy_pearl": "Stuiterende Teleportatie Parel",
+      "bridging_pearl": "Brug Parel",
+      "mining_pearl": "Mijnbouw Parel",
+      "pearl": "Teleportatie Parel",
+      "rideable_pearl": "Berijdbare Teleportatie Parel",
+      "slime": "Slijm",
+      "spawn_pearl": "Spawn Parel",
+      "spiky_pearl": "Stekelige Parel",
+      "waypoint_pearl": "Waypoint Parel",
+      "drill_basic": "Simpele Boor",
+      "drill_bit_basic": "Simpele Boorkop",
+      "drill_bit_copper": "Koperen Boorkop",
+      "drill_copper": "Koperen Boor",
+      "pearl_ore": "Parel Erts",
+      "phantom": "Fantoom Tegel",
       "bomb": "Bom",
       "mining_bomb": "Mijnbouw Bom",
-      "bomb_launcher": "Bom Lanceerapparaat"
+      "bomb_launcher": "Bom Lanceerapparaat",
+      "bricks": {
+        "blue": "Blauwe Bakstenen",
+        "green": "Groene Bakstenen",
+        "grey": "Grijze Bakstenen",
+        "orange_brown": "Oranje-bruine Bakstenen",
+        "purple": "Paarse Bakstenen",
+        "red": "Rode Bakstenen",
+        "yellow": "Gele Bakstenen",
+        "yellow_brown": "Geel-bruine Bakstenen"
+      },
+      "colourised_wood": {
+        "aqua": "Aqua Gekleurd Hout",
+        "gold_brown": "Goud-bruin Gekleurd Hout",
+        "green": "Groen Gekleurd Hout",
+        "green_brown": "Groen-bruin Gekleurd Hout",
+        "pink_purple": "Roze-paars Gekleurd Hout"
+      },
+      "crystal": {
+        "blue": "Blauw Kristal",
+        "green": "Groen Kristal",
+        "purple": "Paars Kristal",
+        "red": "Rood Kristal",
+        "yellow": "Geel Kristal"
+      },
+      "smooth_stone": {
+        "blue": "Blauwe Gladde Steen",
+        "green": "Groene Gladde Steen",
+        "grey": "Grijze Gladde Steen",
+        "orange": "Oranje Gladde Steen",
+        "purple": "Paarse Gladde Steen",
+        "yellow": "Gele Gladde Steen"
+      }
     },
     "key": {
       "rotate": "Draaien",
-      "set_waypoint": "Set waypoint"
+      "set_waypoint": "Zet routepunt"
     }
   }
 }

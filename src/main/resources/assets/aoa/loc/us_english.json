@@ -47,7 +47,39 @@
       "phantom": "Phantom Tile",
       "bomb": "Bomb",
       "mining_bomb": "Mining Bomb",
-      "bomb_launcher": "Bomb Launcher"
+      "bomb_launcher": "Bomb Launcher",
+      "bricks": {
+        "blue": "Blue Bricks",
+        "green": "Green Bricks",
+        "grey": "Gray Bricks",
+        "orange_brown": "Orange-brown Bricks",
+        "purple": "Purple Bricks",
+        "red": "Red Bricks",
+        "yellow": "Yellow Bricks",
+        "yellow_brown": "Yellow-brown Bricks"
+      },
+      "colourised_wood": {
+        "aqua": "Aqua Colorized Wood",
+        "gold_brown": "Gold-brown Colorized Wood",
+        "green": "Green Colorized Wood",
+        "green_brown": "Green-brown Colorized Wood",
+        "pink_purple": "Pink-purple Colorized Wood"
+      },
+      "crystal": {
+        "blue": "Blue Crystal",
+        "green": "Green Crystal",
+        "purple": "Purple Crystal",
+        "red": "Red Crystal",
+        "yellow": "Yellow Crystal"
+      },
+      "smooth_stone": {
+        "blue": "Blue Smooth Stone",
+        "green": "Green Smooth Stone",
+        "grey": "Gray Smooth Stone",
+        "orange": "Orange Smooth Stone",
+        "purple": "Purple Smooth Stone",
+        "yellow": "Yellow Smooth Stone"
+      }
     },
     "key": {
       "rotate": "Rotate",

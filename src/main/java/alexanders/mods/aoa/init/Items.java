@@ -24,8 +24,8 @@ public class Items {
 
     public static void init() {
         shearsItem = new ShearsItem(shears);
-        berryBlue = new SpeedBoostItem(blueBerryBush.addSuffix(".berry"));
-        berryRed = new JumpBoostItem(redBerryBush.addSuffix(".berry"));
+        berryBlue = new SpeedBoostItem(resourceBlueBerryBush.addSuffix(".berry"));
+        berryRed = new JumpBoostItem(resourceRedBerryBush.addSuffix(".berry"));
         drillBitBasic = new DrillBitItem(drill_bit_basic);
         drillBitCopper = new DrillBitItem(drill_bit_copper);
         pearlItem = new PearlItem();

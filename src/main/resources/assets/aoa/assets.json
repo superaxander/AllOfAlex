@@ -15,6 +15,38 @@
     },
     "cooldown": "/items/cooldown.png",
     "tiles.": {
+      "bricks.": {
+        "blue": "/tiles/bricks_blue.png",
+        "green": "/tiles/bricks_green.png",
+        "grey": "/tiles/bricks_grey.png",
+        "orange_brown": "/tiles/bricks_orange_brown.png",
+        "purple": "/tiles/bricks_purple.png",
+        "red": "/tiles/bricks_red.png",
+        "yellow": "/tiles/bricks_yellow.png",
+        "yellow_brown": "/tiles/bricks_yellow_brown.png"
+      },
+      "colourised_wood.": {
+        "aqua": "/tiles/colourised_wood_aqua.png",
+        "gold_brown": "/tiles/colourised_wood_gold_brown.png",
+        "green": "/tiles/colourised_wood_green.png",
+        "green_brown": "/tiles/colourised_wood_green_brown.png",
+        "pink_purple": "/tiles/colourised_wood_pink_purple.png"
+      },
+      "crystal.": {
+        "blue": "/tiles/crystal_blue.png",
+        "green": "/tiles/crystal_green.png",
+        "purple": "/tiles/crystal_purple.png",
+        "red": "/tiles/crystal_red.png",
+        "yellow": "/tiles/crystal_yellow.png"
+      },
+      "smooth_stone.": {
+        "blue": "/tiles/smooth_stone_blue.png",
+        "green": "/tiles/smooth_stone_green.png",
+        "grey": "/tiles/smooth_stone_grey.png",
+        "orange": "/tiles/smooth_stone_orange.png",
+        "purple": "/tiles/smooth_stone_purple.png",
+        "yellow": "/tiles/smooth_stone_yellow.png"
+      },
       "pearl_ore": "/tiles/pearl_ore.png",
       "phantom": "/tiles/phantom.png",
       "slime": "/tiles/slime.png",
@@ -95,9 +127,9 @@
       }
     },
     "items.": {
-      "bomb":"/items/bomb.png",
+      "bomb": "/items/bomb.png",
       "mining_bomb": "/items/mining_bomb.png",
-      "bomb_launcher":"/items/bomb_launcher.png",
+      "bomb_launcher": "/items/bomb_launcher.png",
       "blue_berry_bush.": {
         "berry": "/items/blue_berry_bush.berry.png"
       },

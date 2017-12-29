@@ -27,13 +27,13 @@ public enum FoliageAssets {
     }
 
     public static void init(IAssetManager manager) {
-        dry_farmland.renderer = new VariantTextureRenderer(getTextures(manager, Resources.dryFarmland, 2));
-        grass.renderer = new VariantTextureRenderer(getTextures(manager, Resources.grass, 4));
-        long_grass.renderer = new VariantTextureRenderer(getTextures(manager, Resources.longGrass, 4));
-        blue_berry_bush.renderer = new BerryBushRenderer(getTextures(manager, Resources.blueBerryBush, 2), getEmptyTextures(manager, Resources.blueBerryBush, 2));
-        red_berry_bush.renderer = new BerryBushRenderer(getTextures(manager, Resources.redBerryBush, 2), getEmptyTextures(manager, Resources.redBerryBush, 2));
-        ugly_plant.renderer = new VariantTextureRenderer(getTextures(manager, Resources.uglyPlant, 1));
-        large_ugly_plant.renderer = new VariantTextureRenderer(getTextures(manager, Resources.largeUglyPlant, 1));
+        dry_farmland.renderer = new VariantTextureRenderer(getTextures(manager, Resources.resourceDryFarmland, 2));
+        grass.renderer = new VariantTextureRenderer(getTextures(manager, Resources.resourceGrass, 4));
+        long_grass.renderer = new VariantTextureRenderer(getTextures(manager, Resources.resourceLongGrass, 4));
+        blue_berry_bush.renderer = new BerryBushRenderer(getTextures(manager, Resources.resourceBlueBerryBush, 2), getEmptyTextures(manager, Resources.resourceBlueBerryBush, 2));
+        red_berry_bush.renderer = new BerryBushRenderer(getTextures(manager, Resources.resourceRedBerryBush, 2), getEmptyTextures(manager, Resources.resourceRedBerryBush, 2));
+        ugly_plant.renderer = new VariantTextureRenderer(getTextures(manager, Resources.resourceUglyPlant, 1));
+        large_ugly_plant.renderer = new VariantTextureRenderer(getTextures(manager, Resources.resourceLargeUglyPlant, 1));
     }
 
     private static ITexture[] getEmptyTextures(IAssetManager manager, IResourceName name, int amount) {

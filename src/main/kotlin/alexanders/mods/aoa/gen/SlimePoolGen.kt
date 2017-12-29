@@ -26,8 +26,8 @@ class SlimePoolGen : IWorldGenerator {
     }
 
     private fun generateAt(world: IWorld, chunk: IChunk, x: Int, y: Int, rand: Random) {
-        val tile = world.getState(x, y - 1).tile
-        if (tile.name == RockBottomAPI.createInternalRes("dirt") || tile.name == RockBottomAPI.createInternalRes("grass")) {
+        val tile = world.getState(TileLayer.MAIN, x, y - 1).tile
+        if (tile.canKeepPlants(world, x, y, TileLayer.MAIN)) {
             val poolBlobs = rand.nextInt(6) + 1
             for (b in 0..poolBlobs) this.makePool(chunk, x, y - 3, rand)
         }

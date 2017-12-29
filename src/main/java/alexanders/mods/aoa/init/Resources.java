@@ -5,13 +5,13 @@ import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import static alexanders.mods.aoa.AllOfAlex.createRes;
 
 public class Resources { // TODO: Implement this for other parts aswell? Remove this?
-    public static IResourceName dryFarmland;
-    public static IResourceName grass;
-    public static IResourceName longGrass;
-    public static IResourceName blueBerryBush;
-    public static IResourceName redBerryBush;
-    public static IResourceName uglyPlant;
-    public static IResourceName largeUglyPlant;
+    public static IResourceName resourceDryFarmland;
+    public static IResourceName resourceGrass;
+    public static IResourceName resourceLongGrass;
+    public static IResourceName resourceBlueBerryBush;
+    public static IResourceName resourceRedBerryBush;
+    public static IResourceName resourceUglyPlant;
+    public static IResourceName resourceLargeUglyPlant;
     public static IResourceName shears;
     public static IResourceName drill;
     public static IResourceName drill_basic;
@@ -46,15 +46,39 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName bombResource;
     public static IResourceName miningBombResource;
     public static IResourceName bombLauncherResource;
+    public static IResourceName resourceBricksBlue;
+    public static IResourceName resourceBricksGreen;
+    public static IResourceName resourceBricksGrey;
+    public static IResourceName resourceBricksOrangeBrown;
+    public static IResourceName resourceBricksPurple;
+    public static IResourceName resourceBricksRed;
+    public static IResourceName resourceBricksYellow;
+    public static IResourceName resourceBricksYellowBrown;
+    public static IResourceName resourceColourisedWoodAqua;
+    public static IResourceName resourceColourisedWoodGoldBrown;
+    public static IResourceName resourceColourisedWoodGreen;
+    public static IResourceName resourceColourisedWoodGreenBrown;
+    public static IResourceName resourceColourisedWoodPinkPurple;
+    public static IResourceName resourceCrystalBlue;
+    public static IResourceName resourceCrystalGreen;
+    public static IResourceName resourceCrystalPurple;
+    public static IResourceName resourceCrystalRed;
+    public static IResourceName resourceCrystalYellow;
+    public static IResourceName resourceSmoothStoneBlue;
+    public static IResourceName resourceSmoothStoneGreen;
+    public static IResourceName resourceSmoothStoneGrey;
+    public static IResourceName resourceSmoothStoneOrange;
+    public static IResourceName resourceSmoothStonePurple;
+    public static IResourceName resourceSmoothStoneYellow;
 
     public static void init() {
-        dryFarmland = createRes("dry_farmland");
-        grass = createRes("grass");
-        longGrass = createRes("long_grass");
-        blueBerryBush = createRes("blue_berry_bush");
-        redBerryBush = createRes("red_berry_bush");
-        uglyPlant = createRes("ugly_plant");
-        largeUglyPlant = createRes("large_ugly_plant");
+        resourceDryFarmland = createRes("dry_farmland");
+        resourceGrass = createRes("grass");
+        resourceLongGrass = createRes("long_grass");
+        resourceBlueBerryBush = createRes("blue_berry_bush");
+        resourceRedBerryBush = createRes("red_berry_bush");
+        resourceUglyPlant = createRes("ugly_plant");
+        resourceLargeUglyPlant = createRes("large_ugly_plant");
         shears = createRes("shears");
         drill = createRes("drill"); // Only used for entity registration
         drill_basic = createRes("drill_basic");
@@ -89,5 +113,29 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         bombResource = createRes("bomb");
         miningBombResource = createRes("mining_bomb");
         bombLauncherResource = createRes("bomb_launcher");
+        resourceBricksBlue = createRes("bricks.blue");
+        resourceBricksGreen = createRes("bricks.green");
+        resourceBricksGrey = createRes("bricks.grey");
+        resourceBricksOrangeBrown = createRes("bricks.orange_brown");
+        resourceBricksPurple = createRes("bricks.purple");
+        resourceBricksRed = createRes("bricks.red");
+        resourceBricksYellow = createRes("bricks.yellow");
+        resourceBricksYellowBrown = createRes("bricks.yellow_brown");
+        resourceColourisedWoodAqua = createRes("colourised_wood.aqua");
+        resourceColourisedWoodGoldBrown = createRes("colourised_wood.gold_brown");
+        resourceColourisedWoodGreen = createRes("colourised_wood.green");
+        resourceColourisedWoodGreenBrown = createRes("colourised_wood.green_brown");
+        resourceColourisedWoodPinkPurple = createRes("colourised_wood.pink_purple");
+        resourceCrystalBlue = createRes("crystal.blue");
+        resourceCrystalGreen = createRes("crystal.green");
+        resourceCrystalPurple = createRes("crystal.purple");
+        resourceCrystalRed = createRes("crystal.red");
+        resourceCrystalYellow = createRes("crystal.yellow");
+        resourceSmoothStoneBlue = createRes("smooth_stone.blue");
+        resourceSmoothStoneGreen = createRes("smooth_stone.green");
+        resourceSmoothStoneGrey = createRes("smooth_stone.grey");
+        resourceSmoothStoneOrange = createRes("smooth_stone.orange");
+        resourceSmoothStonePurple = createRes("smooth_stone.purple");
+        resourceSmoothStoneYellow = createRes("smooth_stone.yellow");
     }
 }
