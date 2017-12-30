@@ -42,7 +42,7 @@ public class AllOfAlex implements IMod {
 
     @Override
     public String getVersion() {
-        return "0.3";
+        return "0.4";
     }
 
     @Override
@@ -79,6 +79,7 @@ public class AllOfAlex implements IMod {
         Entities.init();
         Events.init(game, eventHandler);
         Recipes.init();
+        Commands.init();
         WORLD_GENERATORS.register(createRes("variant_gen"), VariantGen.class);
         PearlOreGen.Companion.register();
         SlimePoolGen.Companion.register();

@@ -102,7 +102,7 @@ public class Tiles {
         phantomTile.register();
         pearlOre.register();
         slime.register();
-        
+
         bricksBlue.register();
         bricksGreen.register();
         bricksGrey.register();
