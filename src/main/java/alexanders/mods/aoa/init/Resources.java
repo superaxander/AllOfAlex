@@ -70,6 +70,21 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName resourceSmoothStoneOrange;
     public static IResourceName resourceSmoothStonePurple;
     public static IResourceName resourceSmoothStoneYellow;
+    public static IResourceName resourcePillarHorizontalBeige;
+    public static IResourceName resourcePillarVerticalBeige;
+    public static IResourceName resourcePillarHorizontalBlue;
+    public static IResourceName resourcePillarVerticalBlue;
+    public static IResourceName resourcePillarHorizontalGreen;
+    public static IResourceName resourcePillarVerticalGreen;
+    public static IResourceName resourcePillarHorizontalGrey;
+    public static IResourceName resourcePillarVerticalGrey;
+    public static IResourceName resourcePillarHorizontalPurple;
+    public static IResourceName resourcePillarVerticalPurple;
+    public static IResourceName resourcePillarHorizontalPurpleBlue;
+    public static IResourceName resourcePillarVerticalPurpleBlue;
+    public static IResourceName resourceBrightLog;
+    public static IResourceName resourceBrightLeaves;
+    public static IResourceName resourceBrightSapling;
 
     public static void init() {
         resourceDryFarmland = createRes("dry_farmland");
@@ -137,5 +152,20 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         resourceSmoothStoneOrange = createRes("smooth_stone.orange");
         resourceSmoothStonePurple = createRes("smooth_stone.purple");
         resourceSmoothStoneYellow = createRes("smooth_stone.yellow");
+        resourcePillarHorizontalBeige = createRes("pillar.horizontal.beige");
+        resourcePillarVerticalBeige = createRes("pillar.vertical.beige");
+        resourcePillarHorizontalBlue = createRes("pillar.horizontal.blue");
+        resourcePillarVerticalBlue = createRes("pillar.vertical.blue");
+        resourcePillarHorizontalGreen = createRes("pillar.horizontal.green");
+        resourcePillarVerticalGreen = createRes("pillar.vertical.green");
+        resourcePillarHorizontalGrey = createRes("pillar.horizontal.grey");
+        resourcePillarVerticalGrey = createRes("pillar.vertical.grey");
+        resourcePillarHorizontalPurple = createRes("pillar.horizontal.purple");
+        resourcePillarVerticalPurple = createRes("pillar.vertical.purple");
+        resourcePillarHorizontalPurpleBlue = createRes("pillar.horizontal.purple_blue");
+        resourcePillarVerticalPurpleBlue = createRes("pillar.vertical.purple_blue");
+        resourceBrightLog = createRes("bright_log");
+        resourceBrightLeaves = createRes("bright_leaves");
+        resourceBrightSapling = createRes("bright_sapling");
     }
 }

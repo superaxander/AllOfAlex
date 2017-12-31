@@ -79,7 +79,28 @@
         "orange": "Oranje Gladde Steen",
         "purple": "Paarse Gladde Steen",
         "yellow": "Gele Gladde Steen"
-      }
+      },
+      "pillar": {
+        "horizontal": {
+          "beige": "Beige Horizontale Pilaar",
+          "blue": "Blauwe Horizontale Pilaar",
+          "green": "Groene Horizontale Pilaar",
+          "grey": "Grijze Horizontale Pilaar",
+          "purple": "Paarse Horizontale Pilaar",
+          "purple_blue": "Paars-Blauwe Horizontale Pilaar"
+        },
+        "vertical": {
+          "beige": "Beige Verticale Pilaar",
+          "blue": "Blauwe Verticale Pilaar",
+          "green": "Groene Verticale Pilaar",
+          "grey": "Grijze Verticale Pilaar",
+          "purple": "Paarse Verticale Pilaar",
+          "purple_blue": "Paars-Blauwe Verticale Pilaar"
+        }
+      },
+      "bright_log": "Heldere Boomstam",
+      "bright_leaves": "Heldere Bladeren",
+      "bright_sapling": "Heldere Jonge Booom"
     },
     "key": {
       "rotate": "Draaien",
@@ -87,3 +108,4 @@
     }
   }
 }
+  

@@ -1,5 +1,6 @@
 package alexanders.mods.aoa;
 
+import alexanders.mods.aoa.gen.BrightTreeGen;
 import alexanders.mods.aoa.gen.PearlOreGen;
 import alexanders.mods.aoa.gen.SlimePoolGen;
 import alexanders.mods.aoa.gen.VariantGen;
@@ -42,7 +43,7 @@ public class AllOfAlex implements IMod {
 
     @Override
     public String getVersion() {
-        return "0.4";
+        return "0.5";
     }
 
     @Override
@@ -81,6 +82,7 @@ public class AllOfAlex implements IMod {
         Recipes.init();
         Commands.init();
         WORLD_GENERATORS.register(createRes("variant_gen"), VariantGen.class);
+        WORLD_GENERATORS.register(createRes("bright_tree_gen"), BrightTreeGen.class);
         PearlOreGen.Companion.register();
         SlimePoolGen.Companion.register();
     }

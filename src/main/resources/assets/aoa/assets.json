@@ -15,6 +15,52 @@
     },
     "cooldown": "/items/cooldown.png",
     "tiles.": {
+      "pillar.": {
+        "horizontal.": {
+          "beige": "/tiles/pillar_horizontal_beige.png",
+          "blue": "/tiles/pillar_horizontal_blue.png",
+          "green": "/tiles/pillar_horizontal_green.png",
+          "grey": "/tiles/pillar_horizontal_grey.png",
+          "purple": "/tiles/pillar_horizontal_purple.png",
+          "purple_blue": "/tiles/pillar_horizontal_purple_blue.png"
+        },
+        "vertical.": {
+          "beige": "/tiles/pillar_vertical_beige.png",
+          "blue": "/tiles/pillar_vertical_blue.png",
+          "green": "/tiles/pillar_vertical_green.png",
+          "grey": "/tiles/pillar_vertical_grey.png",
+          "purple": "/tiles/pillar_vertical_purple.png",
+          "purple_blue": "/tiles/pillar_vertical_purple_blue.png"
+        }
+      },
+      "bright_log.": {
+        "*": "/tiles/bright_log.png",
+        "branch": {
+          "path": "/tiles/bright_log_branch_0.png",
+          "variations": [
+            "/tiles/bright_log_branch_1.png",
+            "/tiles/bright_log_branch_2.png",
+            "/tiles/bright_log_branch_3.png",
+            "/tiles/bright_log_branch_4.png",
+            "/tiles/bright_log_branch_5.png",
+            "/tiles/bright_log_branch_6.png"
+          ]
+        },
+        "trunk_top": {
+          "path": "/tiles/bright_log_trunk_top_0.png",
+          "variations": ["/tiles/bright_log_trunk_top_1.png"]
+        },
+        "trunk_middle": {
+          "path": "/tiles/bright_log.png",
+          "variations": ["/tiles/bright_log_trunk_middle_0.png"]
+        },
+        "trunk_bottom": {
+          "path": "/tiles/bright_log.png",
+          "variations": ["/tiles/bright_log_trunk_bottom_0.png", "/tiles/bright_log_trunk_bottom_1.png"]
+        }
+      },
+      "bright_leaves": "/tiles/bright_leaves.png",
+      "bright_sapling": "/tiles/bright_sapling.png",
       "bricks.": {
         "blue": "/tiles/bricks_blue.png",
         "green": "/tiles/bricks_green.png",

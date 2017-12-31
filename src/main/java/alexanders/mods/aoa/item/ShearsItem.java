@@ -15,6 +15,8 @@ import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
+import static alexanders.mods.aoa.init.Tiles.brightLeaves;
+
 public class ShearsItem extends ItemBasic implements IDamageable {
 
     public ShearsItem(IResourceName name) {
@@ -37,7 +39,7 @@ public class ShearsItem extends ItemBasic implements IDamageable {
         if (RockBottomAPI.getNet().isServer() || !RockBottomAPI.getNet().isActive()) {
             TileState state = world.getState(layer, x, y);
             Tile t = state.getTile();
-            if (t instanceof VariantTile || t == GameContent.TILE_GRASS_TUFT || t == GameContent.TILE_FLOWER || t == GameContent.TILE_LEAVES) {
+            if (t instanceof VariantTile || t == GameContent.TILE_GRASS_TUFT || t == GameContent.TILE_FLOWER || t == GameContent.TILE_LEAVES || t == brightLeaves) {
                 t.doBreak(world, x, y, layer, player, true, true);
                 instance.setMeta(instance.getMeta() + 1);
                 if (instance.getMeta() >= 128) {

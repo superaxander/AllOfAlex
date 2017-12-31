@@ -79,7 +79,28 @@
         "orange": "Orange Smooth Stone",
         "purple": "Purple Smooth Stone",
         "yellow": "Yellow Smooth Stone"
-      }
+      },
+      "pillar": {
+        "horizontal": {
+          "beige": "Beige Horizontal Pillar",
+          "blue": "Blue Horizontal Pillar",
+          "green": "Green Horizontal Pillar",
+          "grey": "Grey Horizontal Pillar",
+          "purple": "Purple Horizontal Pillar",
+          "purple_blue": "Purple-Blue Horizontal Pillar"
+        },
+        "vertical": {
+          "beige": "Beige Vertical Pillar",
+          "blue": "Blue Vertical Pillar",
+          "green": "Green Vertical Pillar",
+          "grey": "Grey Vertical Pillar",
+          "purple": "Purple Vertical Pillar",
+          "purple_blue": "Purple-Blue Vertical Pillar"
+        }
+      },
+      "bright_log": "Bright Log",
+      "bright_leaves": "Bright Leaves",
+      "bright_sapling": "Bright Sapling"
     },
     "key": {
       "rotate": "Rotate",

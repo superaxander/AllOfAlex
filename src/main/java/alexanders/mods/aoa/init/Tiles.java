@@ -45,7 +45,21 @@ public class Tiles {
     public static TileBasic smoothStoneOrange;
     public static TileBasic smoothStonePurple;
     public static TileBasic smoothStoneYellow;
-
+    public static TileBasic pillarHorizontalBeige;
+    public static TileBasic pillarVerticalBeige;
+    public static TileBasic pillarHorizontalBlue;
+    public static TileBasic pillarVerticalBlue;
+    public static TileBasic pillarHorizontalGreen;
+    public static TileBasic pillarVerticalGreen;
+    public static TileBasic pillarHorizontalGrey;
+    public static TileBasic pillarVerticalGrey;
+    public static TileBasic pillarHorizontalPurple;
+    public static TileBasic pillarVerticalPurple;
+    public static TileBasic pillarHorizontalPurpleBlue;
+    public static TileBasic pillarVerticalPurpleBlue;
+    public static BrightLogTile brightLog;
+    public static BrightLeavesTile brightLeaves;
+    public static BrightSapling brightSapling;
 
     public static void init() {
         itemCannon = new ItemCannonTile(createRes("item_cannon"));
@@ -87,6 +101,21 @@ public class Tiles {
         smoothStoneOrange = new TileBasic(resourceSmoothStoneOrange);
         smoothStonePurple = new TileBasic(resourceSmoothStonePurple);
         smoothStoneYellow = new TileBasic(resourceSmoothStoneYellow);
+        pillarHorizontalBeige = new TileBasic(resourcePillarHorizontalBeige);
+        pillarVerticalBeige = new TileBasic(resourcePillarVerticalBeige);
+        pillarHorizontalBlue = new TileBasic(resourcePillarHorizontalBlue);
+        pillarVerticalBlue = new TileBasic(resourcePillarVerticalBlue);
+        pillarHorizontalGreen = new TileBasic(resourcePillarHorizontalGreen);
+        pillarVerticalGreen = new TileBasic(resourcePillarVerticalGreen);
+        pillarHorizontalGrey = new TileBasic(resourcePillarHorizontalGrey);
+        pillarVerticalGrey = new TileBasic(resourcePillarVerticalGrey);
+        pillarHorizontalPurple = new TileBasic(resourcePillarHorizontalPurple);
+        pillarVerticalPurple = new TileBasic(resourcePillarVerticalPurple);
+        pillarHorizontalPurpleBlue = new TileBasic(resourcePillarHorizontalPurpleBlue);
+        pillarVerticalPurpleBlue = new TileBasic(resourcePillarVerticalPurpleBlue);
+
+        brightLog = new BrightLogTile();
+        brightLeaves = new BrightLeavesTile();
 
         itemCannon.register();
         funnelTile.register();
@@ -127,5 +156,22 @@ public class Tiles {
         smoothStoneOrange.register();
         smoothStonePurple.register();
         smoothStoneYellow.register();
+        pillarHorizontalBeige.register();
+        pillarVerticalBeige.register();
+        pillarHorizontalBlue.register();
+        pillarVerticalBlue.register();
+        pillarHorizontalGreen.register();
+        pillarVerticalGreen.register();
+        pillarHorizontalGrey.register();
+        pillarVerticalGrey.register();
+        pillarHorizontalPurple.register();
+        pillarVerticalPurple.register();
+        pillarHorizontalPurpleBlue.register();
+        pillarVerticalPurpleBlue.register();
+
+        brightLog.register();
+        brightLeaves.register();
+        brightSapling = new BrightSapling(); // Has to be down here because the sapling requires the log and leaves to be registered
+        brightSapling.register();
     }
 }
