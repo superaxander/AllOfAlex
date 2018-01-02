@@ -11,8 +11,8 @@ import io.netty.channel.ChannelHandlerContext;
 import java.io.IOException;
 
 public class FireBombPacket implements IPacket {
-    private int x;
-    private int y;
+    private double x;
+    private double y;
     private float[] angle;
     private boolean mining;
 
@@ -20,7 +20,7 @@ public class FireBombPacket implements IPacket {
 
     }
 
-    public FireBombPacket(int x, int y, float[] angle, boolean mining) {
+    public FireBombPacket(double x, double y, float[] angle, boolean mining) {
         this.x = x;
         this.y = y;
         this.angle = angle;
@@ -29,8 +29,8 @@ public class FireBombPacket implements IPacket {
 
     @Override
     public void toBuffer(ByteBuf buf) throws IOException {
-        buf.writeInt(x);
-        buf.writeInt(y);
+        buf.writeDouble(x);
+        buf.writeDouble(y);
         buf.writeFloat(angle[0]);
         buf.writeFloat(angle[1]);
         buf.writeBoolean(mining);
@@ -38,8 +38,8 @@ public class FireBombPacket implements IPacket {
 
     @Override
     public void fromBuffer(ByteBuf buf) throws IOException {
-        x = buf.readInt();
-        y = buf.readInt();
+        x = buf.readDouble();
+        y = buf.readDouble();
         angle[0] = buf.readFloat();
         angle[1] = buf.readFloat();
         mining = buf.readBoolean();

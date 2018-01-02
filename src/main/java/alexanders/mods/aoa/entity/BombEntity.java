@@ -30,8 +30,6 @@ public class BombEntity extends Entity {
     @Override
     public void update(IGameInstance game) {
         if (ticksExisted >= FUSE_TIME) {
-            this.motionX = 0;
-            this.motionY = 0;
             int r = getOrCreateAdditionalData().getInt("radius");
             if (r % 32 == 0)
                 firstRound(r / 32);
@@ -49,6 +47,14 @@ public class BombEntity extends Entity {
         } else {
             super.update(game);
         }
+    }
+
+    @Override
+    public void applyMotion() {
+        this.motionY -= 0.015;
+
+        this.motionX *= this.onGround ? 0.8 : 0.98;
+        this.motionY *= 0.98;
     }
 
     private void firstRound(int r) {
