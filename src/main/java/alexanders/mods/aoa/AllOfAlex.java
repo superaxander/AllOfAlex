@@ -9,6 +9,7 @@ import de.ellpeck.rockbottom.api.IApiHandler;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.assets.IAssetManager;
+import de.ellpeck.rockbottom.api.data.set.DataSet;
 import de.ellpeck.rockbottom.api.event.IEventHandler;
 import de.ellpeck.rockbottom.api.gui.Gui;
 import de.ellpeck.rockbottom.api.mod.IMod;
@@ -89,6 +90,7 @@ public class AllOfAlex implements IMod {
 
     @Override
     public void initAssets(IGameInstance game, IAssetManager assetManager, IApiHandler apiHandler) {
+
         FoliageAssets.init(assetManager);
     }
 }

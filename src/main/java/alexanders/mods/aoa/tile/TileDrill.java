@@ -2,6 +2,7 @@ package alexanders.mods.aoa.tile;
 
 import alexanders.mods.aoa.render.DrillContainer;
 import alexanders.mods.aoa.render.DrillGui;
+import alexanders.mods.aoa.tile.entity.TileEntityDrill;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.assets.IAssetManager;
 import de.ellpeck.rockbottom.api.entity.Entity;

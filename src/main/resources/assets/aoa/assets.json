@@ -15,6 +15,9 @@
     },
     "cooldown": "/items/cooldown.png",
     "tiles.": {
+      "plain": "/tiles/plain.png",
+      "assimilator": "/tiles/assimilator.png",
+      "assimilated_tile": "/tiles/assimilated.png",
       "pillar.": {
         "horizontal.": {
           "beige": "/tiles/pillar_horizontal_beige.png",
@@ -195,6 +198,15 @@
       "waypoint_pearl": "/items/waypoint_pearl.png"
     },
     "particles.": {
+      "blue": "/particles/blue.png",
+      "brown": "/particles/brown.png",
+      "green": "/particles/green.png",
+      "magenta": "/particles/magenta.png",
+      "orange": "/particles/orange.png",
+      "pink": "/particles/pink.png",
+      "red": "/particles/red.png",
+      "white": "/particles/white.png",
+      "yellow": "/particles/yellow.png",
       "blood": "/particles/blood.png",
       "teleportation": "/particles/teleportation.png"
     },

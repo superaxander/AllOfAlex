@@ -1,4 +1,4 @@
-package alexanders.mods.aoa.tile
+package alexanders.mods.aoa.tile.entity
 
 import de.ellpeck.rockbottom.api.IGameInstance
 import de.ellpeck.rockbottom.api.RockBottomAPI
@@ -25,7 +25,7 @@ class PhantomTileEntity(world: IWorld, x: Int, y: Int, layer: TileLayer) : TileE
         super.update(game)
         if (RockBottomAPI.getNet().isServer || !RockBottomAPI.getNet().isConnectedToServer) {
             if (timeExisted++ >= 120)
-                world.destroyTile(x, y, TileLayer.MAIN, null, false)
+                world.destroyTile(x, y, layer, null, false)
         }
     }
 }

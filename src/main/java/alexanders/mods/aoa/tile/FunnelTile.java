@@ -2,6 +2,7 @@ package alexanders.mods.aoa.tile;
 
 import alexanders.mods.aoa.net.RotatePacket;
 import alexanders.mods.aoa.render.FunnelTileRenderer;
+import alexanders.mods.aoa.tile.entity.FunnelTileEntity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.render.tile.ITileRenderer;
@@ -18,7 +19,7 @@ import static de.ellpeck.rockbottom.api.RockBottomAPI.getNet;
 
 public class FunnelTile extends TileBasic {
     public static final IntProp direction = new IntProp("direction", 0, 3);
-    static final BoundBox BB = new BoundBox(1 / 12f, 0, 11 / 12f, 10 / 12f);
+    public static final BoundBox BB = new BoundBox(1 / 12f, 0, 11 / 12f, 10 / 12f);
 
     public FunnelTile(IResourceName name) {
         super(name);

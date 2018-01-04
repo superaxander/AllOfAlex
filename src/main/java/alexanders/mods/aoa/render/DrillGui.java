@@ -1,6 +1,6 @@
 package alexanders.mods.aoa.render;
 
-import alexanders.mods.aoa.tile.TileEntityDrill;
+import alexanders.mods.aoa.tile.entity.TileEntityDrill;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.gui.GuiContainer;

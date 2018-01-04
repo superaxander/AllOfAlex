@@ -82,9 +82,12 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName resourcePillarVerticalPurple;
     public static IResourceName resourcePillarHorizontalPurpleBlue;
     public static IResourceName resourcePillarVerticalPurpleBlue;
+    public static IResourceName resourcePlain;
     public static IResourceName resourceBrightLog;
     public static IResourceName resourceBrightLeaves;
     public static IResourceName resourceBrightSapling;
+    public static IResourceName resourceAssimilatedTile;
+    public static IResourceName resourceAssimilator;
 
     public static void init() {
         resourceDryFarmland = createRes("dry_farmland");
@@ -164,6 +167,9 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         resourcePillarVerticalPurple = createRes("pillar.vertical.purple");
         resourcePillarHorizontalPurpleBlue = createRes("pillar.horizontal.purple_blue");
         resourcePillarVerticalPurpleBlue = createRes("pillar.vertical.purple_blue");
+        resourcePlain = createRes("plain");
+        resourceAssimilatedTile = createRes("assimilated_tile");
+        resourceAssimilator = createRes("assimilator");
         resourceBrightLog = createRes("bright_log");
         resourceBrightLeaves = createRes("bright_leaves");
         resourceBrightSapling = createRes("bright_sapling");

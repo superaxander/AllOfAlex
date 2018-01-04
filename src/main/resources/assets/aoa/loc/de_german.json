@@ -48,6 +48,29 @@
       "bomb": "Bombe",
       "mining_bomb": "Bergbau Bombe",
       "bomb_launcher": "Bombe Abschußapparat",
+      "plain": {
+        "blue": "Blue Colorable Plain Tile",
+        "brown": "Brown Colorable Plain Tile",
+        "green": "Green Colorable Plain Tile",
+        "magenta": "Magenta Colorable Plain Tile",
+        "orange": "Orange Colorable Plain Tile",
+        "pink": "Pink Colorable Plain Tile",
+        "red": "Red Colorable Plain Tile",
+        "white": "White Colorable Plain Tile",
+        "yellow": "Yellow Colorable Plain Tile"
+      },
+      "assimilator": "Assimilator",
+      "assimilated_tile": {
+        "blue": "Blue Assimilated Tile",
+        "brown": "Brown Assimilated Tile",
+        "green": "Green Assimilated Tile",
+        "magenta": "Magenta Assimilated Tile",
+        "orange": "Orange Assimilated Tile",
+        "pink": "Pink Assimilated Tile",
+        "red": "Red Assimilated Tile",
+        "white": "White Assimilated Tile",
+        "yellow": "Yellow Assimilated Tile"
+      },
       "bricks": {
         "blue": "Blue Bricks",
         "green": "Green Bricks",

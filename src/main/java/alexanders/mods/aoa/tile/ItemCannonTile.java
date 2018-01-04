@@ -4,6 +4,8 @@ import alexanders.mods.aoa.init.Keys;
 import alexanders.mods.aoa.net.CannonRightClickPacket;
 import alexanders.mods.aoa.render.ItemCannonGui;
 import alexanders.mods.aoa.render.ItemCannonRenderer;
+import alexanders.mods.aoa.tile.entity.ItemCannonContainer;
+import alexanders.mods.aoa.tile.entity.ItemCannonTileEntity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.render.tile.ITileRenderer;
 import de.ellpeck.rockbottom.api.tile.TileBasic;

@@ -11,7 +11,7 @@ import static alexanders.mods.aoa.init.Resources.bombLauncherResource;
 public class BombLauncherContainer extends ItemContainer {
     public BombLauncherContainer(AbstractEntityPlayer player, IInventory... containedInventories) {
         super(player, containedInventories);
-        this.addSlot(new RestrictedSlot(containedInventories[1], 0, 90, 0, (item) -> item.getItem() instanceof BombItem));
+        this.addSlot(new RestrictedSlot(containedInventories[1], 0, 90, 0, (slot, item) -> item.getItem() instanceof BombItem));
         this.addPlayerInventory(player, 20, 30);
     }
 

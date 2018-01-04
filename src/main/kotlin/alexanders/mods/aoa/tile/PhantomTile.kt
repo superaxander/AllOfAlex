@@ -1,6 +1,7 @@
 package alexanders.mods.aoa.tile
 
 import alexanders.mods.aoa.init.Resources.phantomTileResource
+import alexanders.mods.aoa.tile.entity.PhantomTileEntity
 import de.ellpeck.rockbottom.api.tile.TileBasic
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity
 import de.ellpeck.rockbottom.api.world.IWorld

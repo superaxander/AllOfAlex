@@ -48,6 +48,29 @@
       "bomb": "Bom",
       "mining_bomb": "Mijnbouw Bom",
       "bomb_launcher": "Bom Lanceerapparaat",
+      "plain": {
+        "blue": "Blauwe Kleurbare Effen Tegel",
+        "brown": "Bruine Kleurbare Effen Tegel",
+        "green": "Groene Kleurbare Effen Tegel",
+        "magenta": "Scharlaken Kleurbare Effen Tegel",
+        "orange": "Oranje Kleurbare Effen Tegel",
+        "pink": "Roze Kleurbare Effen Tegel",
+        "red": "Rode Kleurbare Effen Tegel",
+        "white": "Witte Kleurbare Effen Tegel",
+        "yellow": "Gele Kleurbare Effen Tegel"
+      },
+      "assimilator": "Overnemer",
+      "assimilated_tile": {
+        "blue": "Blauwe Overgenomen Tegel",
+        "brown": "Bruine Overgenomen Tegel",
+        "green": "Groene Overgenomen Tegel",
+        "magenta": "Scharlaken Overgenomen Tegel",
+        "orange": "Oranje Overgenomen Tegel",
+        "pink": "Roze Overgenomen Tegel",
+        "red": "Rode Overgenomen Tegel",
+        "white": "Witte Overgenomen Tegel",
+        "yellow": "Gele Overgenomen Tegel"
+      },
       "bricks": {
         "blue": "Blauwe Bakstenen",
         "green": "Groene Bakstenen",

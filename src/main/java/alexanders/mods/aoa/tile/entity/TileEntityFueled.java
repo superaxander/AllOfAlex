@@ -1,4 +1,4 @@
-package alexanders.mods.aoa.tile;
+package alexanders.mods.aoa.tile.entity;
 /*
  * This file ("TileEntityFueled.java") is part of the RockBottomAPI by Ellpeck.
  * View the source code at <https://github.com/Ellpeck/RockBottomAPI>.

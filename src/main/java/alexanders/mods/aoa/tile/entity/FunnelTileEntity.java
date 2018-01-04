@@ -1,6 +1,7 @@
-package alexanders.mods.aoa.tile;
+package alexanders.mods.aoa.tile.entity;
 
 import alexanders.mods.aoa.Triplet;
+import alexanders.mods.aoa.tile.FunnelTile;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.entity.EntityItem;
 import de.ellpeck.rockbottom.api.inventory.IInventory;

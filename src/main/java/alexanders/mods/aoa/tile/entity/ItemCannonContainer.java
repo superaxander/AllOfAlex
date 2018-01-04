@@ -1,5 +1,6 @@
-package alexanders.mods.aoa.tile;
+package alexanders.mods.aoa.tile.entity;
 
+import alexanders.mods.aoa.tile.entity.ItemCannonTileEntity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.gui.container.ContainerSlot;
 import de.ellpeck.rockbottom.api.gui.container.ItemContainer;

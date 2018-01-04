@@ -1,4 +1,4 @@
-package alexanders.mods.aoa.tile
+package alexanders.mods.aoa.tile.entity
 
 import de.ellpeck.rockbottom.api.IGameInstance
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity

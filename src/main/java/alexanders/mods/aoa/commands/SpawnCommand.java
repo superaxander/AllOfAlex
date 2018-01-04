@@ -15,6 +15,7 @@ import de.ellpeck.rockbottom.api.tile.Tile;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -110,22 +111,6 @@ public class SpawnCommand extends Command {
     private Map<Class<?>, Object> toPossibleTypes(String arg) {
         // TODO: Make this more sophisticated, but for now try everything out
         HashMap<Class<?>, Object> map = new HashMap<>();
-        /*TODO: Possible array support
-        if (arg.startsWith("[") && arg.endsWith("]")) {
-            String[] split = arg.substring(1, arg.length() - 1).split(",");
-            Map<Class<?>, Object> splitType = null;
-            for (String s : split) {
-                if (splitType == null)
-                    splitType = toPossibleTypes(s);
-                else if(splitType.equals(toPossibleTypes(s))) {
-                    splitType = null;
-                    break;
-                }
-            }
-            if(splitType != null) {
-                Array.newInstance()
-            }
-        }*/
         map.put(String.class, arg);
         try {
             map.put(UUID.class, UUID.fromString(arg));

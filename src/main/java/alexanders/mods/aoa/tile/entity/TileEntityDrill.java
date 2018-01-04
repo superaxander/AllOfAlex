@@ -1,4 +1,4 @@
-package alexanders.mods.aoa.tile;
+package alexanders.mods.aoa.tile.entity;
 
 import alexanders.mods.aoa.entity.EntityDrill;
 import de.ellpeck.rockbottom.api.data.set.DataSet;
