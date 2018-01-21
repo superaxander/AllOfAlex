@@ -2,7 +2,7 @@ package alexanders.mods.aoa.render;
 
 import alexanders.mods.aoa.tile.BrightLogTile;
 import de.ellpeck.rockbottom.api.IGameInstance;
-import de.ellpeck.rockbottom.api.IGraphics;
+import de.ellpeck.rockbottom.api.IRenderer;
 import de.ellpeck.rockbottom.api.StaticTileProps;
 import de.ellpeck.rockbottom.api.assets.IAssetManager;
 import de.ellpeck.rockbottom.api.render.tile.DefaultTileRenderer;
@@ -40,7 +40,7 @@ public class LogRenderer extends DefaultTileRenderer<BrightLogTile> {
     }
 
     @Override
-    public void render(IGameInstance game, IAssetManager manager, IGraphics g, IWorld world, BrightLogTile tile, TileState state, int x, int y, TileLayer layer, float renderX, float renderY, float scale, int[] light) {
+    public void render(IGameInstance game, IAssetManager manager, IRenderer g, IWorld world, BrightLogTile tile, TileState state, int x, int y, TileLayer layer, float renderX, float renderY, float scale, int[] light) {
         StaticTileProps.LogType variant = state.get(StaticTileProps.LOG_VARIANT);
         switch (variant) {
             case BRANCH_RIGHT:

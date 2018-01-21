@@ -88,6 +88,12 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName resourceBrightSapling;
     public static IResourceName resourceAssimilatedTile;
     public static IResourceName resourceAssimilator;
+    public static IResourceName resourceItemConduit;
+    public static IResourceName resourceConduitLayer;
+    public static IResourceName resourceRotateKey;
+    public static IResourceName resourceSetWaypointKey;
+    public static IResourceName resourceConduitLayerKey;
+    public static IResourceName resourceOpenBombLauncherInventoryKey;
 
     public static void init() {
         resourceDryFarmland = createRes("dry_farmland");
@@ -173,5 +179,11 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         resourceBrightLog = createRes("bright_log");
         resourceBrightLeaves = createRes("bright_leaves");
         resourceBrightSapling = createRes("bright_sapling");
+        resourceItemConduit = createRes("item_conduit");
+        resourceConduitLayer = createRes("conduit");
+        resourceRotateKey = createRes("rotate");
+        resourceSetWaypointKey = createRes("set_waypoint");
+        resourceConduitLayerKey = createRes("conduit_layer");
+        resourceOpenBombLauncherInventoryKey = createRes("open_bomb_launcher_inventory");
     }
 }

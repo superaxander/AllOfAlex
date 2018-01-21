@@ -16,6 +16,8 @@ import de.ellpeck.rockbottom.api.mod.IMod;
 import de.ellpeck.rockbottom.api.util.Colors;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 
+import java.util.logging.Logger;
+
 import static de.ellpeck.rockbottom.api.RockBottomAPI.WORLD_GENERATORS;
 
 public class AllOfAlex implements IMod {
@@ -23,6 +25,7 @@ public class AllOfAlex implements IMod {
     public static final int FIRE_COLOR = Colors.rgb(0.5f, 0.1f, 0.1f);
     public static final int FIXED_FUEL_VALUE = 10; // TODO: Change when fuel is reimplemented
     public static AllOfAlex instance;
+    public Logger logger = RockBottomAPI.createLogger("AllOfAlex");
 
     public AllOfAlex() {
         instance = this;
@@ -44,7 +47,7 @@ public class AllOfAlex implements IMod {
 
     @Override
     public String getVersion() {
-        return "0.5";
+        return "0.6";
     }
 
     @Override
@@ -74,6 +77,7 @@ public class AllOfAlex implements IMod {
 
     @Override
     public void init(IGameInstance game, IApiHandler apiHandler, IEventHandler eventHandler) {
+        new ConduitLayer().register();
         Items.init();
         Tiles.init();
         Packets.init();

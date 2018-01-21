@@ -1,5 +1,6 @@
 package alexanders.mods.aoa.entity;
 
+import alexanders.mods.aoa.AllOfAlex;
 import alexanders.mods.aoa.render.DrillContainer;
 import alexanders.mods.aoa.render.DrillGui;
 import alexanders.mods.aoa.render.DrillRenderer;
@@ -15,7 +16,6 @@ import de.ellpeck.rockbottom.api.util.BoundBox;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
-import org.newdawn.slick.util.Log;
 
 import java.util.List;
 
@@ -124,7 +124,7 @@ public class EntityDrill extends Entity {
             player.openGuiContainer(new DrillGui(player, tileEntity), new DrillContainer(player, tileEntity, tileEntity.fuelInventory, tileEntity.inventory, player.getInv()));
             return true;
         } else {
-            Log.error("The drill's tile entity was null! Please report");
+            AllOfAlex.instance.logger.severe("The drill's tile entity was null! Please report");
             return false;
         }
     }

@@ -1,6 +1,6 @@
 {
   "aoa": {
-    "desc": {
+    "desc.": {
       "bouncy_pearl": "Een teleportatie parel die stuitert. Wat verwachtte je?",
       "bridging_pearl": "Een parel die bruggen maakt. Wat verwachtte je?",
       "mining_pearl": "Een parel die tegels mijnt. Wat verwachtte je?",
@@ -17,7 +17,7 @@
       "drill3": "Snelheid: %.2f tegels/tick",
       "drill4": "Brandstof gebruik verminigvuldiger: %.2f"
     },
-    "item": {
+    "item.": {
       "blue_berry_bush": "Blauwe Bessen Struik",
       "blue_berry_bush.berry": "Blauwe Bes",
       "dry_farmland": "Landbouwgrond",
@@ -48,7 +48,7 @@
       "bomb": "Bom",
       "mining_bomb": "Mijnbouw Bom",
       "bomb_launcher": "Bom Lanceerapparaat",
-      "plain": {
+      "plain.": {
         "blue": "Blauwe Kleurbare Effen Tegel",
         "brown": "Bruine Kleurbare Effen Tegel",
         "green": "Groene Kleurbare Effen Tegel",
@@ -59,8 +59,19 @@
         "white": "Witte Kleurbare Effen Tegel",
         "yellow": "Gele Kleurbare Effen Tegel"
       },
+      "item_conduit.": {
+        "blue": "Blauwe Item Leiding",
+        "brown": "Bruine Item Leiding",
+        "green": "Groene Item Leiding",
+        "magenta": "Scharlaken Item Leiding",
+        "orange": "Oranje Item Leiding",
+        "pink": "Roze Item Leiding",
+        "red": "Rood Item Leiding",
+        "white": "Wit Item Leiding",
+        "yellow": "Geel Item Leiding"
+      },
       "assimilator": "Overnemer",
-      "assimilated_tile": {
+      "assimilated_tile.": {
         "blue": "Blauwe Overgenomen Tegel",
         "brown": "Bruine Overgenomen Tegel",
         "green": "Groene Overgenomen Tegel",
@@ -71,7 +82,7 @@
         "white": "Witte Overgenomen Tegel",
         "yellow": "Gele Overgenomen Tegel"
       },
-      "bricks": {
+      "bricks.": {
         "blue": "Blauwe Bakstenen",
         "green": "Groene Bakstenen",
         "grey": "Grijze Bakstenen",
@@ -81,21 +92,21 @@
         "yellow": "Gele Bakstenen",
         "yellow_brown": "Geel-bruine Bakstenen"
       },
-      "colourised_wood": {
+      "colourised_wood.": {
         "aqua": "Aqua Gekleurd Hout",
         "gold_brown": "Goud-bruin Gekleurd Hout",
         "green": "Groen Gekleurd Hout",
         "green_brown": "Groen-bruin Gekleurd Hout",
         "pink_purple": "Roze-paars Gekleurd Hout"
       },
-      "crystal": {
+      "crystal.": {
         "blue": "Blauw Kristal",
         "green": "Groen Kristal",
         "purple": "Paars Kristal",
         "red": "Rood Kristal",
         "yellow": "Geel Kristal"
       },
-      "smooth_stone": {
+      "smooth_stone.": {
         "blue": "Blauwe Gladde Steen",
         "green": "Groene Gladde Steen",
         "grey": "Grijze Gladde Steen",
@@ -103,8 +114,8 @@
         "purple": "Paarse Gladde Steen",
         "yellow": "Gele Gladde Steen"
       },
-      "pillar": {
-        "horizontal": {
+      "pillar.": {
+        "horizontal.": {
           "beige": "Beige Horizontale Pilaar",
           "blue": "Blauwe Horizontale Pilaar",
           "green": "Groene Horizontale Pilaar",
@@ -112,7 +123,7 @@
           "purple": "Paarse Horizontale Pilaar",
           "purple_blue": "Paars-Blauwe Horizontale Pilaar"
         },
-        "vertical": {
+        "vertical.": {
           "beige": "Beige Verticale Pilaar",
           "blue": "Blauwe Verticale Pilaar",
           "green": "Groene Verticale Pilaar",
@@ -125,7 +136,7 @@
       "bright_leaves": "Heldere Bladeren",
       "bright_sapling": "Heldere Jonge Booom"
     },
-    "key": {
+    "key.": {
       "rotate": "Draaien",
       "set_waypoint": "Zet routepunt"
     }

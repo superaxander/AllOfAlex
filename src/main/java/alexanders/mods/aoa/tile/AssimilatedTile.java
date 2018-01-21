@@ -24,13 +24,13 @@ public class AssimilatedTile extends ColourableTile {
         super(name);
     }
 
-    @Override
-    public boolean onInteractWith(IWorld world, int x, int y, TileLayer layer, double mouseX, double mouseY, AbstractEntityPlayer player) {
-        if (RockBottomAPI.getGame().getChatLog().getMessages().isEmpty() || RockBottomAPI.getGame().getChatLog().getMessages().get(0) != displayMessage)
-            player.sendMessageTo(RockBottomAPI.getGame().getChatLog(), displayMessage);
-        world.setState(layer, x, y, world.getState(layer, x, y).cycleProp(COLOUR));
-        return true;
-    }
+    // @Override
+    //public boolean onInteractWith(IWorld world, int x, int y, TileLayer layer, double mouseX, double mouseY, AbstractEntityPlayer player) {
+    //if (RockBottomAPI.getGame().getChatLog().getMessages().isEmpty() || RockBottomAPI.getGame().getChatLog().getMessages().get(0) != displayMessage)
+    //    player.sendMessageTo(RockBottomAPI.getGame().getChatLog(), displayMessage);
+    //world.setState(layer, x, y, world.getState(layer, x, y).cycleProp(COLOUR));
+    //return true;
+    //}
 
     @Override
     protected ItemTile createItemTile() {

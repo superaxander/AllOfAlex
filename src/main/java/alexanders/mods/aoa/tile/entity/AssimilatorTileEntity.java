@@ -1,5 +1,6 @@
 package alexanders.mods.aoa.tile.entity;
 
+import alexanders.mods.aoa.init.Tiles;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.data.set.DataSet;
 import de.ellpeck.rockbottom.api.inventory.Inventory;
@@ -38,7 +39,7 @@ public class AssimilatorTileEntity extends TileEntity {
                 firstItem = null;
                 secondItem = null;
                 changed = true;
-            } else if ((firstItem = inventory.get(0)) != null && (secondItem = inventory.get(1)) != null) {
+            } else if ((firstItem = inventory.get(0)) != null && firstItem.getItem() == Tiles.assimilatedTile.getItem() && (secondItem = inventory.get(1)) != null) {
                 changed = true;
                 progress = 200;
                 firstItem = firstItem.copy().setAmount(1);

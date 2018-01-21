@@ -63,7 +63,8 @@ public class Tiles {
     public static BrightSapling brightSapling;
     public static ColourableTile plain;
     public static AssimilatedTile assimilatedTile;
-    private static AssimilatorTile assimilator;
+    public static AssimilatorTile assimilator;
+    public static ItemConduitTile itemConduit;
 
     public static void init() {
         itemCannon = new ItemCannonTile(createRes("item_cannon"));
@@ -124,6 +125,8 @@ public class Tiles {
 
         brightLog = new BrightLogTile();
         brightLeaves = new BrightLeavesTile();
+        
+        itemConduit = new ItemConduitTile(resourceItemConduit);
 
         itemCannon.register();
         funnelTile.register();
@@ -185,5 +188,7 @@ public class Tiles {
         brightLeaves.register();
         brightSapling = new BrightSapling(); // Has to be down here because the sapling requires the log and leaves to be registered
         brightSapling.register();
+        
+        itemConduit.register();
     }
 }

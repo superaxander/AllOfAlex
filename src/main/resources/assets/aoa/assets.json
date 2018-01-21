@@ -108,8 +108,17 @@
         "down": "/tiles/funnel_down.png",
         "right": "/tiles/funnel_right.png"
       },
+      "item_conduit.": {
+        "*": "/tiles/item_conduit_none.png",
+        "none":"/tiles/item_conduit_none.png",
+        "top": "/tiles/item_conduit_top.png",
+        "top_bottom": "/tiles/item_conduit_top_bottom.png",
+        "top_right": "/tiles/item_conduit_top_right.png",
+        "top_right_bottom": "/tiles/item_conduit_top_right_bottom.png",
+        "top_right_bottom_left": "/tiles/item_conduit_top_right_bottom_left.png"
+      },
       "drill_basic.": {
-        "*": {
+        "*.": {
           "subtexture": {
             "file": "/tiles/drill_basic.png",
             "0.1": [0, 24, 12, 12],
@@ -142,7 +151,7 @@
         "item": "/items/drill_basic_item.png"
       },
       "drill_copper.": {
-        "*": {
+        "*.": {
           "subtexture": {
             "file": "/tiles/drill_copper.png",
             "0.1": [0, 24, 12, 12],

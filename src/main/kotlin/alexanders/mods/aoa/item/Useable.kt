@@ -7,7 +7,6 @@ import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer
 import de.ellpeck.rockbottom.api.item.ItemInstance
 import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
-import org.lwjgl.opengl.Display
 
 
 interface Useable {
@@ -33,9 +32,10 @@ interface Useable {
 
     companion object {
         fun angle(): FloatArray {
-            val w = Display.getWidth()
-            val h = Display.getHeight()
-            val i = RockBottomAPI.getGame().input
+            val game = RockBottomAPI.getGame()
+            val w = game.width
+            val h = game.height
+            val i = game.input
             val radians = Math.atan2(i.mouseY - (h / 2.0), i.mouseX - (w / 2.0))
             return floatArrayOf(Math.cos(radians).toFloat(), Math.sin(radians).toFloat())
         }

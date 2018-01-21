@@ -44,9 +44,6 @@ public class BrightLeavesTile extends TileBasic {
         return Util.RANDOM.nextInt(4) > 2 ? Collections.singletonList(new ItemInstance(brightSapling)) : Collections.emptyList();
     }
 
-    //TODO: Add shears compat
-
-
     @Override
     public void onChangeAround(IWorld world, int x, int y, TileLayer layer, int changedX, int changedY, TileLayer changedLayer) {
         if (!world.isClient() && isNatural(world, x, y, layer)) {

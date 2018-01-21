@@ -4,7 +4,7 @@ import alexanders.mods.aoa.render.BerryBushRenderer;
 import alexanders.mods.aoa.render.VariantTextureRenderer;
 import alexanders.mods.aoa.tile.VariantTile;
 import de.ellpeck.rockbottom.api.assets.IAssetManager;
-import de.ellpeck.rockbottom.api.assets.ITexture;
+import de.ellpeck.rockbottom.api.assets.texture.ITexture;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 
 public enum FoliageAssets {

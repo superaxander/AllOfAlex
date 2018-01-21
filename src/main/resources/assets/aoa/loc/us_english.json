@@ -1,6 +1,6 @@
 {
   "aoa": {
-    "desc": {
+    "desc.": {
       "bouncy_pearl": "A teleporation pearl that bounces. What else did you expect?",
       "bridging_pearl": "A pearl that makes bridges. What else did you expect?",
       "mining_pearl": "A pearl that mines. What else did you expect?",
@@ -17,7 +17,7 @@
       "drill3": "Speed: %.2f tiles/tick",
       "drill4": "Fuel usage modifier: %.2f"
     },
-    "item": {
+    "item.": {
       "blue_berry_bush": "Blue Berry Bush",
       "blue_berry_bush.berry": "Blue Berry",
       "dry_farmland": "Farmland",
@@ -48,7 +48,7 @@
       "bomb": "Bomb",
       "mining_bomb": "Mining Bomb",
       "bomb_launcher": "Bomb Launcher",
-      "plain": {
+      "plain.": {
         "blue": "Blue Colorable Plain Tile",
         "brown": "Brown Colorable Plain Tile",
         "green": "Green Colorable Plain Tile",
@@ -59,8 +59,19 @@
         "white": "White Colorable Plain Tile",
         "yellow": "Yellow Colorable Plain Tile"
       },
+      "item_conduit.": {
+        "blue": "Blue Item Conduit",
+        "brown": "Brown Item Conduit",
+        "green": "Green Item Conduit",
+        "magenta": "Magenta Item Conduit",
+        "orange": "Orange Item Conduit",
+        "pink": "Pink Item Conduit",
+        "red": "Red Item Conduit",
+        "white": "White Item Conduit",
+        "yellow": "Yellow Item Conduit"
+      },
       "assimilator": "Assimilator",
-      "assimilated_tile": {
+      "assimilated_tile.": {
         "blue": "Blue Assimilated Tile",
         "brown": "Brown Assimilated Tile",
         "green": "Green Assimilated Tile",
@@ -71,7 +82,7 @@
         "white": "White Assimilated Tile",
         "yellow": "Yellow Assimilated Tile"
       },
-      "bricks": {
+      "bricks.": {
         "blue": "Blue Bricks",
         "green": "Green Bricks",
         "grey": "Gray Bricks",
@@ -81,21 +92,21 @@
         "yellow": "Yellow Bricks",
         "yellow_brown": "Yellow-brown Bricks"
       },
-      "colourised_wood": {
+      "colourised_wood.": {
         "aqua": "Aqua Colorized Wood",
         "gold_brown": "Gold-brown Colorized Wood",
         "green": "Green Colorized Wood",
         "green_brown": "Green-brown Colorized Wood",
         "pink_purple": "Pink-purple Colorized Wood"
       },
-      "crystal": {
+      "crystal.": {
         "blue": "Blue Crystal",
         "green": "Green Crystal",
         "purple": "Purple Crystal",
         "red": "Red Crystal",
         "yellow": "Yellow Crystal"
       },
-      "smooth_stone": {
+      "smooth_stone.": {
         "blue": "Blue Smooth Stone",
         "green": "Green Smooth Stone",
         "grey": "Gray Smooth Stone",
@@ -103,8 +114,8 @@
         "purple": "Purple Smooth Stone",
         "yellow": "Yellow Smooth Stone"
       },
-      "pillar": {
-        "horizontal": {
+      "pillar.": {
+        "horizontal.": {
           "beige": "Beige Horizontal Pillar",
           "blue": "Blue Horizontal Pillar",
           "green": "Green Horizontal Pillar",
@@ -112,7 +123,7 @@
           "purple": "Purple Horizontal Pillar",
           "purple_blue": "Purple-Blue Horizontal Pillar"
         },
-        "vertical": {
+        "vertical.": {
           "beige": "Beige Vertical Pillar",
           "blue": "Blue Vertical Pillar",
           "green": "Green Vertical Pillar",
@@ -125,7 +136,7 @@
       "bright_leaves": "Bright Leaves",
       "bright_sapling": "Bright Sapling"
     },
-    "key": {
+    "key.": {
       "rotate": "Rotate",
       "set_waypoint": "Set waypoint"
     }

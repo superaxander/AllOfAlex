@@ -4,7 +4,7 @@ import alexanders.mods.aoa.Colours;
 import alexanders.mods.aoa.tile.AssimilatedTile;
 import alexanders.mods.aoa.tile.entity.AssimilatedTileEntity;
 import de.ellpeck.rockbottom.api.IGameInstance;
-import de.ellpeck.rockbottom.api.IGraphics;
+import de.ellpeck.rockbottom.api.IRenderer;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.assets.IAssetManager;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
@@ -23,7 +23,7 @@ public class AssimilatedTileRenderer extends ColourableTileRenderer<AssimilatedT
     }
 
     @Override
-    public void render(IGameInstance game, IAssetManager manager, IGraphics g, IWorld world, AssimilatedTile tile, TileState state, int x, int y, TileLayer layer, float renderX, float renderY, float scale, int[] light) {
+    public void render(IGameInstance game, IAssetManager manager, IRenderer g, IWorld world, AssimilatedTile tile, TileState state, int x, int y, TileLayer layer, float renderX, float renderY, float scale, int[] light) {
         TileEntity t = world.getTileEntity(layer, x, y);
         if (t instanceof AssimilatedTileEntity && ((AssimilatedTileEntity) t).tileName != null) {
             AssimilatedTileEntity te = (AssimilatedTileEntity) t;
@@ -34,7 +34,7 @@ public class AssimilatedTileRenderer extends ColourableTileRenderer<AssimilatedT
     }
 
     @Override
-    public void renderItem(IGameInstance game, IAssetManager manager, IGraphics g, AssimilatedTile tile, ItemInstance instance, float x, float y, float scale, int filter) {
+    public void renderItem(IGameInstance game, IAssetManager manager, IRenderer g, AssimilatedTile tile, ItemInstance instance, float x, float y, float scale, int filter) {
         IResourceName name;
         if (instance.hasAdditionalData() && (name = RockBottomAPI.createRes(instance.getAdditionalData().getString("tileName"))) != null) {
             manager.getTexture(name.addPrefix("tiles.")).draw(x, y, scale, scale, Colors.multiply(Colours.get(instance.getMeta()).colour, filter));

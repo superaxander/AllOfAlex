@@ -1,10 +1,10 @@
 group 'alexanders.mods.aoa'
-version '0.5'
+version '0.6'
 
 apply from: "https://github.com/RockBottomGame/Gradle/raw/master/buildscript.gradle"
 
 buildscript {
-    ext.kotlin_version = '1.2.10'
+    ext.kotlin_version = '1.2.20'
 
     repositories {
         mavenCentral()
@@ -25,8 +25,8 @@ processSources {
 }
 
 dependencies {
-    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '0.1.4-377'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '0.2.1-429'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
 jar {
