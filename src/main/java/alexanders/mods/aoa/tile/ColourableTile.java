@@ -21,6 +21,9 @@ import java.util.List;
 
 public class ColourableTile extends TileBasic {
     public static final EnumProp<Colours> COLOUR = new EnumProp<>("colour", Colours.WHITE, Colours.class);
+    
+    public boolean fullTile = true;
+    public boolean obscuresBackground = false;
 
     public ColourableTile(IResourceName name) {
         super(name);
@@ -41,6 +44,16 @@ public class ColourableTile extends TileBasic {
     @Override
     public TileState getPlacementState(IWorld world, int x, int y, TileLayer layer, ItemInstance instance, AbstractEntityPlayer placer) {
         return getDefState().prop(COLOUR, Colours.get(instance.getMeta()));
+    }
+
+    @Override
+    public boolean obscuresBackground(IWorld world, int x, int y, TileLayer layer) {
+        return obscuresBackground;
+    }
+
+    @Override
+    public boolean isFullTile() {
+        return fullTile;
     }
 
     @Override

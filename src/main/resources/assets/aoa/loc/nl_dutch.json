@@ -66,9 +66,9 @@
         "magenta": "Scharlaken Item Leiding",
         "orange": "Oranje Item Leiding",
         "pink": "Roze Item Leiding",
-        "red": "Rood Item Leiding",
-        "white": "Wit Item Leiding",
-        "yellow": "Geel Item Leiding"
+        "red": "Rode Item Leiding",
+        "white": "Witte Item Leiding",
+        "yellow": "Gele Item Leiding"
       },
       "assimilator": "Overnemer",
       "assimilated_tile.": {
@@ -131,6 +131,26 @@
           "purple": "Paarse Verticale Pilaar",
           "purple_blue": "Paars-Blauwe Verticale Pilaar"
         }
+      },
+      "glass.": {
+        "blue": "Blauw Glas",
+        "brown": "Bruin Glas",
+        "green": "Groen Glas",
+        "magenta": "Scharlaken Glas",
+        "orange": "Oranje Glas",
+        "pink": "Roze Glas",
+        "red": "Rood Glas",
+        "white": "Wit Glas",
+        "yellow": "Geel Glas"
+      },
+      "sun.": {
+        "blue": "Blauwe Zon Tegel",
+        "green": "Groene Zon Tegel",
+        "orange": "Oranja Zon Tegel",
+        "purple": "Paarse Zon Tegel",
+        "red": "Rode Zon Tegel",
+        "white_blue": "Wit-Blauwe Zon Tegel",
+        "yellow_blue": "Geel-Blauwe Zon Tegel"
       },
       "bright_log": "Heldere Boomstam",
       "bright_leaves": "Heldere Bladeren",

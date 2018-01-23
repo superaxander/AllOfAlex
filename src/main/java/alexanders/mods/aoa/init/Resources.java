@@ -94,6 +94,14 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName resourceSetWaypointKey;
     public static IResourceName resourceConduitLayerKey;
     public static IResourceName resourceOpenBombLauncherInventoryKey;
+    public static IResourceName resourceGlass;
+    public static IResourceName resourceSunBlue;
+    public static IResourceName resourceSunGreen;
+    public static IResourceName resourceSunOrange;
+    public static IResourceName resourceSunPurple;
+    public static IResourceName resourceSunRed;
+    public static IResourceName resourceSunWhiteBlue;
+    public static IResourceName resourceSunYellowBlue;
 
     public static void init() {
         resourceDryFarmland = createRes("dry_farmland");
@@ -185,5 +193,13 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         resourceSetWaypointKey = createRes("set_waypoint");
         resourceConduitLayerKey = createRes("conduit_layer");
         resourceOpenBombLauncherInventoryKey = createRes("open_bomb_launcher_inventory");
+        resourceGlass = createRes("glass");
+        resourceSunBlue = createRes("sun.blue");
+        resourceSunGreen = createRes("sun.green");
+        resourceSunOrange = createRes("sun.orange");
+        resourceSunPurple = createRes("sun.purple");
+        resourceSunRed = createRes("sun.red");
+        resourceSunWhiteBlue = createRes("sun.white_blue");
+        resourceSunYellowBlue = createRes("sun.yellow_blue");
     }
 }

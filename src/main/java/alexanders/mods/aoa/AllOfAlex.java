@@ -46,7 +46,7 @@ public class AllOfAlex implements IMod {
 
     @Override
     public String getVersion() {
-        return "0.6";
+        return "0.7";
     }
 
     @Override

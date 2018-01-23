@@ -132,6 +132,26 @@
           "purple_blue": "Purple-Blue Vertical Pillar"
         }
       },
+      "glass.": {
+        "blue": "Blue Glass",
+        "brown": "Brown Glass",
+        "green": "Green Glass",
+        "magenta": "Magenta Glass",
+        "orange": "Orange Glass",
+        "pink": "Pink Glass",
+        "red": "Red Glass",
+        "white": "White Glass",
+        "yellow": "Yellow Glass"
+      },
+      "sun.": {
+        "blue": "Blue Sun Tile",
+        "green": "Green Sun Tile",
+        "orange": "Orange Sun Tile",
+        "purple": "Purple Sun Tile",
+        "red": "Red Sun Tile",
+        "white_blue": "White-Blue Sun Tile",
+        "yellow_blue": "Yellow-Blue Sun Tile"
+      },
       "bright_log": "Bright Log",
       "bright_leaves": "Bright Leaves",
       "bright_sapling": "Bright Sapling"

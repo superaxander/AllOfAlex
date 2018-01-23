@@ -117,6 +117,16 @@
         "top_right_bottom": "/tiles/item_conduit_top_right_bottom.png",
         "top_right_bottom_left": "/tiles/item_conduit_top_right_bottom_left.png"
       },
+      "sun.": {
+        "blue": "/tiles/sun_blue.png",
+        "green": "/tiles/sun_green.png",
+        "orange": "/tiles/sun_orange.png",
+        "purple": "/tiles/sun_purple.png",
+        "red": "/tiles/sun_red.png",
+        "white_blue": "/tiles/sun_white_blue.png",
+        "yellow_blue": "/tiles/sun_yellow_blue.png"
+      },
+      "glass": "/tiles/glass.png",
       "drill_basic.": {
         "*.": {
           "subtexture": {

@@ -21,6 +21,11 @@ public class ConduitLayer extends TileLayer {
     }
 
     @Override
+    public boolean forceForegroundRender() {
+        return true;
+    }
+
+    @Override
     public boolean canEditLayer(IGameInstance game, AbstractEntityPlayer player) {
         return Keys.KEY_CONDUIT_LAYER.isDown();
     }

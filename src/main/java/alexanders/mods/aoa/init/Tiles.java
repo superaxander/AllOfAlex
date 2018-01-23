@@ -64,6 +64,14 @@ public class Tiles {
     public static AssimilatedTile assimilatedTile;
     public static AssimilatorTile assimilator;
     public static ItemConduitTile itemConduit;
+    public static ColourableTile glass;
+    public static TileBasic sunBlue;
+    public static TileBasic sunGreen;
+    public static TileBasic sunOrange;
+    public static TileBasic sunPurple;
+    public static TileBasic sunRed;
+    public static TileBasic sunWhiteBlue;
+    public static TileBasic sunYellowBlue;
 
     public static void init() {
         itemCannon = new ItemCannonTile(createRes("item_cannon"));
@@ -127,6 +135,17 @@ public class Tiles {
 
         itemConduit = new ItemConduitTile(resourceItemConduit);
 
+        glass = new ColourableTile(resourceGlass);
+        glass.obscuresBackground = false;
+        
+        sunBlue = new TileBasic(resourceSunBlue);
+        sunGreen = new TileBasic(resourceSunGreen);
+        sunOrange = new TileBasic(resourceSunOrange);
+        sunPurple = new TileBasic(resourceSunPurple);
+        sunRed = new TileBasic(resourceSunRed);
+        sunWhiteBlue = new TileBasic(resourceSunWhiteBlue);
+        sunYellowBlue = new TileBasic(resourceSunYellowBlue);
+
         itemCannon.register();
         funnelTile.register();
         dryFarmland.register();
@@ -189,5 +208,14 @@ public class Tiles {
         brightSapling.register();
 
         itemConduit.register();
+
+        glass.register();
+        sunBlue.register();
+        sunGreen.register();
+        sunOrange.register();
+        sunPurple.register();
+        sunRed.register();
+        sunWhiteBlue.register();
+        sunYellowBlue.register();
     }
 }
