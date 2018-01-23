@@ -137,7 +137,7 @@ public class Tiles {
 
         glass = new ColourableTile(resourceGlass);
         glass.obscuresBackground = false;
-        
+
         sunBlue = new TileBasic(resourceSunBlue);
         sunGreen = new TileBasic(resourceSunGreen);
         sunOrange = new TileBasic(resourceSunOrange);

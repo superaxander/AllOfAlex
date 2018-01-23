@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ColourableTile extends TileBasic {
     public static final EnumProp<Colours> COLOUR = new EnumProp<>("colour", Colours.WHITE, Colours.class);
-    
+
     public boolean fullTile = true;
     public boolean obscuresBackground = false;
 
