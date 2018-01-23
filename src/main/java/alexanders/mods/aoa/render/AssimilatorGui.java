@@ -8,7 +8,6 @@ import de.ellpeck.rockbottom.api.assets.IAssetManager;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.gui.GuiContainer;
 import de.ellpeck.rockbottom.api.gui.component.ComponentProgressBar;
-import de.ellpeck.rockbottom.api.util.Colors;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 
 import static alexanders.mods.aoa.init.Resources.resourceAssimilator;
@@ -31,7 +30,7 @@ public class AssimilatorGui extends GuiContainer {
     @Override
     public void renderOverlay(IGameInstance game, IAssetManager manager, IRenderer g) {
         super.renderOverlay(game, manager, g);
-        g.addTriangle(65,2, 70, 4, 70, 0, RED, RED, RED, 0, .5f, 1, 0, 1, 1 );
+        g.addTriangle(65, 2, 70, 4, 70, 0, RED, RED, RED, 0, .5f, 1, 0, 1, 1);
     }
 
     @Override

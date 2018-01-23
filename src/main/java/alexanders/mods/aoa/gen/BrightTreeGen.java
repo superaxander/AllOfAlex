@@ -78,13 +78,13 @@ public class BrightTreeGen implements IWorldGenerator {
                 break;
             case 2:
                 if (chunk.getStateInner(TileLayer.MAIN, x + 1, y - 1).getTile().isFullTile())
-                place(world, chunk, x + 1, y, rootRight);
+                    place(world, chunk, x + 1, y, rootRight);
                 break;
             case 3:
                 if (chunk.getStateInner(TileLayer.MAIN, x - 1, y - 1).getTile().isFullTile())
-                place(world, chunk, x - 1, y, rootLeft);
+                    place(world, chunk, x - 1, y, rootLeft);
                 if (chunk.getStateInner(TileLayer.MAIN, x + 1, y - 1).getTile().isFullTile())
-                place(world, chunk, x + 1, y, rootRight);
+                    place(world, chunk, x + 1, y, rootRight);
                 break;
         }
         if (branches) {

@@ -17,7 +17,6 @@ import de.ellpeck.rockbottom.api.util.Util;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
@@ -45,7 +44,7 @@ public class SpawnCommand extends Command {
                     return Collections.singletonList(String.valueOf(Util.floor(player.y)));
             }
         }
-        if(argNumber == 2){
+        if (argNumber == 2) {
             List<String> entities = new ArrayList<>();
             for (IResourceName resourceName : RockBottomAPI.ENTITY_REGISTRY.getUnmodifiable().keySet()) {
                 entities.add(resourceName.toString());

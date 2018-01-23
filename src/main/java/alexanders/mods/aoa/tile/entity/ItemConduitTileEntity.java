@@ -115,11 +115,11 @@ public class ItemConduitTileEntity extends TileEntity {
                     List<Integer> outputSlots = otherHolder.getOutputSlots(Direction.NONE);
                     for (Integer i2 : outputSlots) {
                         ItemInstance otherItem;
-                            if ((otherItem = otherHolder.getInventory().get(i2)) != null && (otherItem.isEffectivelyEqual(item) || item == null)) {
-                                otherHolder.getInventory().remove(i2, 1);
-                                holder.getInventory().addToSlot(i, otherItem.copy().setAmount(1), false);
-                                return true;
-                            }
+                        if ((otherItem = otherHolder.getInventory().get(i2)) != null && (otherItem.isEffectivelyEqual(item) || item == null)) {
+                            otherHolder.getInventory().remove(i2, 1);
+                            holder.getInventory().addToSlot(i, otherItem.copy().setAmount(1), false);
+                            return true;
+                        }
                     }
                 }
             }

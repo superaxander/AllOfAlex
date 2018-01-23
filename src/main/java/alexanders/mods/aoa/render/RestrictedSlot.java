@@ -5,7 +5,6 @@ import de.ellpeck.rockbottom.api.inventory.IInventory;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 
 import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
 public class RestrictedSlot extends ContainerSlot {
     private final BiPredicate<RestrictedSlot, ItemInstance> predicate;

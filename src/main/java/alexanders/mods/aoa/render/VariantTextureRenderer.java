@@ -24,7 +24,7 @@ public class VariantTextureRenderer<T extends VariantTile> implements ITileRende
 
         if (variant >= tile.variant.getVariants() / 2) {
             ITexture texture = textures[variant - tile.variant.getVariants() / 2];
-            texture.draw(renderX + scale, renderY, renderX, renderY + scale, 0, 0, texture.getRenderWidth(), texture.getRenderHeight(), light); 
+            texture.draw(renderX + scale, renderY, renderX, renderY + scale, 0, 0, texture.getRenderWidth(), texture.getRenderHeight(), light);
         } else
             textures[variant].draw(renderX, renderY, scale, scale, light);
 

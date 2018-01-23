@@ -3,15 +3,11 @@ package alexanders.mods.aoa.tile;
 import alexanders.mods.aoa.render.AssimilatorGui;
 import alexanders.mods.aoa.tile.entity.AssimilatorContainer;
 import alexanders.mods.aoa.tile.entity.AssimilatorTileEntity;
-import de.ellpeck.rockbottom.api.entity.Entity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
-import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.tile.TileBasic;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
-
-import java.util.List;
 
 import static alexanders.mods.aoa.init.Resources.resourceAssimilator;
 
@@ -23,7 +19,7 @@ public class AssimilatorTile extends TileBasic {
     @Override
     public boolean onInteractWith(IWorld world, int x, int y, TileLayer layer, double mouseX, double mouseY, AbstractEntityPlayer player) {
         TileEntity te = world.getTileEntity(layer, x, y);
-        if(te instanceof AssimilatorTileEntity) {
+        if (te instanceof AssimilatorTileEntity) {
             player.openGuiContainer(new AssimilatorGui(player, (AssimilatorTileEntity) te), new AssimilatorContainer(player, ((AssimilatorTileEntity) te).inventory));
             return true;
         }

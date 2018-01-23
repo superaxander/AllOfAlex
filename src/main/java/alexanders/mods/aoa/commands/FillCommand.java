@@ -56,7 +56,7 @@ public class FillCommand extends Command {
                     tiles.add(resourceName.toString());
                 }
                 return tiles;
-                //TODO: Add state auto completions
+            //TODO: Add state auto completions
         }
         return super.getAutocompleteSuggestions(args, argNumber, sender, game, chat);
     }

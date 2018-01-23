@@ -46,13 +46,13 @@ public class MenuThemes {
                             char c = '\n';
                             try {
                                 while (true) {
-                                    c =  dataInputStream.readChar();
-                                    if ( dataInputStream.readChar() != '=') {
+                                    c = dataInputStream.readChar();
+                                    if (dataInputStream.readChar() != '=') {
                                         throw new IOException("Invalid file format!");
                                     }
                                     builder = new StringBuilder();
                                     char c2;
-                                    while ((c2 =  dataInputStream.readChar()) != '\n')
+                                    while ((c2 = dataInputStream.readChar()) != '\n')
                                         builder.append(c2);
                                     translationMap.put(c, RockBottomAPI.createRes(builder.toString()));
                                     builder = null;

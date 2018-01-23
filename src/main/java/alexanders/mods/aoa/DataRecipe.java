@@ -3,13 +3,11 @@ package alexanders.mods.aoa;
 import alexanders.mods.aoa.render.DataRecipeComponent;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.construction.BasicRecipe;
-import de.ellpeck.rockbottom.api.construction.IRecipe;
 import de.ellpeck.rockbottom.api.construction.resource.IUseInfo;
 import de.ellpeck.rockbottom.api.construction.resource.ItemUseInfo;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.gui.component.GuiComponent;
 import de.ellpeck.rockbottom.api.inventory.IInventory;
-import de.ellpeck.rockbottom.api.item.Item;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 
@@ -17,9 +15,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class DataRecipe extends BasicRecipe {
-    private final IResourceName name;
     public final ItemInstance output;
     public final ItemInstance input;
+    private final IResourceName name;
 
     public DataRecipe(IResourceName name, ItemInstance output, ItemInstance input) {
         super(name, output, new ItemUseInfo(input));
@@ -32,7 +30,7 @@ public class DataRecipe extends BasicRecipe {
     public List<IUseInfo> getActualInputs(IInventory inventory) {
         int amount = inventory.getSlotAmount();
         for (int i = 0; i < amount; i++) {
-            if(ItemInstance.compare(inventory.get(i), input, true, true, false))
+            if (ItemInstance.compare(inventory.get(i), input, true, true, false))
                 return Collections.singletonList(new ItemUseInfo(inventory.get(i)));
         }
         return super.getActualInputs(inventory);

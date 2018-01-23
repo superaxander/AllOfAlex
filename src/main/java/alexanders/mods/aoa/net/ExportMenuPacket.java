@@ -103,7 +103,7 @@ public class ExportMenuPacket implements IPacket {
                         stream.writeChar('=');
                         stream.writeChars(state.getName().toString());
                         stream.writeChar('\n');
-                    }catch (IOException e) {
+                    } catch (IOException e) {
                         throw new UncheckedIOException("Something very weird is going on!", e);
                     }
                 });

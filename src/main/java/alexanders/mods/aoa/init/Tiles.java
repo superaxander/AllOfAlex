@@ -1,6 +1,5 @@
 package alexanders.mods.aoa.init;
 
-import alexanders.mods.aoa.Colours;
 import alexanders.mods.aoa.tile.*;
 import de.ellpeck.rockbottom.api.tile.TileBasic;
 
@@ -118,14 +117,14 @@ public class Tiles {
         pillarVerticalPurple = new TileBasic(resourcePillarVerticalPurple);
         pillarHorizontalPurpleBlue = new TileBasic(resourcePillarHorizontalPurpleBlue);
         pillarVerticalPurpleBlue = new TileBasic(resourcePillarVerticalPurpleBlue);
-        
+
         plain = new ColourableTile(resourcePlain);
         assimilatedTile = new AssimilatedTile(resourceAssimilatedTile);
         assimilator = new AssimilatorTile();
 
         brightLog = new BrightLogTile();
         brightLeaves = new BrightLeavesTile();
-        
+
         itemConduit = new ItemConduitTile(resourceItemConduit);
 
         itemCannon.register();
@@ -179,7 +178,7 @@ public class Tiles {
         pillarVerticalPurple.register();
         pillarHorizontalPurpleBlue.register();
         pillarVerticalPurpleBlue.register();
-        
+
         plain.register();
         assimilatedTile.register();
         assimilator.register();
@@ -188,7 +187,7 @@ public class Tiles {
         brightLeaves.register();
         brightSapling = new BrightSapling(); // Has to be down here because the sapling requires the log and leaves to be registered
         brightSapling.register();
-        
+
         itemConduit.register();
     }
 }

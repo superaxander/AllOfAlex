@@ -110,7 +110,7 @@
       },
       "item_conduit.": {
         "*": "/tiles/item_conduit_none.png",
-        "none":"/tiles/item_conduit_none.png",
+        "none": "/tiles/item_conduit_none.png",
         "top": "/tiles/item_conduit_top.png",
         "top_bottom": "/tiles/item_conduit_top_bottom.png",
         "top_right": "/tiles/item_conduit_top_right.png",

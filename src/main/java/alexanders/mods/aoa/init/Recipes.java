@@ -25,7 +25,7 @@ public class Recipes {
         new BasicRecipe(createRes("plain_sand_" + values[0]), plain, new ResUseInfo("sand", 4)).registerManual();
         addColourable(Tiles.plain, "plain", values);
         addColourable(Tiles.itemConduit, "item_conduit", values);
-        
+
         ItemInstance white = new ItemInstance(Tiles.assimilatedTile, 1, 0);
         for (int i = 1; i < values.length; i++) {
             ItemInstance in = new ItemInstance(Tiles.assimilatedTile, 1, i - 1);

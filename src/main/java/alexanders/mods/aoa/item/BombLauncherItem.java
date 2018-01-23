@@ -51,10 +51,10 @@ public class BombLauncherItem extends ItemBasic {
                 }
             }
         } else {
-            if(getGame().isDedicatedServer() || Keys.KEY_OPEN_BOMB_LAUNCHER_INVENTORY.isDown()) {
+            if (getGame().isDedicatedServer() || Keys.KEY_OPEN_BOMB_LAUNCHER_INVENTORY.isDown()) {
                 player.openGuiContainer(new BombLauncherGui(player), new BombLauncherContainer(player, player.getInv(), i));
                 return true;
-            }else {
+            } else {
                 if (lastUse == 0 || System.currentTimeMillis() - lastUse > 1000) { // TODO: Use ticks for this
                     instance.getAdditionalData().addLong("lastUse", System.currentTimeMillis());
                     if (i.get(0) != null) {

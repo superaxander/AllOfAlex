@@ -124,7 +124,7 @@ public class RotateableTexture implements ITexture {
     public double getRotation() {
         return this.angle;
     }
-    
+
     public void setRotation(double angle) {
         angle %= 360;
         this.angle = angle;
@@ -132,7 +132,7 @@ public class RotateableTexture implements ITexture {
         this.sinAngle = Math.sin(rad);
         this.cosAngle = Math.cos(rad);
     }
-    
+
     public void setRotationCenter(float centerX, float centerY) {
         this.centerX = centerX;
         this.centerY = centerY;
