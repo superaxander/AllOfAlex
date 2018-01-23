@@ -5,11 +5,12 @@ import alexanders.mods.aoa.gen.PearlOreGen;
 import alexanders.mods.aoa.gen.SlimePoolGen;
 import alexanders.mods.aoa.gen.VariantGen;
 import alexanders.mods.aoa.init.*;
+import alexanders.mods.aoa.render.RandomMenuTheme;
+import alexanders.mods.aoa.render.SpiralMenuTheme;
 import de.ellpeck.rockbottom.api.IApiHandler;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.assets.IAssetManager;
-import de.ellpeck.rockbottom.api.data.set.DataSet;
 import de.ellpeck.rockbottom.api.event.IEventHandler;
 import de.ellpeck.rockbottom.api.gui.Gui;
 import de.ellpeck.rockbottom.api.mod.IMod;
@@ -18,6 +19,7 @@ import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 
 import java.util.logging.Logger;
 
+import static de.ellpeck.rockbottom.api.RockBottomAPI.MAIN_MENU_THEMES;
 import static de.ellpeck.rockbottom.api.RockBottomAPI.WORLD_GENERATORS;
 
 public class AllOfAlex implements IMod {
@@ -86,6 +88,7 @@ public class AllOfAlex implements IMod {
         Events.init(game, eventHandler);
         Recipes.init();
         Commands.init();
+        MenuThemes.init();
         WORLD_GENERATORS.register(createRes("variant_gen"), VariantGen.class);
         WORLD_GENERATORS.register(createRes("bright_tree_gen"), BrightTreeGen.class);
         PearlOreGen.Companion.register();

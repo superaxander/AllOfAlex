@@ -3,6 +3,7 @@ package alexanders.mods.aoa.commands;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.assets.font.FormattingCode;
+import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.net.chat.Command;
 import de.ellpeck.rockbottom.api.net.chat.IChatLog;
 import de.ellpeck.rockbottom.api.net.chat.ICommandSender;
@@ -10,9 +11,13 @@ import de.ellpeck.rockbottom.api.net.chat.component.ChatComponent;
 import de.ellpeck.rockbottom.api.net.chat.component.ChatComponentText;
 import de.ellpeck.rockbottom.api.tile.Tile;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
+import de.ellpeck.rockbottom.api.util.Util;
+import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static alexanders.mods.aoa.AllOfAlex.createRes;
@@ -23,6 +28,35 @@ public class SetTileCommand extends Command {
 
     public SetTileCommand() {
         super(createRes("settile"), "Sets the state of a tile. Params: <x> <y> <layer> <tile> [state]", 5);
+    }
+
+    @Override
+    public List<String> getAutocompleteSuggestions(String[] args, int argNumber, ICommandSender sender, IGameInstance game, IChatLog chat) {
+        if (sender instanceof AbstractEntityPlayer) {
+            AbstractEntityPlayer player = (AbstractEntityPlayer) sender;
+            switch (argNumber) {
+                case 0:
+                    return Collections.singletonList(String.valueOf(Util.floor(player.x)));
+                case 1:
+                    return Collections.singletonList(String.valueOf(Util.floor(player.y)));
+            }
+        }
+        switch (argNumber) {
+            case 2:
+                List<String> layers = new ArrayList<>();
+                for (TileLayer tileLayer : TileLayer.getAllLayers()) {
+                    layers.add(tileLayer.getName().toString());
+                }
+                return layers;
+            case 3:
+                List<String> tiles = new ArrayList<>();
+                for (IResourceName resourceName : RockBottomAPI.TILE_REGISTRY.getUnmodifiable().keySet()) {
+                    tiles.add(resourceName.toString());
+                }
+                return tiles;
+            //TODO: Add state auto completions
+        }
+        return super.getAutocompleteSuggestions(args, argNumber, sender, game, chat);
     }
 
     @Override

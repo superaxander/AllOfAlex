@@ -16,7 +16,7 @@ public class ConduitLayer extends TileLayer {
     public static ConduitLayer instance;
 
     public ConduitLayer() {
-        super(resourceConduitLayer, 10);
+        super(resourceConduitLayer, 20, 1000);
         instance = this;
     }
 

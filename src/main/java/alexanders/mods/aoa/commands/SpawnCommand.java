@@ -4,6 +4,7 @@ import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.assets.font.FormattingCode;
 import de.ellpeck.rockbottom.api.entity.Entity;
+import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.item.Item;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.net.chat.Command;
@@ -12,15 +13,14 @@ import de.ellpeck.rockbottom.api.net.chat.ICommandSender;
 import de.ellpeck.rockbottom.api.net.chat.component.ChatComponent;
 import de.ellpeck.rockbottom.api.net.chat.component.ChatComponentText;
 import de.ellpeck.rockbottom.api.tile.Tile;
+import de.ellpeck.rockbottom.api.util.Util;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static alexanders.mods.aoa.AllOfAlex.createRes;
 
@@ -32,6 +32,27 @@ public class SpawnCommand extends Command {
 
     public SpawnCommand() {
         super(createRes("spawn"), "Spawns an entity. Params: [override] <x> <y> <entity> [params]", 8);
+    }
+
+    @Override
+    public List<String> getAutocompleteSuggestions(String[] args, int argNumber, ICommandSender sender, IGameInstance game, IChatLog chat) {
+        if (sender instanceof AbstractEntityPlayer) {
+            AbstractEntityPlayer player = (AbstractEntityPlayer) sender;
+            switch (argNumber) {
+                case 0:
+                    return Collections.singletonList(String.valueOf(Util.floor(player.x)));
+                case 1:
+                    return Collections.singletonList(String.valueOf(Util.floor(player.y)));
+            }
+        }
+        if(argNumber == 2){
+            List<String> entities = new ArrayList<>();
+            for (IResourceName resourceName : RockBottomAPI.ENTITY_REGISTRY.getUnmodifiable().keySet()) {
+                entities.add(resourceName.toString());
+            }
+            return entities;
+        }
+        return super.getAutocompleteSuggestions(args, argNumber, sender, game, chat);
     }
 
     @Override
