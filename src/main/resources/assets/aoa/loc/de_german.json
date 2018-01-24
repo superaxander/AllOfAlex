@@ -169,7 +169,9 @@
     },
     "key.": {
       "rotate": "Rotieren",
-      "set_waypoint": "Set waypoint"
+      "set_waypoint": "Set waypoint",
+      "conduit_layer": "Show conduit layer",
+      "open_bomb_launcher_inventory": "Open Bomb Launcher inventory"
     }
   }
 }

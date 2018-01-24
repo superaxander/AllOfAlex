@@ -169,7 +169,9 @@
     },
     "key.": {
       "rotate": "Draaien",
-      "set_waypoint": "Zet routepunt"
+      "set_waypoint": "Zet routepunt",
+      "conduit_layer": "Laat leiding laag zien",
+      "open_bomb_launcher_inventory": "Open Bom Lanceerapparaat inventaris"
     }
   }
 }
