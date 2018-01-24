@@ -102,6 +102,7 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName resourceSunRed;
     public static IResourceName resourceSunWhiteBlue;
     public static IResourceName resourceSunYellowBlue;
+    public static IResourceName resourcePaintBomb;
 
     public static void init() {
         resourceDryFarmland = createRes("dry_farmland");
@@ -201,5 +202,6 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         resourceSunRed = createRes("sun.red");
         resourceSunWhiteBlue = createRes("sun.white_blue");
         resourceSunYellowBlue = createRes("sun.yellow_blue");
+        resourcePaintBomb = createRes("paint_bomb");
     }
 }

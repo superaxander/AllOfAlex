@@ -42,9 +42,9 @@ public class BombLauncherItem extends ItemBasic {
                     if (i.get(0) != null) {
 
                         if (getNet().isClient())
-                            getNet().sendToServer(new FireBombPacket(player.x, player.y, Useable.Companion.angle(), i.get(0).getItem() instanceof MiningBombItem));
+                            getNet().sendToServer(new FireBombPacket(player.x, player.y, Useable.Companion.angle(), i.get(0).getItem() instanceof MiningBombItem ? 0 : i.get(0).getItem() instanceof PaintBombItem ? 2 : 1));
                         else
-                            new FireBombPacket(player.x, player.y, Useable.Companion.angle(), i.get(0).getItem() instanceof MiningBombItem).handle(getGame(), null);
+                            new FireBombPacket(player.x, player.y, Useable.Companion.angle(), i.get(0).getItem() instanceof MiningBombItem ? 0 : i.get(0).getItem() instanceof PaintBombItem ? 2 : 1).handle(getGame(), null);
                         i.remove(0, 1);
                     }
                     return false;
@@ -60,9 +60,9 @@ public class BombLauncherItem extends ItemBasic {
                     if (i.get(0) != null) {
 
                         if (getNet().isClient())
-                            getNet().sendToServer(new FireBombPacket(player.x, player.y, Useable.Companion.angle(), i.get(0).getItem() instanceof MiningBombItem));
+                            getNet().sendToServer(new FireBombPacket(player.x, player.y, Useable.Companion.angle(), i.get(0).getItem() instanceof MiningBombItem ? 0 : i.get(0).getItem() instanceof PaintBombItem ? 2 : 1));
                         else
-                            new FireBombPacket(player.x, player.y, Useable.Companion.angle(), i.get(0).getItem() instanceof MiningBombItem).handle(getGame(), null);
+                            new FireBombPacket(player.x, player.y, Useable.Companion.angle(), i.get(0).getItem() instanceof MiningBombItem ? 0 : i.get(0).getItem() instanceof PaintBombItem ? 2 : 1).handle(getGame(), null);
                         i.remove(0, 1);
                     }
                     return false;

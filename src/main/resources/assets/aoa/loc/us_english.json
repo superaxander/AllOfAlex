@@ -47,6 +47,17 @@
       "phantom": "Phantom Tile",
       "bomb": "Bomb",
       "mining_bomb": "Mining Bomb",
+      "paint_bomb.": {
+        "blue": "Blue Paint Bomb",
+        "brown": "Brown Paint Bomb",
+        "green": "Green Paint Bomb",
+        "magenta": "Magenta Paint Bomb",
+        "orange": "Orange Paint Bomb",
+        "pink": "Pink Paint Bomb",
+        "red": "Red Paint Bomb",
+        "white": "White Paint Bomb",
+        "yellow": "Yellow Paint Bomb"
+      },
       "bomb_launcher": "Bomb Launcher",
       "plain.": {
         "blue": "Blue Colorable Plain Tile",

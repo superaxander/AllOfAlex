@@ -65,10 +65,10 @@ public class BombEntity extends Entity {
         int err = dx - (r << 1);
 
         while (x2 >= y2) {
-            damageAndDestroy(x + x2, y + y2);
-            damageAndDestroy(x + y2, y + x2);
-            damageAndDestroy(x - y2, y + x2);
-            damageAndDestroy(x - x2, y + y2);
+            damageAndDestroy(Util.floor(x + x2), Util.floor(y + y2));
+            damageAndDestroy(Util.floor(x + y2), Util.floor(y + x2));
+            damageAndDestroy(Util.floor(x - y2), Util.floor(y + x2));
+            damageAndDestroy(Util.floor(x - x2), Util.floor(y + y2));
             if (err <= 0) {
                 y2++;
                 err += dy;
@@ -81,7 +81,7 @@ public class BombEntity extends Entity {
             }
         }
         if (r == 0)
-            damageAndDestroy(x, y);
+            damageAndDestroy(Util.floor(x), Util.floor(y));
     }
 
     private void secondRound(int r) {
@@ -92,10 +92,10 @@ public class BombEntity extends Entity {
         int err = dx - (r << 1);
 
         while (x2 >= y2) {
-            damageAndDestroy(x - x2, y - y2);
-            damageAndDestroy(x - y2, y - x2);
-            damageAndDestroy(x + y2, y - x2);
-            damageAndDestroy(x + x2, y - y2);
+            damageAndDestroy(Util.floor(x - x2), Util.floor(y - y2));
+            damageAndDestroy(Util.floor(x - y2), Util.floor(y - x2));
+            damageAndDestroy(Util.floor(x + y2), Util.floor(y - x2));
+            damageAndDestroy(Util.floor(x + x2), Util.floor(y - y2));
             if (err <= 0) {
                 y2++;
                 err += dy;
@@ -108,10 +108,10 @@ public class BombEntity extends Entity {
             }
         }
         if (r == 0)
-            damageAndDestroy(x, y);
+            damageAndDestroy(Util.floor(x), Util.floor(y));
     }
 
-    protected void damageAndDestroy(double x, double y) {
+    protected void damageAndDestroy(int x, int y) {
         RockBottomAPI.getGame().getParticleManager().addSmokeParticle(world, x, y, 0, 0, .5f);
         world.destroyTile(Util.floor(x), Util.floor(y), TileLayer.MAIN, null, false);
         world.destroyTile(Util.floor(x), Util.floor(y), TileLayer.BACKGROUND, null, false); //TODO: break other layers too

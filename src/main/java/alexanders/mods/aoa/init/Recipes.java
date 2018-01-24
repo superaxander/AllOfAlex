@@ -6,6 +6,7 @@ import de.ellpeck.rockbottom.api.GameContent;
 import de.ellpeck.rockbottom.api.construction.BasicRecipe;
 import de.ellpeck.rockbottom.api.construction.resource.ItemUseInfo;
 import de.ellpeck.rockbottom.api.construction.resource.ResUseInfo;
+import de.ellpeck.rockbottom.api.item.Item;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.tile.Tile;
 
@@ -25,6 +26,7 @@ public class Recipes {
         new BasicRecipe(createRes("plain_sand_" + values[0]), plain, new ResUseInfo("sand", 4)).registerManual();
         addColourable(Tiles.plain, "plain", values);
         addColourable(Tiles.itemConduit, "item_conduit", values);
+        addColourable(Items.paintBombItem, "paint_bomb", values);
 
         ItemInstance white = new ItemInstance(Tiles.assimilatedTile, 1, 0);
         for (int i = 1; i < values.length; i++) {
@@ -44,6 +46,17 @@ public class Recipes {
             new BasicRecipe(createRes(prefix + "_" + values[i - 1] + "_" + values[i]), out, new ItemUseInfo(in)).registerManual();
         }
         ItemInstance in = new ItemInstance(tile, 1, values.length - 1);
+        new BasicRecipe(createRes(prefix + "_" + values[values.length - 1] + "_" + values[0]), white, new ItemUseInfo(in)).registerManual();
+    }
+
+    private static void addColourable(Item item, String prefix, Colours[] values) {
+        ItemInstance white = new ItemInstance(item, 1, 0);
+        for (int i = 1; i < values.length; i++) {
+            ItemInstance in = new ItemInstance(item, 1, i - 1);
+            ItemInstance out = new ItemInstance(item, 1, i);
+            new BasicRecipe(createRes(prefix + "_" + values[i - 1] + "_" + values[i]), out, new ItemUseInfo(in)).registerManual();
+        }
+        ItemInstance in = new ItemInstance(item, 1, values.length - 1);
         new BasicRecipe(createRes(prefix + "_" + values[values.length - 1] + "_" + values[0]), white, new ItemUseInfo(in)).registerManual();
     }
 }

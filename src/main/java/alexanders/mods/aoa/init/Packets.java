@@ -13,5 +13,6 @@ public class Packets {
         PACKET_REGISTRY.register(PACKET_REGISTRY.getNextFreeId(), CooldownUpdatePacket.class);
         PACKET_REGISTRY.register(PACKET_REGISTRY.getNextFreeId(), BloodPacket.class);
         PACKET_REGISTRY.register(PACKET_REGISTRY.getNextFreeId(), FireBombPacket.class);
+        PACKET_REGISTRY.register(PACKET_REGISTRY.getNextFreeId(), PaintBombParticlePacket.class);
     }
 }

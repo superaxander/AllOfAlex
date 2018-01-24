@@ -46,6 +46,17 @@
       "pearl_ore": "Parel Erts",
       "phantom": "Fantoom Tegel",
       "bomb": "Bom",
+      "paint_bomb.": {
+        "blue": "Blauwe Verf Bom",
+        "brown": "Bruine Verf Bom",
+        "green": "Groene Verf Bom",
+        "magenta": "Scharlaken Verf Bom",
+        "orange": "Oranje Verf Bom",
+        "pink": "Roze Verf Bom",
+        "red": "Rode Verf Bom",
+        "white": "Witte Verf Bom",
+        "yellow": "Gele Verf Bom"
+      },
       "mining_bomb": "Mijnbouw Bom",
       "bomb_launcher": "Bom Lanceerapparaat",
       "plain.": {

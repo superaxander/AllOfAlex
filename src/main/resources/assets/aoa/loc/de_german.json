@@ -48,6 +48,17 @@
       "bomb": "Bombe",
       "mining_bomb": "Bergbau Bombe",
       "bomb_launcher": "Bombe Abschußapparat",
+      "paint_bomb.": {
+        "blue": "Blaue Farb Bombe",
+        "brown": "Braune Farb Bombe",
+        "green": "Grüne Farb Bombe",
+        "magenta": "Scharlach Farb Bombe",
+        "orange": "Orange Farb Bombe",
+        "pink": "Rosa Farb Bombe",
+        "red": "Rote Farb Bombe",
+        "white": "Weiße Farb Bombe",
+        "yellow": "Gelbe Farb Bombe"
+      },
       "plain.": {
         "blue": "Blue Colorable Plain Tile",
         "brown": "Brown Colorable Plain Tile",

@@ -1,7 +1,9 @@
 package alexanders.mods.aoa.net;
 
+import alexanders.mods.aoa.Colours;
 import alexanders.mods.aoa.entity.BombEntity;
 import alexanders.mods.aoa.entity.MiningBombEntity;
+import alexanders.mods.aoa.entity.PaintBombEntity;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.net.packet.IPacket;
 import de.ellpeck.rockbottom.api.world.IWorld;
@@ -14,17 +16,26 @@ public class FireBombPacket implements IPacket {
     private double x;
     private double y;
     private float[] angle;
-    private boolean mining;
+    private int type;
+    private Colours colour = Colours.WHITE;
 
     public FireBombPacket() {
 
     }
 
-    public FireBombPacket(double x, double y, float[] angle, boolean mining) {
+    public FireBombPacket(double x, double y, float[] angle, int type) {
         this.x = x;
         this.y = y;
         this.angle = angle;
-        this.mining = mining;
+        this.type = type;
+    }
+
+    public FireBombPacket(double x, double y, float[] angle, int type, Colours colour) {
+        this.x = x;
+        this.y = y;
+        this.angle = angle;
+        this.type = type;
+        this.colour = colour;
     }
 
     @Override
@@ -33,7 +44,8 @@ public class FireBombPacket implements IPacket {
         buf.writeDouble(y);
         buf.writeFloat(angle[0]);
         buf.writeFloat(angle[1]);
-        buf.writeBoolean(mining);
+        buf.writeInt(type);
+        buf.writeInt(colour.ordinal());
     }
 
     @Override
@@ -42,17 +54,27 @@ public class FireBombPacket implements IPacket {
         y = buf.readDouble();
         angle[0] = buf.readFloat();
         angle[1] = buf.readFloat();
-        mining = buf.readBoolean();
+        type = buf.readInt();
+        colour = Colours.get(buf.readInt());
     }
 
     @Override
     public void handle(IGameInstance game, ChannelHandlerContext context) {
         IWorld world = game.getWorld();
         BombEntity entity;
-        if (mining)
-            entity = new MiningBombEntity(world);
-        else
-            entity = new BombEntity(world);
+        switch (type) {
+            case 0:
+                entity = new MiningBombEntity(world);
+                break;
+            case 1:
+                entity = new BombEntity(world);
+                break;
+            case 2:
+                entity = new PaintBombEntity(world, colour);
+                break;
+            default:
+                throw new IllegalStateException("Invalid FireBombPacket");
+        }
         entity.x = x;
         entity.y = y + 1.5;
         entity.motionX = .5 * angle[0];

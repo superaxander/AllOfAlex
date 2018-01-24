@@ -11,6 +11,7 @@ import de.ellpeck.rockbottom.api.item.ItemTile;
 import de.ellpeck.rockbottom.api.net.chat.component.ChatComponentText;
 import de.ellpeck.rockbottom.api.render.tile.ITileRenderer;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
+import de.ellpeck.rockbottom.api.util.BoundBox;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
@@ -31,6 +32,19 @@ public class AssimilatedTile extends ColourableTile {
     //world.setState(layer, x, y, world.getState(layer, x, y).cycleProp(COLOUR));
     //return true;
     //}
+
+
+    @Override
+    public BoundBox getBoundBox(IWorld world, int x, int y, TileLayer layer) {
+        AssimilatedTileEntity te = world.getTileEntity(layer, x, y, AssimilatedTileEntity.class);
+        if (te.override)
+            return te.bb;
+        try {
+            return RockBottomAPI.TILE_REGISTRY.get(te.tileName).getBoundBox(world, x, y, layer);
+        } catch (Throwable ignored) {
+        }
+        return super.getBoundBox(world, x, y, layer);
+    }
 
     @Override
     protected ItemTile createItemTile() {

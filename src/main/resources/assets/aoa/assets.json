@@ -198,6 +198,7 @@
       "bomb": "/items/bomb.png",
       "mining_bomb": "/items/mining_bomb.png",
       "bomb_launcher": "/items/bomb_launcher.png",
+      "paint_bomb": "/items/paint_bomb.png",
       "blue_berry_bush.": {
         "berry": "/items/blue_berry_bush.berry.png"
       },
@@ -226,6 +227,7 @@
       "red": "/particles/red.png",
       "white": "/particles/white.png",
       "yellow": "/particles/yellow.png",
+      "paint_bomb": "/particles/white.png",
       "blood": "/particles/blood.png",
       "teleportation": "/particles/teleportation.png"
     },
