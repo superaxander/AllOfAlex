@@ -5,7 +5,10 @@
     "us_english": "/loc/us_english.json"
   },
   "tex.": {
-    "magnet_pulse": "/magnet_pulse.png",
+    "magnet_pulse": {
+      "path": "/magnet_pulse.png",
+      "should_stitch": false
+    },
     "drill_basic.": {
       "active": "/tiles/drill_basic_lit.png",
       "*": "/tiles/drill_basic.png"
