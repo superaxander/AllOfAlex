@@ -4,7 +4,7 @@ import alexanders.mods.aoa.entity.BridgingPearlEntity
 import alexanders.mods.aoa.init.Resources.bridgingPearlDescResource
 import alexanders.mods.aoa.init.Resources.bridgingPearlResource
 import alexanders.mods.aoa.net.CooldownUpdatePacket
-import alexanders.mods.aoa.render.PearlItemRenderer
+import alexanders.mods.aoa.render.CooldownableRenderer
 import de.ellpeck.rockbottom.api.assets.IAssetManager
 import de.ellpeck.rockbottom.api.data.set.DataSet
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer
@@ -15,8 +15,9 @@ import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
-class BridgingPearlItem : Item(bridgingPearlResource), Useable {
-    val renderer = PearlItemRenderer(bridgingPearlResource)
+class BridgingPearlItem : Item(bridgingPearlResource), Useable, ICooldownable {
+    override fun getMaxCooldown() = 60f
+    val renderer = CooldownableRenderer<BridgingPearlItem>(bridgingPearlResource)
     override fun use(itemInstance: ItemInstance, mouseDirection: FloatArray, player: AbstractEntityPlayer) {
         if (itemInstance.additionalData == null) {
             itemInstance.additionalData = DataSet()
@@ -29,7 +30,7 @@ class BridgingPearlItem : Item(bridgingPearlResource), Useable {
             itemInstance.additionalData.addInt("cooldown", 60)
             if (itemInstance.removeAmount(1).amount <= 0)
                 player.inv[player.selectedSlot] = null
-            player.sendPacket(CooldownUpdatePacket(60))
+            player.sendPacket(CooldownUpdatePacket(60, player.selectedSlot))
         }
     }
 

@@ -4,7 +4,7 @@ import alexanders.mods.aoa.init.Resources.spawnPearlDescResource
 import alexanders.mods.aoa.init.Resources.spawnPearlResource
 import alexanders.mods.aoa.net.CooldownUpdatePacket
 import alexanders.mods.aoa.net.EntityPositionUpdatePacket
-import alexanders.mods.aoa.render.PearlItemRenderer
+import alexanders.mods.aoa.render.CooldownableRenderer
 import alexanders.mods.aoa.render.TeleportationParticle
 import de.ellpeck.rockbottom.api.RockBottomAPI
 import de.ellpeck.rockbottom.api.assets.IAssetManager
@@ -17,8 +17,9 @@ import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
-class SpawnPearlItem() : ItemBasic(spawnPearlResource), Useable {
-    val renderer = PearlItemRenderer(spawnPearlResource)
+class SpawnPearlItem : ItemBasic(spawnPearlResource), Useable, ICooldownable {
+    override fun getMaxCooldown() = 60f
+    val renderer = CooldownableRenderer<SpawnPearlItem>(spawnPearlResource)
     override fun use(itemInstance: ItemInstance, mouseDirection: FloatArray, player: AbstractEntityPlayer) {
         if (itemInstance.additionalData == null) {
             itemInstance.additionalData = DataSet()
@@ -31,7 +32,7 @@ class SpawnPearlItem() : ItemBasic(spawnPearlResource), Useable {
                 RockBottomAPI.getNet().sendToAllPlayers(player.world, EntityPositionUpdatePacket(player.uniqueId, player.x, player.y))
             for (i in 0..20) RockBottomAPI.getGame().particleManager.addParticle(TeleportationParticle(world = player.world, x = player.x, y = player.y, maxLife = 60))
             itemInstance.additionalData.addInt("cooldown", 60)
-            player.sendPacket(CooldownUpdatePacket(60))
+            player.sendPacket(CooldownUpdatePacket(60, player.selectedSlot))
         }
     }
 

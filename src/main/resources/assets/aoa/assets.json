@@ -5,6 +5,7 @@
     "us_english": "/loc/us_english.json"
   },
   "tex.": {
+    "magnet_pulse": "/magnet_pulse.png",
     "drill_basic.": {
       "active": "/tiles/drill_basic_lit.png",
       "*": "/tiles/drill_basic.png"
@@ -200,6 +201,7 @@
       }
     },
     "items.": {
+      "magnet": "/items/magnet.png",
       "bomb": "/items/bomb.png",
       "mining_bomb": "/items/mining_bomb.png",
       "bomb_launcher": "/items/bomb_launcher.png",

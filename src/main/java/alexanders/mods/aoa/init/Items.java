@@ -22,6 +22,7 @@ public class Items {
     public static MiningBombItem miningBombItem;
     public static BombLauncherItem bombLauncherItem;
     public static PaintBombItem paintBombItem;
+    public static MagnetItem magnetItem;
 
     public static void init() {
         shearsItem = new ShearsItem(shears);
@@ -41,6 +42,7 @@ public class Items {
         miningBombItem = new MiningBombItem(miningBombResource);
         bombLauncherItem = new BombLauncherItem(bombLauncherResource);
         paintBombItem = new PaintBombItem(resourcePaintBomb);
+        magnetItem = new MagnetItem(resourceMagnet);
         shearsItem.register();
         berryBlue.register();
         berryRed.register();
@@ -58,5 +60,6 @@ public class Items {
         miningBombItem.register();
         bombLauncherItem.register();
         paintBombItem.register();
+        magnetItem.register();
     }
 }

@@ -17,5 +17,6 @@ public class Entities {
         ENTITY_REGISTRY.register(bombResource, BombEntity.class);
         ENTITY_REGISTRY.register(miningBombResource, MiningBombEntity.class);
         ENTITY_REGISTRY.register(resourcePaintBomb, PaintBombEntity.class);
+        ENTITY_REGISTRY.register(resourceMagnetPulse, MagnetPulseEntity.class);
     }
 }

@@ -4,7 +4,7 @@ import alexanders.mods.aoa.entity.RideablePearlEntity
 import alexanders.mods.aoa.init.Resources.rideablePearlDescResource
 import alexanders.mods.aoa.init.Resources.rideablePearlResource
 import alexanders.mods.aoa.net.CooldownUpdatePacket
-import alexanders.mods.aoa.render.PearlItemRenderer
+import alexanders.mods.aoa.render.CooldownableRenderer
 import de.ellpeck.rockbottom.api.assets.IAssetManager
 import de.ellpeck.rockbottom.api.data.set.DataSet
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer
@@ -15,8 +15,9 @@ import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
-class RideablePearlItem : ItemBasic(rideablePearlResource), Useable {
-    val renderer = PearlItemRenderer(rideablePearlResource)
+class RideablePearlItem : ItemBasic(rideablePearlResource), Useable, ICooldownable {
+    override fun getMaxCooldown() = 60f
+    val renderer = CooldownableRenderer<RideablePearlItem>(rideablePearlResource)
     override fun use(itemInstance: ItemInstance, mouseDirection: FloatArray, player: AbstractEntityPlayer) {
         if (itemInstance.additionalData == null) {
             itemInstance.additionalData = DataSet()
@@ -29,7 +30,7 @@ class RideablePearlItem : ItemBasic(rideablePearlResource), Useable {
             itemInstance.additionalData.addInt("cooldown", 60)
             if (itemInstance.removeAmount(1).amount <= 0)
                 player.inv[player.selectedSlot] = null
-            player.sendPacket(CooldownUpdatePacket(60))
+            player.sendPacket(CooldownUpdatePacket(60, player.selectedSlot))
         }
     }
 

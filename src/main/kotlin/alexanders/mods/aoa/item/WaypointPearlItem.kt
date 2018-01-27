@@ -3,7 +3,7 @@ package alexanders.mods.aoa.item
 import alexanders.mods.aoa.init.Resources.*
 import alexanders.mods.aoa.net.CooldownUpdatePacket
 import alexanders.mods.aoa.net.EntityPositionUpdatePacket
-import alexanders.mods.aoa.render.PearlItemRenderer
+import alexanders.mods.aoa.render.CooldownableRenderer
 import alexanders.mods.aoa.render.TeleportationParticle
 import de.ellpeck.rockbottom.api.RockBottomAPI
 import de.ellpeck.rockbottom.api.assets.IAssetManager
@@ -16,8 +16,9 @@ import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
-class WaypointPearlItem() : ItemBasic(waypointPearlResource), Useable {
-    val renderer = PearlItemRenderer(waypointPearlResource)
+class WaypointPearlItem : ItemBasic(waypointPearlResource), Useable, ICooldownable {
+    override fun getMaxCooldown() = 60f
+    val renderer = CooldownableRenderer<WaypointPearlItem>(waypointPearlResource)
     override fun use(itemInstance: ItemInstance, mouseDirection: FloatArray, player: AbstractEntityPlayer, shiftPressed: Boolean) {
         if (itemInstance.additionalData == null) {
             itemInstance.additionalData = DataSet()
@@ -38,7 +39,7 @@ class WaypointPearlItem() : ItemBasic(waypointPearlResource), Useable {
                 itemInstance.additionalData.addInt("cooldown", 60)
                 //if (itemInstance.removeAmount(1).amount <= 0)
                 //    player.inv[player.selectedSlot] = null
-                player.sendPacket(CooldownUpdatePacket(60))
+                player.sendPacket(CooldownUpdatePacket(60, player.selectedSlot))
             }
         }
     }

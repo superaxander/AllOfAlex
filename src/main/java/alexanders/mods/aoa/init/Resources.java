@@ -109,6 +109,8 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName resourceBombCannon;
     public static IResourceName resourceItemCannon;
     public static IResourceName resourceFunnel;
+    public static IResourceName resourceMagnet;
+    public static IResourceName resourceMagnetPulse;
 
     public static void init() {
         resourceDryFarmland = createRes("dry_farmland");
@@ -215,5 +217,7 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         resourceBombCannon = createRes("bomb_cannon");
         resourceItemCannon = createRes("item_cannon");
         resourceFunnel = createRes("funnel");
+        resourceMagnet = createRes("magnet");
+        resourceMagnetPulse = createRes("magnet_pulse");
     }
 }
