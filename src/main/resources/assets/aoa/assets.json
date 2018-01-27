@@ -101,8 +101,13 @@
       "slime": "/tiles/slime.png",
       "item_cannon.": {
         "*": "/tiles/cannon_base.png",
-        "item": "/items/cannon_item.png",
-        "head": "/tiles/cannon_head.png"
+        "item": "/items/item_cannon_item.png",
+        "head": "/tiles/item_cannon_head.png"
+      },
+      "bomb_cannon.": {
+        "*": "/tiles/cannon_base.png",
+        "item": "/items/bomb_cannon_item.png",
+        "head": "/tiles/bomb_cannon_head.png"
       },
       "funnel.": {
         "down": "/tiles/funnel_down.png",

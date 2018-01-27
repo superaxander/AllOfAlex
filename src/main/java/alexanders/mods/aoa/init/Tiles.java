@@ -3,7 +3,6 @@ package alexanders.mods.aoa.init;
 import alexanders.mods.aoa.tile.*;
 import de.ellpeck.rockbottom.api.tile.TileBasic;
 
-import static alexanders.mods.aoa.AllOfAlex.createRes;
 import static alexanders.mods.aoa.init.Resources.*;
 
 public class Tiles {
@@ -72,10 +71,11 @@ public class Tiles {
     public static TileBasic sunRed;
     public static TileBasic sunWhiteBlue;
     public static TileBasic sunYellowBlue;
+    public static BombCannonTile bombCannon;
 
     public static void init() {
-        itemCannon = new ItemCannonTile(createRes("item_cannon"));
-        funnelTile = new FunnelTile(createRes("funnel"));
+        itemCannon = new ItemCannonTile(resourceItemCannon);
+        funnelTile = new FunnelTile(resourceFunnel);
         FoliageAssets.dry_farmland.tile = dryFarmland = new VariantTile(resourceDryFarmland);
         FoliageAssets.grass.tile = grass = new VariantTile(resourceGrass);
         FoliageAssets.long_grass.tile = longGrass = new VariantTile(resourceLongGrass);
@@ -145,6 +145,7 @@ public class Tiles {
         sunRed = new TileBasic(resourceSunRed);
         sunWhiteBlue = new TileBasic(resourceSunWhiteBlue);
         sunYellowBlue = new TileBasic(resourceSunYellowBlue);
+        bombCannon = new BombCannonTile(resourceBombCannon);
 
         itemCannon.register();
         funnelTile.register();
@@ -217,5 +218,7 @@ public class Tiles {
         sunRed.register();
         sunWhiteBlue.register();
         sunYellowBlue.register();
+
+        bombCannon.register();
     }
 }

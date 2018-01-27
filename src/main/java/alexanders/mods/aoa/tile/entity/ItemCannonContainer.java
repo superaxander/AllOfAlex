@@ -5,7 +5,7 @@ import de.ellpeck.rockbottom.api.gui.container.ContainerSlot;
 import de.ellpeck.rockbottom.api.gui.container.ItemContainer;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 
-import static alexanders.mods.aoa.AllOfAlex.createRes;
+import static alexanders.mods.aoa.init.Resources.resourceItemCannonContainer;
 
 public class ItemCannonContainer extends ItemContainer {
 
@@ -17,6 +17,6 @@ public class ItemCannonContainer extends ItemContainer {
 
     @Override
     public IResourceName getName() {
-        return createRes("item_cannon_container");
+        return resourceItemCannonContainer;
     }
 }

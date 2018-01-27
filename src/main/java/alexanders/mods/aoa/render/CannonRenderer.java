@@ -1,5 +1,6 @@
 package alexanders.mods.aoa.render;
 
+import alexanders.mods.aoa.tile.CannonTile;
 import alexanders.mods.aoa.tile.ItemCannonTile;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.IRenderer;
@@ -11,15 +12,15 @@ import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
-public class ItemCannonRenderer extends DefaultTileRenderer<ItemCannonTile> {
+public class CannonRenderer extends DefaultTileRenderer<CannonTile> {
     private RotateableTexture t;
 
-    public ItemCannonRenderer(IResourceName name) {
+    public CannonRenderer(IResourceName name) {
         super(name);
     }
 
     @Override
-    public void render(IGameInstance game, IAssetManager manager, IRenderer g, IWorld world, ItemCannonTile tile, TileState state, int x, int y, TileLayer layer, float renderX, float renderY, float scale, int[] light) {
+    public void render(IGameInstance game, IAssetManager manager, IRenderer g, IWorld world, CannonTile tile, TileState state, int x, int y, TileLayer layer, float renderX, float renderY, float scale, int[] light) {
         super.render(game, manager, g, world, tile, state, x, y, layer, renderX, renderY, scale, light);
         if (t == null)
             t = new RotateableTexture(manager.getTexture(texture.addSuffix(".head")));
@@ -45,7 +46,7 @@ public class ItemCannonRenderer extends DefaultTileRenderer<ItemCannonTile> {
     }
 
     @Override
-    public void renderItem(IGameInstance game, IAssetManager manager, IRenderer g, ItemCannonTile tile, ItemInstance instance, float x, float y, float scale, int filter) {
+    public void renderItem(IGameInstance game, IAssetManager manager, IRenderer g, CannonTile tile, ItemInstance instance, float x, float y, float scale, int filter) {
         manager.getTexture(texture.addSuffix(".item")).draw(x, y, scale, scale, filter);
     }
 }

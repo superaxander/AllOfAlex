@@ -103,6 +103,12 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName resourceSunWhiteBlue;
     public static IResourceName resourceSunYellowBlue;
     public static IResourceName resourcePaintBomb;
+    public static IResourceName resourceItemCannonContainer;
+    public static IResourceName resourceBombCannonContainer;
+    public static IResourceName resourceCannonGui;
+    public static IResourceName resourceBombCannon;
+    public static IResourceName resourceItemCannon;
+    public static IResourceName resourceFunnel;
 
     public static void init() {
         resourceDryFarmland = createRes("dry_farmland");
@@ -203,5 +209,11 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         resourceSunWhiteBlue = createRes("sun.white_blue");
         resourceSunYellowBlue = createRes("sun.yellow_blue");
         resourcePaintBomb = createRes("paint_bomb");
+        resourceItemCannonContainer = createRes("item_cannon_container");
+        resourceBombCannonContainer = createRes("bomb_cannon_container");
+        resourceCannonGui = createRes("cannon_gui");
+        resourceBombCannon = createRes("bomb_cannon");
+        resourceItemCannon = createRes("item_cannon");
+        resourceFunnel = createRes("funnel");
     }
 }
