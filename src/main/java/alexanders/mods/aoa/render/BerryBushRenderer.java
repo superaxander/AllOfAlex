@@ -25,7 +25,7 @@ public class BerryBushRenderer<T extends BerryBushTile> extends VariantTextureRe
 
             if (variant >= tile.variant.getVariants() / 2) {
                 ITexture texture = emptyTextures[variant - tile.variant.getVariants() / 2];
-                texture.draw(renderX + scale, renderY, renderX, renderY + scale, 0, 0, texture.getTextureWidth(), texture.getTextureHeight(), light);
+                texture.draw(renderX + scale, renderY, renderX, renderY + scale, 0, 0, texture.getRenderWidth(), texture.getRenderHeight(), light);
             } else
                 emptyTextures[variant].draw(renderX, renderY, scale, scale, light);
         } else

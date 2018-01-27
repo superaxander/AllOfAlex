@@ -1,6 +1,7 @@
 package alexanders.mods.aoa.render;
 
 import alexanders.mods.aoa.Colours;
+import alexanders.mods.aoa.init.Assets;
 import alexanders.mods.aoa.tile.ColourableTile;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.IRenderer;
@@ -33,6 +34,6 @@ public class ColourableTileRenderer<T extends ColourableTile> extends DefaultTil
 
     @Override
     public ITexture getParticleTexture(IGameInstance game, IAssetManager manager, IRenderer g, T tile, TileState state) {
-        return manager.getTexture(state.get(COLOUR).resourceName);
+        return Assets.colours.get(state.get(COLOUR));
     }
 }

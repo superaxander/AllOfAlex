@@ -218,16 +218,6 @@
       "waypoint_pearl": "/items/waypoint_pearl.png"
     },
     "particles.": {
-      "blue": "/particles/blue.png",
-      "brown": "/particles/brown.png",
-      "green": "/particles/green.png",
-      "magenta": "/particles/magenta.png",
-      "orange": "/particles/orange.png",
-      "pink": "/particles/pink.png",
-      "red": "/particles/red.png",
-      "white": "/particles/white.png",
-      "yellow": "/particles/yellow.png",
-      "paint_bomb": "/particles/white.png",
       "blood": "/particles/blood.png",
       "teleportation": "/particles/teleportation.png"
     },

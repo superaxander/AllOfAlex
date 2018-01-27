@@ -4,7 +4,7 @@ version '0.7'
 apply from: "https://github.com/RockBottomGame/Gradle/raw/master/buildscript.gradle"
 
 buildscript {
-    ext.kotlin_version = '1.2.20'
+    ext.kotlin_version = '1.2.21'
 
     repositories {
         mavenCentral()

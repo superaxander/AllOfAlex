@@ -94,7 +94,7 @@ public class AllOfAlex implements IMod {
 
     @Override
     public void initAssets(IGameInstance game, IAssetManager assetManager, IApiHandler apiHandler) {
-
         FoliageAssets.init(assetManager);
+        Assets.init(assetManager);
     }
 }

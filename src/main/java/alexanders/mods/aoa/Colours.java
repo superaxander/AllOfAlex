@@ -11,6 +11,10 @@ public enum Colours {
 
     private static Colours[] values = values();
     public int colour;
+    public int r = Colors.getRInt(colour);
+    public int g = Colors.getGInt(colour);
+    public int b = Colors.getBInt(colour);
+    public int a = Colors.getAInt(colour);
     public IResourceName resourceName;
 
     Colours(int colour) {
