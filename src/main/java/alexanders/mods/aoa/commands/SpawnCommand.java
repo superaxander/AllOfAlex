@@ -3,6 +3,8 @@ package alexanders.mods.aoa.commands;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.assets.font.FormattingCode;
+import de.ellpeck.rockbottom.api.data.set.DataSet;
+import de.ellpeck.rockbottom.api.data.set.part.DataPart;
 import de.ellpeck.rockbottom.api.entity.Entity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.item.Item;
@@ -13,15 +15,21 @@ import de.ellpeck.rockbottom.api.net.chat.ICommandSender;
 import de.ellpeck.rockbottom.api.net.chat.component.ChatComponent;
 import de.ellpeck.rockbottom.api.net.chat.component.ChatComponentText;
 import de.ellpeck.rockbottom.api.tile.Tile;
+import de.ellpeck.rockbottom.api.tile.state.TileState;
 import de.ellpeck.rockbottom.api.util.Util;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.NameRegistry;
 import de.ellpeck.rockbottom.api.world.IWorld;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.TypeVariable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static alexanders.mods.aoa.AllOfAlex.createRes;
+import static de.ellpeck.rockbottom.api.RockBottomAPI.*;
 
 public class SpawnCommand extends Command {
     private static final ChatComponentText USAGE = new ChatComponentText(FormattingCode.RED + "Usage: spawn [override] <x> <y> <entity> [params]");
@@ -35,23 +43,86 @@ public class SpawnCommand extends Command {
 
     @Override
     public List<String> getAutocompleteSuggestions(String[] args, int argNumber, ICommandSender sender, IGameInstance game, IChatLog chat) {
+        int offset = (args.length > 0 && args[0].equalsIgnoreCase("true")) ? 1 : 0;
         if (sender instanceof AbstractEntityPlayer) {
             AbstractEntityPlayer player = (AbstractEntityPlayer) sender;
             switch (argNumber) {
                 case 0:
-                    return Collections.singletonList(String.valueOf(Util.floor(player.x)));
+                    return Arrays.asList(String.valueOf(Util.floor(player.x)), "true");
                 case 1:
-                    return Collections.singletonList(String.valueOf(Util.floor(player.y)));
+                    if (offset == 1)
+                        return Collections.singletonList(String.valueOf(Util.floor(player.x)));
+                    else
+                        return Collections.singletonList(String.valueOf(Util.floor(player.y)));
+                case 2:
+                    if (offset == 1)
+                        return Collections.singletonList(String.valueOf(Util.floor(player.y)));
+                    break;
             }
         }
-        if (argNumber == 2) {
-            List<String> entities = new ArrayList<>();
-            for (IResourceName resourceName : RockBottomAPI.ENTITY_REGISTRY.getUnmodifiable().keySet()) {
-                entities.add(resourceName.toString());
+        if (argNumber == 2 + offset) {
+            return registryToStrings(ENTITY_REGISTRY);
+        } else if (argNumber > 2 + offset) {
+            try {
+                ArrayList<String> suggestions = new ArrayList<>();
+                Constructor<?>[] constructors = getConstructors(args[2 + offset]);
+                for (Constructor<?> constructor : constructors) {
+                    Class<?>[] parameterTypes = constructor.getParameterTypes();
+                    if (parameterTypes.length < 2) {
+                        continue;
+                    }
+                    int parameteroffset = 0;
+                    for (int i = 0; i < parameterTypes.length && i - parameteroffset < argNumber - 2 - offset; i++) {
+                        Class<?> parameterType = parameterTypes[i];
+                        if (parameterType == IWorld.class) {
+                            parameteroffset = 1;
+                        } else if (i - parameteroffset == argNumber - 3 - offset) {
+                            if ((parameterType == Integer.class || parameterType == int.class) && sender instanceof AbstractEntityPlayer) {
+                                suggestions.add(String.valueOf(Util.floor(((AbstractEntityPlayer) sender).x)));
+                                suggestions.add(String.valueOf(Util.floor(((AbstractEntityPlayer) sender).y)));
+                            } else if ((parameterType == Double.class || parameterType == double.class) && sender instanceof AbstractEntityPlayer) {
+                                suggestions.add(String.valueOf(((AbstractEntityPlayer) sender).x));
+                                suggestions.add(String.valueOf(((AbstractEntityPlayer) sender).y));
+                            } else if (parameterType == UUID.class) {
+                                suggestions.addAll(chat.getPlayerSuggestions());
+                            } else if (parameterType == ItemInstance.class) {
+                                suggestions.addAll(registryToStrings(ITEM_REGISTRY));
+                            } else if (parameterType == Tile.class) {
+                                suggestions.addAll(registryToStrings(TILE_REGISTRY));
+                            } else if (parameterType == TileState.class) {
+                                suggestions.addAll(registryToStrings(TILE_STATE_REGISTRY));
+                            } else if (parameterType.isArray()) {
+                                suggestions.add("[]");
+                            } else if (parameterType == DataSet.class) {
+                                suggestions.add("{}");
+                            } else if (parameterType.isEnum()) {
+                                suggestions.addAll(Arrays.stream(parameterType.getEnumConstants()).map(Object::toString).collect(Collectors.toList()));
+                            }
+                        }
+                    }
+                }
+                return suggestions;
+            } catch (NoClassDefFoundError e) {
+                return Collections.emptyList();
             }
-            return entities;
         }
         return super.getAutocompleteSuggestions(args, argNumber, sender, game, chat);
+    }
+
+    private List<String> registryToStrings(NameRegistry<?> registry) {
+        List<String> list = new ArrayList<>();
+        for (IResourceName resourceName : registry.getUnmodifiable().keySet()) {
+            String toString = resourceName.toString();
+            list.add(toString);
+        }
+        return list;
+    }
+
+    private Constructor<?>[] getConstructors(String entityName) throws NoClassDefFoundError {
+        Class<? extends Entity> clazz = ENTITY_REGISTRY.get(RockBottomAPI.createRes(entityName));
+        if (clazz == null)
+            throw new NoClassDefFoundError("Can't find class for that entity name");
+        return clazz.getConstructors();
     }
 
     @Override
@@ -67,16 +138,13 @@ public class SpawnCommand extends Command {
         try {
             double x = Double.parseDouble(args[offset]);
             double y = Double.parseDouble(args[offset + 1]);
-            Class<? extends Entity> clazz = RockBottomAPI.ENTITY_REGISTRY.get(RockBottomAPI.createRes(args[offset + 2]));
-            if (clazz == null)
-                return NOT_FOUND;
+
+            Constructor<?>[] constructors = getConstructors(args[offset + 2]);
             Entity e = null;
             Constructor defaultConstructor = null;
-            Constructor<?>[] constructors = clazz.getConstructors();
+
             for (Constructor<?> c : constructors) {
                 Class<?>[] parameterTypes = c.getParameterTypes();
-                if (c.isVarArgs())
-                    continue;
                 if (parameterTypes.length == 1) {
                     defaultConstructor = c;
                     if (args.length <= 3 + offset)
@@ -93,7 +161,7 @@ public class SpawnCommand extends Command {
                                 matches = false;
                                 break;
                             } else {
-                                Map<Class<?>, Object> possible = toPossibleTypes(args[3 + counter + offset]);
+                                Map<Class<?>, Object> possible = toPossibleTypes(parameterTypes[i], args[3 + counter + offset]);
                                 if (possible.containsKey(parameterTypes[i])) {
                                     params[i] = possible.get(parameterTypes[i]);
                                 } else {
@@ -121,6 +189,8 @@ public class SpawnCommand extends Command {
         } catch (ClassCastException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
             return SOMETHING_WENT_WRONG;
+        } catch (NoClassDefFoundError e) {
+            return NOT_FOUND;
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return USAGE;
@@ -128,9 +198,82 @@ public class SpawnCommand extends Command {
         return null;
     }
 
-    private Map<Class<?>, Object> toPossibleTypes(String arg) {
-        // TODO: Make this more sophisticated, but for now try everything out
+    private Map<Class<?>, Object> toPossibleTypes(Class<?> parameterType, String arg) {
+        // TODO: Find some way to do strings with spaces?
         HashMap<Class<?>, Object> map = new HashMap<>();
+        try {
+            if (parameterType.isEnum()) {
+                map.put(parameterType, parameterType.getMethod("valueOf", String.class).invoke(parameterType, arg));
+                return map;
+            }
+        } catch (NoSuchMethodException | IllegalArgumentException | IllegalAccessException | InvocationTargetException ignored) {
+        }
+        if (parameterType.isArray() || parameterType.isAssignableFrom(List.class)) {
+            Class<?> componentType = parameterType.getComponentType();
+            if (arg.startsWith("[") && arg.endsWith("]")) {
+                String[] split = arg.substring(1, arg.length() - 1).split(",");
+                ArrayList<Object> list = new ArrayList<>(split.length); //TODO: Support DataSet[]?
+                boolean succeeded = true;
+                for (String s : split) {
+                    Map<Class<?>, Object> types = toPossibleTypes(componentType, s);
+                    if (!types.containsKey(componentType)) {
+                        succeeded = false;
+                        break;
+                    }
+                    list.add(types.get(componentType));
+                }
+                if (succeeded) {
+                    if (parameterType.isAssignableFrom(List.class)) {
+                        map.put(List.class, list); // This might not work!
+                    } else {
+                        Object array = Array.newInstance(parameterType.getComponentType(), list.size());
+                        for (int i = 0; i < list.size(); i++) {
+                            Array.set(array, i, list.get(i));
+                        }
+                        map.put(parameterType, array);
+                    }
+                }
+            }
+        }
+        try {
+            if (parameterType == DataSet.class) {
+                if (arg.startsWith("{") && arg.endsWith("}")) {
+                    String[] split = arg.substring(1, arg.length() - 1).split(",");
+                    Map<String, String> setMap = new HashMap<>(split.length);
+                    boolean succeeded = true;
+                    for (String s : split) {
+                        String[] split2 = s.split("=", 2);
+                        if (split2.length < 2) {
+                            succeeded = false;
+                            break;
+                        }
+                        setMap.put(split2[0], split2[1]);
+                    }
+                    if (succeeded) {
+                        DataSet set = new DataSet();
+                        Set<Class<? extends DataPart>> values = PART_REGISTRY.getUnmodifiable().values();
+                        setMap.forEach((key, value) -> {
+                            Map<Class<?>, Object> types = toPossibleTypes(String.class, value);
+                            for (Class<? extends DataPart> clazz : values) {
+                                TypeVariable<? extends Class<? extends DataPart>>[] typeParameters = clazz.getTypeParameters();
+                                if(typeParameters.length == 1) {
+                                    try {
+                                        Class<?> typeClass = Class.forName(typeParameters[0].getName());
+                                        if(types.containsKey(typeClass)) {
+                                            set.addPart(clazz.getConstructor(String.class, typeClass).newInstance(key, types.get(typeClass)));
+                                        }
+                                    } catch (ClassNotFoundException|NoSuchMethodException|InstantiationException|IllegalAccessException|InvocationTargetException e) {
+                                        throw new IllegalArgumentException(e);
+                                    }
+                                }
+                            }
+                        });
+                        map.put(DataSet.class, set);
+                    }
+                }
+            }
+        } catch (IllegalArgumentException ignored) {
+        }
         map.put(String.class, arg);
         try {
             map.put(UUID.class, UUID.fromString(arg));
@@ -139,7 +282,7 @@ public class SpawnCommand extends Command {
         try {
             IResourceName name = RockBottomAPI.createRes(arg);
             map.put(IResourceName.class, name);
-            Tile tile = RockBottomAPI.TILE_REGISTRY.get(name);
+            Tile tile = TILE_REGISTRY.get(name);
             if (tile != null) {
                 map.put(Tile.class, tile);
                 try {
@@ -148,7 +291,16 @@ public class SpawnCommand extends Command {
                 } catch (NullPointerException ignored) {
                 }
             }
-            Item item = RockBottomAPI.ITEM_REGISTRY.get(name);
+            TileState state = TILE_STATE_REGISTRY.get(name);
+            if (state != null) {
+                map.put(TileState.class, state);
+                try {
+                    ItemInstance instance = new ItemInstance(state.getTile());
+                    map.put(ItemInstance.class, instance);
+                } catch (NullPointerException ignored) {
+                }
+            }
+            Item item = ITEM_REGISTRY.get(name);
             if (item != null) {
                 map.put(Item.class, item);
                 try {

@@ -114,6 +114,6 @@ public class BombEntity extends Entity {
     protected void damageAndDestroy(int x, int y) {
         RockBottomAPI.getGame().getParticleManager().addSmokeParticle(world, x, y, 0, 0, .5f);
         world.destroyTile(Util.floor(x), Util.floor(y), TileLayer.MAIN, null, false);
-        world.destroyTile(Util.floor(x), Util.floor(y), TileLayer.BACKGROUND, null, false); //TODO: break other layers too
+        world.destroyTile(Util.floor(x), Util.floor(y), TileLayer.BACKGROUND, null, false);
     }
 }
