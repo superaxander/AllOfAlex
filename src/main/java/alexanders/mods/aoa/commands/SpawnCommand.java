@@ -256,13 +256,13 @@ public class SpawnCommand extends Command {
                             Map<Class<?>, Object> types = toPossibleTypes(String.class, value);
                             for (Class<? extends DataPart> clazz : values) {
                                 TypeVariable<? extends Class<? extends DataPart>>[] typeParameters = clazz.getTypeParameters();
-                                if(typeParameters.length == 1) {
+                                if (typeParameters.length == 1) {
                                     try {
                                         Class<?> typeClass = Class.forName(typeParameters[0].getName());
-                                        if(types.containsKey(typeClass)) {
+                                        if (types.containsKey(typeClass)) {
                                             set.addPart(clazz.getConstructor(String.class, typeClass).newInstance(key, types.get(typeClass)));
                                         }
-                                    } catch (ClassNotFoundException|NoSuchMethodException|InstantiationException|IllegalAccessException|InvocationTargetException e) {
+                                    } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                                         throw new IllegalArgumentException(e);
                                     }
                                 }

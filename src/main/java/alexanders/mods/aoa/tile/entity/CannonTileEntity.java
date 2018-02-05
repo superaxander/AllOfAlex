@@ -21,8 +21,8 @@ import static de.ellpeck.rockbottom.api.RockBottomAPI.getNet;
 public abstract class CannonTileEntity extends TileEntity implements IInventoryHolder {
     public Inventory inventory = new Inventory(1);
     public int cooldown = 0;
-    private boolean dirty = false;
     public int maxCooldown = 200;
+    private boolean dirty = false;
 
     public CannonTileEntity(IWorld world, int x, int y, TileLayer layer) {
         super(world, x, y, layer);

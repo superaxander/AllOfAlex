@@ -58,9 +58,9 @@ public class FillCommand extends Command {
                 return tiles;
             case 6:
                 List<String> states = new ArrayList<>();
-                for(IResourceName resourceName : RockBottomAPI.TILE_STATE_REGISTRY.getUnmodifiable().keySet()) {
+                for (IResourceName resourceName : RockBottomAPI.TILE_STATE_REGISTRY.getUnmodifiable().keySet()) {
                     String name = resourceName.toString();
-                    if(name.startsWith(args[5]))
+                    if (name.startsWith(args[5]))
                         states.add(name.split(";", 2)[1]);
                 }
                 return states;

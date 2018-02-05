@@ -41,6 +41,6 @@ public class PaintBombParticlePacket implements IPacket {
 
     @Override
     public void handle(IGameInstance game, ChannelHandlerContext context) {
-        game.getParticleManager().addParticle(new PaintBombParticle(game.getWorld(), x, game.getWorld().getLowestAirUpwards(TileLayer.MAIN, x, y, true)+.5, Util.RANDOM.nextDouble() - .5, Util.RANDOM.nextDouble(), 100, colour));
+        game.getParticleManager().addParticle(new PaintBombParticle(game.getWorld(), x, game.getWorld().getLowestAirUpwards(TileLayer.MAIN, x, y, true) + .5, Util.RANDOM.nextDouble() - .5, Util.RANDOM.nextDouble(), 100, colour));
     }
 }
