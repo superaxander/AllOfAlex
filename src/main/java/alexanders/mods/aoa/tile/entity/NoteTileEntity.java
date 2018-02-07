@@ -7,9 +7,9 @@ import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 public class NoteTileEntity extends TileEntity {
     public SoundType type = SoundType.PIANO;
-    public Note note = Note.A;
+    public Note note = Note.C;
     public long lastUse = 0;
-    
+
     public NoteTileEntity(IWorld world, int x, int y, TileLayer layer) {
         super(world, x, y, layer);
     }

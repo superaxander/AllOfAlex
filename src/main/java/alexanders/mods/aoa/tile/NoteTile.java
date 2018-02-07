@@ -13,11 +13,13 @@ import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
+import static de.ellpeck.rockbottom.api.RockBottomAPI.getGame;
 import static de.ellpeck.rockbottom.api.RockBottomAPI.getNet;
 
 public class NoteTile extends TileBasic { // Add a jukebox too that can stream audio from files and the internet
     public NoteTile(IResourceName name) {
         super(name);
+        this.setForceDrop();
     }
 
     @Override
@@ -37,7 +39,8 @@ public class NoteTile extends TileBasic { // Add a jukebox too that can stream a
             te.lastUse = System.currentTimeMillis();
             if (getNet().isServer()) {
                 getNet().sendToAllPlayersWithLoadedPosExcept(world, new NotePlayPacket(te.type, te.note, x, y, layer.index()), x, y, player);
-            } else {
+            }
+            if (player == getGame().getPlayer()) {
                 if (Keys.KEY_CHANGE_NOTE.isDown()) {
                     te.note = Util.cycleEnum(te.note);
                 } else if (Keys.KEY_CHANGE_INSTRUMENT.isDown()) {

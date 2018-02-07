@@ -12,7 +12,7 @@ public enum SoundType implements Cycleable<SoundType> {
     SoundType(String name) {
         this.name = createRes(name);
     }
-    
+
     public SoundType[] vals() {
         return values();
     }
