@@ -72,6 +72,7 @@ public class Tiles {
     public static TileBasic sunWhiteBlue;
     public static TileBasic sunYellowBlue;
     public static BombCannonTile bombCannon;
+    public static NoteTile noteTile;
 
     public static void init() {
         itemCannon = new ItemCannonTile(resourceItemCannon);
@@ -146,6 +147,7 @@ public class Tiles {
         sunWhiteBlue = new TileBasic(resourceSunWhiteBlue);
         sunYellowBlue = new TileBasic(resourceSunYellowBlue);
         bombCannon = new BombCannonTile(resourceBombCannon);
+        noteTile = new NoteTile(resourceNoteTile);
 
         itemCannon.register();
         funnelTile.register();
@@ -220,5 +222,6 @@ public class Tiles {
         sunYellowBlue.register();
 
         bombCannon.register();
+        noteTile.register();
     }
 }

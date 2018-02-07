@@ -167,13 +167,16 @@
       },
       "bright_log": "Heldere Boomstam",
       "bright_leaves": "Heldere Bladeren",
-      "bright_sapling": "Heldere Jonge Booom"
+      "bright_sapling": "Heldere Jonge Booom",
+      "note_tile": "Noten tegel"
     },
     "key.": {
       "rotate": "Draaien",
       "set_waypoint": "Zet routepunt",
       "conduit_layer": "Laat leiding laag zien",
-      "open_bomb_launcher_inventory": "Open Bom Lanceerapparaat inventaris"
+      "open_bomb_launcher_inventory": "Open Bom Lanceerapparaat inventaris",
+      "change_note": "Verander noot",
+      "change_instrument": "Verander instrument"
     }
   }
 }

@@ -201,7 +201,8 @@
           }
         },
         "item": "/items/drill_copper_item.png"
-      }
+      },
+      "note_tile": "/tiles/note_tile.png"
     },
     "items.": {
       "magnet": "/items/magnet.png",
@@ -268,6 +269,34 @@
     },
     "ugly_plant.": {
       "1": "/tiles/ugly_plant_1.png"
+    }
+  },
+  "sound.": {
+    "piano.": {
+      "A": "/sounds/piano_a.ogg",
+      "A#": "/sounds/piano_a#.ogg",
+      "B": "/sounds/piano_b.ogg",
+      "C": "/sounds/piano_c.ogg",
+      "C#": "/sounds/piano_c#.ogg",
+      "D": "/sounds/piano_d.ogg",
+      "D#": "/sounds/piano_d#.ogg",
+      "E": "/sounds/piano_e.ogg",
+      "F": "/sounds/piano_f.ogg",
+      "F#": "/sounds/piano_f#.ogg",
+      "G": "/sounds/piano_g.ogg"
+    },
+    "percussion.": {
+      "A": "/sounds/percussion_a.ogg",
+      "A#": "/sounds/percussion_a#.ogg",
+      "B": "/sounds/percussion_b.ogg",
+      "C": "/sounds/percussion_c.ogg",
+      "C#": "/sounds/percussion_c#.ogg",
+      "D": "/sounds/percussion_d.ogg",
+      "D#": "/sounds/percussion_d#.ogg",
+      "E": "/sounds/percussion_e.ogg",
+      "F": "/sounds/percussion_f.ogg",
+      "F#": "/sounds/percussion_f#.ogg",
+      "G": "/sounds/percussion_g.ogg"
     }
   }
 }

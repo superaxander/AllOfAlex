@@ -23,7 +23,7 @@ class CooldownListener : IEventListener<EntityTickEvent> {
                             if (RockBottomAPI.getNet().isServer)
                                 entity.sendPacket(CooldownUpdatePacket(cooldown - 1, i))
                         }
-                }
+                    }
             }
         }
         return result

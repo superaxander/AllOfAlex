@@ -167,13 +167,16 @@
       },
       "bright_log": "Bright Log",
       "bright_leaves": "Bright Leaves",
-      "bright_sapling": "Bright Sapling"
+      "bright_sapling": "Bright Sapling",
+      "note_tile": "Note Tile"
     },
     "key.": {
       "rotate": "Rotieren",
       "set_waypoint": "Set waypoint",
       "conduit_layer": "Show conduit layer",
-      "open_bomb_launcher_inventory": "Open Bomb Launcher inventory"
+      "open_bomb_launcher_inventory": "Open Bomb Launcher inventory",
+      "change_note": "Change note",
+      "change_instrument": "Change instrument"
     }
   }
 }
