@@ -4,22 +4,19 @@ import alexanders.mods.aoa.tile.ItemCannonTile;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.data.set.DataSet;
 import de.ellpeck.rockbottom.api.entity.Entity;
-import de.ellpeck.rockbottom.api.inventory.IInventory;
-import de.ellpeck.rockbottom.api.inventory.Inventory;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
-import de.ellpeck.rockbottom.api.tile.entity.IInventoryHolder;
+import de.ellpeck.rockbottom.api.tile.entity.BasicFilteredInventory;
+import de.ellpeck.rockbottom.api.tile.entity.IFilteredInventory;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
-import de.ellpeck.rockbottom.api.util.Direction;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 import java.util.Collections;
-import java.util.List;
 
 import static de.ellpeck.rockbottom.api.RockBottomAPI.getNet;
 
-public abstract class CannonTileEntity extends TileEntity implements IInventoryHolder {
-    public Inventory inventory = new Inventory(1);
+public abstract class CannonTileEntity extends TileEntity {
+    public BasicFilteredInventory inventory = new BasicFilteredInventory(1, Collections.singletonList(0), Collections.emptyList());
     public int cooldown = 0;
     public int maxCooldown = 200;
     private boolean dirty = false;
@@ -87,18 +84,8 @@ public abstract class CannonTileEntity extends TileEntity implements IInventoryH
     protected abstract Entity createEntity(IWorld world, ItemInstance itemInstance);
 
     @Override
-    public IInventory getInventory() {
+    public IFilteredInventory getTileInventory() {
         return inventory;
-    }
-
-    @Override
-    public List<Integer> getInputSlots(ItemInstance instance, Direction dir) {
-        return Collections.singletonList(0);
-    }
-
-    @Override
-    public List<Integer> getOutputSlots(Direction dir) {
-        return Collections.emptyList();
     }
 }
 

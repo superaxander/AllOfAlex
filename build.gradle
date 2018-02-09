@@ -25,7 +25,7 @@ processSources {
 }
 
 dependencies {
-    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '0.2.1-429'
+    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '0.2.8-461'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 

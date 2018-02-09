@@ -61,7 +61,7 @@ public class Items {
         bombItem.register();
         miningBombItem.register();
         bombLauncherItem.register();
-        paintBombItem.register();
+        //paintBombItem.register();
         magnetItem.register();
         filter.register();
     }

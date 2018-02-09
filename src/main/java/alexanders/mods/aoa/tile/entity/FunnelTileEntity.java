@@ -6,7 +6,7 @@ import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.entity.EntityItem;
 import de.ellpeck.rockbottom.api.inventory.IInventory;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
-import de.ellpeck.rockbottom.api.tile.entity.IInventoryHolder;
+import de.ellpeck.rockbottom.api.tile.entity.IFilteredInventory;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
 import de.ellpeck.rockbottom.api.util.Direction;
 import de.ellpeck.rockbottom.api.util.Util;
@@ -25,8 +25,9 @@ public class FunnelTileEntity extends TileEntity {
 
     private static Triplet<IInventory, List<Integer>, List<Integer>> getInventory(IWorld world, int x, int y, ItemInstance instance, Direction dir) {
         TileEntity te = world.getTileEntity(x, y);
-        if (te instanceof IInventoryHolder) {
-            return new Triplet<>(((IInventoryHolder) te).getInventory(), ((IInventoryHolder) te).getInputSlots(instance, dir), ((IInventoryHolder) te).getOutputSlots(dir));
+        IFilteredInventory inventory = te.getTileInventory();
+        if (inventory != null) {
+            return new Triplet<>(inventory, inventory.getInputSlots(instance, dir), inventory.getOutputSlots(dir));
         }
         return null;
     }

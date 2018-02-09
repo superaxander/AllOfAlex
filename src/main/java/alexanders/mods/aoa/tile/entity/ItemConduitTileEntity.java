@@ -5,7 +5,7 @@ import alexanders.mods.aoa.tile.ConduitConnections;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.data.set.DataSet;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
-import de.ellpeck.rockbottom.api.tile.entity.IInventoryHolder;
+import de.ellpeck.rockbottom.api.tile.entity.IFilteredInventory;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
 import de.ellpeck.rockbottom.api.util.Direction;
 import de.ellpeck.rockbottom.api.util.Pos2;
@@ -33,16 +33,16 @@ public class ItemConduitTileEntity extends TileEntity {
         if (cooldown > 0) {
             cooldown--;
         } else {
-            IInventoryHolder holder = getInventoryHolder();
-            if (holder != null) {
+            IFilteredInventory inv = getConnectedInventory();
+            if (inv != null) {
                 List<ItemConduitTileEntity> network = getNetwork(new ArrayList<>());
                 switch (mode) {
                     case 1:
-                        if (takeHerePutThere(network.stream().filter((it) -> it.mode == 2 || it.mode == 3).collect(Collectors.toList()), holder))
+                        if (takeHerePutThere(network.stream().filter((it) -> it.mode == 2 || it.mode == 3).collect(Collectors.toList()), inv))
                             cooldown = 20;
                         break;
                     case 2:
-                        if (takeTherePutHere(network.stream().filter((it) -> it.mode == 1 || it.mode == 3).collect(Collectors.toList()), holder))
+                        if (takeTherePutHere(network.stream().filter((it) -> it.mode == 1 || it.mode == 3).collect(Collectors.toList()), inv))
                             cooldown = 20;
                         break;
                     default: //TODO: filters
@@ -50,6 +50,11 @@ public class ItemConduitTileEntity extends TileEntity {
                 }
             }
         }
+    }
+
+    private IFilteredInventory getConnectedInventory() {
+        TileEntity te = world.getTileEntity(TileLayer.MAIN, x, y);
+        return te.getTileInventory();
     }
 
     @Override
@@ -75,26 +80,26 @@ public class ItemConduitTileEntity extends TileEntity {
         return cooldown > 0;
     }
 
-    private boolean takeHerePutThere(List<ItemConduitTileEntity> eligable, IInventoryHolder holder) {
-        List<Integer> outputSlots = holder.getOutputSlots(Direction.NONE); //TODO: Support directional inventories
+    private boolean takeHerePutThere(List<ItemConduitTileEntity> eligable, IFilteredInventory inv) {
+        List<Integer> outputSlots = inv.getOutputSlots(Direction.NONE); //TODO: Support directional inventories
         for (Integer i : outputSlots) {
             ItemInstance item;
-            if ((item = holder.getInventory().get(i)) != null) {
+            if ((item = inv.get(i)) != null) {
                 for (ItemConduitTileEntity it : eligable) {
-                    IInventoryHolder otherHolder = it.getInventoryHolder();
-                    if (otherHolder != null) {
-                        List<Integer> inputSlots = otherHolder.getInputSlots(item, Direction.NONE);
+                    IFilteredInventory otherInv = it.getConnectedInventory();
+                    if (otherInv != null) {
+                        List<Integer> inputSlots = otherInv.getInputSlots(item, Direction.NONE);
                         for (Integer i2 : inputSlots) {
                             ItemInstance otherItem;
-                            if ((otherItem = otherHolder.getInventory().get(i2)) != null) {
+                            if ((otherItem = otherInv.get(i2)) != null) {
                                 if (otherItem.isEffectivelyEqual(item)) {
-                                    holder.getInventory().remove(i, 1);
-                                    otherHolder.getInventory().addToSlot(i2, item.copy().setAmount(1), false);
+                                    inv.remove(i, 1);
+                                    otherInv.addToSlot(i2, item.copy().setAmount(1), false);
                                     return true;
                                 }
                             } else {
-                                holder.getInventory().remove(i, 1);
-                                otherHolder.getInventory().addToSlot(i2, item.copy().setAmount(1), false);
+                                inv.remove(i, 1);
+                                otherInv.addToSlot(i2, item.copy().setAmount(1), false);
                                 return true;
                             }
                         }
@@ -105,19 +110,19 @@ public class ItemConduitTileEntity extends TileEntity {
         return false;
     }
 
-    private boolean takeTherePutHere(List<ItemConduitTileEntity> eligable, IInventoryHolder holder) {
-        List<Integer> inputSlots = holder.getOutputSlots(Direction.NONE); //TODO: Support directional inventories
+    private boolean takeTherePutHere(List<ItemConduitTileEntity> eligable, IFilteredInventory inv) {
+        List<Integer> inputSlots = inv.getOutputSlots(Direction.NONE); //TODO: Support directional inventories
         for (int i : inputSlots) {
-            ItemInstance item = holder.getInventory().get(i);
+            ItemInstance item = inv.get(i);
             for (ItemConduitTileEntity it : eligable) {
-                IInventoryHolder otherHolder = it.getInventoryHolder();
-                if (otherHolder != null) {
-                    List<Integer> outputSlots = otherHolder.getOutputSlots(Direction.NONE);
+                IFilteredInventory otherInv = it.getConnectedInventory();
+                if (otherInv != null) {
+                    List<Integer> outputSlots = otherInv.getOutputSlots(Direction.NONE);
                     for (Integer i2 : outputSlots) {
                         ItemInstance otherItem;
-                        if ((otherItem = otherHolder.getInventory().get(i2)) != null && (otherItem.isEffectivelyEqual(item) || item == null)) {
-                            otherHolder.getInventory().remove(i2, 1);
-                            holder.getInventory().addToSlot(i, otherItem.copy().setAmount(1), false);
+                        if ((otherItem = otherInv.get(i2)) != null && (otherItem.isEffectivelyEqual(item) || item == null)) {
+                            otherInv.remove(i2, 1);
+                            inv.addToSlot(i, otherItem.copy().setAmount(1), false);
                             return true;
                         }
                     }
@@ -125,14 +130,6 @@ public class ItemConduitTileEntity extends TileEntity {
             }
         }
         return false;
-    }
-
-    private IInventoryHolder getInventoryHolder() {
-        TileEntity te = world.getTileEntity(TileLayer.MAIN, x, y);
-        if (te instanceof IInventoryHolder) {
-            return (IInventoryHolder) te;
-        }
-        return null;
     }
 
     private List<ItemConduitTileEntity> getNetwork(List<Pos2> exclusions) {
