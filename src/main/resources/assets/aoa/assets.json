@@ -205,6 +205,7 @@
       "note_tile": "/tiles/note_tile.png"
     },
     "items.": {
+      "filter": "/items/filter.png",
       "magnet": "/items/magnet.png",
       "bomb": "/items/bomb.png",
       "mining_bomb": "/items/mining_bomb.png",

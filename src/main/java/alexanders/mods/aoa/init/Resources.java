@@ -114,6 +114,9 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName resourceNoteTile;
     public static IResourceName resourceChangeNoteKey;
     public static IResourceName resourceChangeInstrumentKey;
+    public static IResourceName resourceFilter;
+    public static IResourceName resourceFilterGui;
+    public static IResourceName resourceFilterContainer;
 
     public static void init() {
         resourceDryFarmland = createRes("dry_farmland");
@@ -225,5 +228,8 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         resourceNoteTile = createRes("note_tile");
         resourceChangeNoteKey = createRes("change_note");
         resourceChangeInstrumentKey = createRes("change_instrument");
+        resourceFilter = createRes("filter");
+        resourceFilterGui = createRes("filter_gui");
+        resourceFilterContainer = createRes("filter_container");
     }
 }

@@ -23,6 +23,7 @@ public class Items {
     public static BombLauncherItem bombLauncherItem;
     public static PaintBombItem paintBombItem;
     public static MagnetItem magnetItem;
+    public static FilterItem filter;
 
     public static void init() {
         shearsItem = new ShearsItem(shears);
@@ -43,6 +44,7 @@ public class Items {
         bombLauncherItem = new BombLauncherItem(bombLauncherResource);
         paintBombItem = new PaintBombItem(resourcePaintBomb);
         magnetItem = new MagnetItem(resourceMagnet);
+        filter = new FilterItem(resourceFilter);
         shearsItem.register();
         berryBlue.register();
         berryRed.register();
@@ -61,5 +63,6 @@ public class Items {
         bombLauncherItem.register();
         paintBombItem.register();
         magnetItem.register();
+        filter.register();
     }
 }
