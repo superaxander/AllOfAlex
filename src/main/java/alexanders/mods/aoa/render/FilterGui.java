@@ -10,7 +10,7 @@ import static alexanders.mods.aoa.init.Resources.resourceFilterGui;
 public class FilterGui extends GuiContainer{
 
     public FilterGui(AbstractEntityPlayer player) {
-        super(player, 200, 120);
+        super(player, 180, 140);
     }
 
     @Override
