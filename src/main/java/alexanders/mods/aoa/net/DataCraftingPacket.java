@@ -47,17 +47,19 @@ public class DataCraftingPacket implements IPacket {
         RockBottomAPI.ALL_CONSTRUCTION_RECIPES.get(RockBottomAPI.createRes(NetUtil.readStringFromBuffer(buf)));
         item = new ItemInstance(RockBottomAPI.ITEM_REGISTRY.get(RockBottomAPI.createRes(NetUtil.readStringFromBuffer(buf))), 1, buf.readInt());
         if (buf.readBoolean()) {
-            NetUtil.readSetFromBuffer(item.getOrCreateAdditionalData(), buf);
+            NetUtil.readSetFromBuffer(item.getAdditionalData(), buf);
         }
         uuid = new UUID(buf.readLong(), buf.readLong());
     }
 
     @Override
     public void handle(IGameInstance game, ChannelHandlerContext context) {
-        IWorld world = game.getWorld();
-        AbstractEntityPlayer player = world.getPlayer(uuid);
-        ItemInstance out = recipe.getOutputs().get(0).copy();
-        out.setAdditionalData(item.getAdditionalData());
-        RockBottomAPI.getApiHandler().construct(world, player.x, player.y, player.getInv(), recipe, 1, Collections.singletonList(new ItemUseInfo(item)), itemInstances -> Collections.singletonList(out));
+        if (!(item == null || uuid == null || recipe == null)) {
+            IWorld world = game.getWorld();
+            AbstractEntityPlayer player = world.getPlayer(uuid);
+            ItemInstance out = recipe.getOutputs().get(0).copy();
+            out.setAdditionalData(item.getAdditionalData());
+            //RockBottomAPI.getApiHandler().construct(world, player.x, player.y, player.getInv(), recipe, 1, Collections.singletonList(new ItemUseInfo(item)), itemInstances -> Collections.singletonList(out));
+        }
     }
 }

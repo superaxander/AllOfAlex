@@ -26,14 +26,14 @@ public class DataIngredientComponent extends ComponentIngredient {
     public void renderOverlay(IGameInstance game, IAssetManager manager, IRenderer g, int x, int y) {
         super.renderOverlay(game, manager, g, x, y);
         if(ItemInstance.compare(recipe.currentComponent.selectedIngredient, in, true, true, true)) {
-            g.addEmptyRect(x-1, y-1, 20, 20, Colors.WHITE);
+            g.addEmptyRect(x, y, 14, 14, Colors.WHITE);
         }
     }
 
     @Override
     public boolean onMouseAction(IGameInstance game, int button, float x, float y) {
         if(isMouseOver(game)) {
-            recipe.currentComponent.selectedIngredient = in; 
+            recipe.currentComponent.selectedIngredient = in;
             return true;
         }
         return false;
