@@ -1,23 +1,24 @@
 package alexanders.mods.aoa.tile.entity;
 
+import de.ellpeck.rockbottom.api.data.set.DataSet;
 import de.ellpeck.rockbottom.api.inventory.Inventory;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 
 public class ItemFilter {
     public final ItemInstance[] itemInstances;
-    public final boolean isBlackList;
-    public final boolean ignoreData;
-    public final boolean ignoreMeta;
+    public boolean isBlacklist;
+    public boolean ignoreData;
+    public boolean ignoreMeta;
 
-    public ItemFilter(ItemInstance[] itemInstances, boolean isBlackList, boolean ignoreData, boolean ignoreMeta) {
+    public ItemFilter(ItemInstance[] itemInstances, boolean isBlacklist, boolean ignoreData, boolean ignoreMeta) {
         this.itemInstances = itemInstances;
-        this.isBlackList = isBlackList;
+        this.isBlacklist = isBlacklist;
         this.ignoreData = ignoreData;
         this.ignoreMeta = ignoreMeta;
     }
 
-    public ItemFilter(Inventory inventory, boolean isBlackList, boolean ignoreData, boolean ignoreMeta) {
-        this(getSlots(inventory), isBlackList, ignoreData, ignoreMeta);
+    public ItemFilter(Inventory inventory, boolean isBlacklist, boolean ignoreData, boolean ignoreMeta) {
+        this(getSlots(inventory), isBlacklist, ignoreData, ignoreMeta);
     }
 
     private static ItemInstance[] getSlots(Inventory inventory) {
@@ -34,5 +35,34 @@ public class ItemFilter {
                 return true;
         }
         return false;
+    }
+
+    public void save(DataSet set) {
+        for (int i = 0; i < this.itemInstances.length; i++) {
+            ItemInstance instance = this.itemInstances[i];
+
+            if (instance != null) {
+                DataSet subset = new DataSet();
+                instance.save(subset);
+                set.addDataSet("item_" + i, subset);
+            }
+        }
+        set.addBoolean("isBlacklist", isBlacklist);
+        set.addBoolean("ignoreData", ignoreData);
+        set.addBoolean("ignoreMeta", ignoreMeta);
+    }
+
+    public void load(DataSet set) {
+        for (int i = 0; i < this.itemInstances.length; i++) {
+            DataSet subset = set.getDataSet("item_" + i);
+            if (!subset.isEmpty()) {
+                this.itemInstances[i] = ItemInstance.load(subset);
+            } else {
+                this.itemInstances[i] = null;
+            }
+        }
+        isBlacklist = set.getBoolean("isBlacklist");
+        ignoreData = set.getBoolean("ignoreData");
+        ignoreMeta = set.getBoolean("ignoreMeta");
     }
 }

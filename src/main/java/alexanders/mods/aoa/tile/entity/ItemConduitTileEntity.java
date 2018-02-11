@@ -23,6 +23,7 @@ public class ItemConduitTileEntity extends TileEntity {
     public int cooldown = 0;
     public ItemFilter filter = null;
     private int lastMode = 0;
+    private ItemFilter lastFilter = null;
 
     public ItemConduitTileEntity(IWorld world, int x, int y, TileLayer layer) {
         super(world, x, y, layer);
@@ -63,6 +64,11 @@ public class ItemConduitTileEntity extends TileEntity {
         super.save(set, forSync);
         set.addInt("mode", mode);
         set.addInt("cooldown", cooldown);
+        if(filter != null) {
+            DataSet f = new DataSet();
+            filter.save(f);
+            set.addDataSet("filter", f);
+        }
     }
 
     @Override
@@ -70,12 +76,21 @@ public class ItemConduitTileEntity extends TileEntity {
         super.load(set, forSync);
         mode = set.getInt("mode");
         cooldown = set.getInt("cooldown");
+        if(set.hasKey("filter")) {
+            DataSet f = set.getDataSet("filter");
+            filter = new ItemFilter(new ItemInstance[9], false, false, false);
+            filter.load(f);
+        }
     }
 
     @Override
     protected boolean needsSync() {
         if (mode != lastMode) {
             lastMode = mode;
+            return true;
+        }
+        if(lastFilter != filter){
+            lastFilter = filter;
             return true;
         }
         return cooldown > 0;
@@ -86,7 +101,7 @@ public class ItemConduitTileEntity extends TileEntity {
         for (Integer i : outputSlots) {
             ItemInstance item;
             if ((item = inv.get(i)) != null) {
-                if (filter == null || (filter.isBlackList && !filter.contains(item)) || (!filter.isBlackList && filter.contains(item))) {
+                if (filter == null || (filter.isBlacklist && !filter.contains(item)) || (!filter.isBlacklist && filter.contains(item))) {
                     for (ItemConduitTileEntity it : eligable) {
                         IFilteredInventory otherInv = it.getConnectedInventory();
                         if (otherInv != null) {
@@ -124,7 +139,7 @@ public class ItemConduitTileEntity extends TileEntity {
                     for (Integer i2 : outputSlots) {
                         ItemInstance otherItem;
                         if ((otherItem = otherInv.get(i2)) != null && (otherItem.isEffectivelyEqual(item) || item == null)) {
-                            if (filter == null || (filter.isBlackList && !filter.contains(otherItem)) || (!filter.isBlackList && filter.contains(otherItem))) {
+                            if (filter == null || (filter.isBlacklist && !filter.contains(otherItem)) || (!filter.isBlacklist && filter.contains(otherItem))) {
                                 otherInv.remove(i2, 1);
                                 inv.addToSlot(i, otherItem.copy().setAmount(1), false);
                                 return true;

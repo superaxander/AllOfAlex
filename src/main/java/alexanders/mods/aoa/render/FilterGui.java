@@ -22,7 +22,7 @@ public class FilterGui extends GuiContainer {
         super.init(game);
         components.add(new ComponentFancyToggleButton(this, 34, 0, 16, 16, addData.getBoolean("isBlacklist"), () -> {
             addData.addBoolean("isBlacklist", addData.getBoolean("isBlacklist"));
-            return addData.getBoolean("isBlackList");
+            return addData.getBoolean("isBlacklist");
         }, resourceIsBlacklist));
         components.add(new ComponentFancyToggleButton(this, 34, 17, 16, 16, addData.getBoolean("ignoreData"), () -> {
             addData.addBoolean("ignoreData", addData.getBoolean("ignoreData"));
