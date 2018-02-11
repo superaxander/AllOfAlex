@@ -5,6 +5,12 @@
     "us_english": "/loc/us_english.json"
   },
   "tex.": {
+    "isBlacklist":"/buttons/whitelist.png",
+    "isBlacklist_toggled":"/buttons/blacklist.png",
+    "ignoreData":"/buttons/data.png",
+    "ignoreData_toggled":"/buttons/ignoredata.png",
+    "ignoreMeta":"/buttons/meta.png",
+    "ignoreMeta_toggled":"/buttons/ignoremeta.png",
     "magnet_pulse": {
       "path": "/magnet_pulse.png",
       "should_stitch": false
@@ -119,6 +125,15 @@
       },
       "item_conduit.": {
         "*": "/tiles/item_conduit_none.png",
+        "filtered.": {
+          "*": "/tiles/filtered_item_conduit_none.png",
+          "none": "/tiles/filtered_item_conduit_none.png",
+          "top": "/tiles/filtered_item_conduit_top.png",
+          "top_bottom": "/tiles/filtered_item_conduit_top_bottom.png",
+          "top_right": "/tiles/filtered_item_conduit_top_right.png",
+          "top_right_bottom": "/tiles/filtered_item_conduit_top_right_bottom.png",
+          "top_right_bottom_left": "/tiles/filtered_item_conduit_top_right_bottom_left.png"
+        },
         "none": "/tiles/item_conduit_none.png",
         "top": "/tiles/item_conduit_top.png",
         "top_bottom": "/tiles/item_conduit_top_bottom.png",

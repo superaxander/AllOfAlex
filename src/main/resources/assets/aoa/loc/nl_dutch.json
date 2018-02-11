@@ -168,7 +168,8 @@
       "bright_log": "Heldere Boomstam",
       "bright_leaves": "Heldere Bladeren",
       "bright_sapling": "Heldere Jonge Booom",
-      "note_tile": "Noten tegel"
+      "note_tile": "Noten tegel",
+      "filter": "Filter"
     },
     "key.": {
       "rotate": "Draaien",

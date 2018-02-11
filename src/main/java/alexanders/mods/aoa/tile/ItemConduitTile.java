@@ -2,9 +2,12 @@ package alexanders.mods.aoa.tile;
 
 import alexanders.mods.aoa.Colours;
 import alexanders.mods.aoa.ConduitLayer;
+import alexanders.mods.aoa.init.Keys;
 import alexanders.mods.aoa.item.ItemConduitItemTile;
+import alexanders.mods.aoa.net.RemoveFilterPacket;
 import alexanders.mods.aoa.render.ItemConduitTileRender;
 import alexanders.mods.aoa.tile.entity.ItemConduitTileEntity;
+import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.item.ItemTile;
 import de.ellpeck.rockbottom.api.render.tile.ITileRenderer;
@@ -14,6 +17,8 @@ import de.ellpeck.rockbottom.api.tile.state.TileState;
 import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
+
+import static de.ellpeck.rockbottom.api.RockBottomAPI.getNet;
 
 public class ItemConduitTile extends ColourableTile {
     public static EnumProp<ConduitConnections> CONNECTIONS = new EnumProp<>("connections", ConduitConnections.NONE, ConduitConnections.class);
@@ -35,6 +40,16 @@ public class ItemConduitTile extends ColourableTile {
 
     @Override
     public boolean onInteractWith(IWorld world, int x, int y, TileLayer layer, double mouseX, double mouseY, AbstractEntityPlayer player) {
+        if (!getNet().isServer()) {
+            if (Keys.KEY_REMOVE_FILTER.isDown()) {
+                RemoveFilterPacket packet = new RemoveFilterPacket(x, y);
+                if (getNet().isActive()) {
+                    getNet().sendToServer(packet);
+                } else {
+                    packet.handle(RockBottomAPI.getGame(), null);
+                }
+            }
+        }
         ItemConduitTileEntity te = world.getTileEntity(layer, x, y, ItemConduitTileEntity.class);
         te.mode = (te.mode + 1) % 4;
         return true;

@@ -21,6 +21,7 @@ import static alexanders.mods.aoa.tile.ItemConduitTile.CONNECTIONS;
 public class ItemConduitTileEntity extends TileEntity {
     public int mode = 0; // 0 = connection, 1=input, 2=output, 3=passive
     public int cooldown = 0;
+    public ItemFilter filter = null;
     private int lastMode = 0;
 
     public ItemConduitTileEntity(IWorld world, int x, int y, TileLayer layer) {
@@ -45,7 +46,7 @@ public class ItemConduitTileEntity extends TileEntity {
                         if (takeTherePutHere(network.stream().filter((it) -> it.mode == 1 || it.mode == 3).collect(Collectors.toList()), inv))
                             cooldown = 20;
                         break;
-                    default: //TODO: filters
+                    default:
                         break;
                 }
             }
@@ -85,22 +86,24 @@ public class ItemConduitTileEntity extends TileEntity {
         for (Integer i : outputSlots) {
             ItemInstance item;
             if ((item = inv.get(i)) != null) {
-                for (ItemConduitTileEntity it : eligable) {
-                    IFilteredInventory otherInv = it.getConnectedInventory();
-                    if (otherInv != null) {
-                        List<Integer> inputSlots = otherInv.getInputSlots(item, Direction.NONE);
-                        for (Integer i2 : inputSlots) {
-                            ItemInstance otherItem;
-                            if ((otherItem = otherInv.get(i2)) != null) {
-                                if (otherItem.isEffectivelyEqual(item)) {
+                if (filter == null || (filter.isBlackList && !filter.contains(item)) || (!filter.isBlackList && filter.contains(item))) {
+                    for (ItemConduitTileEntity it : eligable) {
+                        IFilteredInventory otherInv = it.getConnectedInventory();
+                        if (otherInv != null) {
+                            List<Integer> inputSlots = otherInv.getInputSlots(item, Direction.NONE);
+                            for (Integer i2 : inputSlots) {
+                                ItemInstance otherItem;
+                                if ((otherItem = otherInv.get(i2)) != null) {
+                                    if (otherItem.isEffectivelyEqual(item)) {
+                                        inv.remove(i, 1);
+                                        otherInv.addToSlot(i2, item.copy().setAmount(1), false);
+                                        return true;
+                                    }
+                                } else {
                                     inv.remove(i, 1);
                                     otherInv.addToSlot(i2, item.copy().setAmount(1), false);
                                     return true;
                                 }
-                            } else {
-                                inv.remove(i, 1);
-                                otherInv.addToSlot(i2, item.copy().setAmount(1), false);
-                                return true;
                             }
                         }
                     }
@@ -121,9 +124,11 @@ public class ItemConduitTileEntity extends TileEntity {
                     for (Integer i2 : outputSlots) {
                         ItemInstance otherItem;
                         if ((otherItem = otherInv.get(i2)) != null && (otherItem.isEffectivelyEqual(item) || item == null)) {
-                            otherInv.remove(i2, 1);
-                            inv.addToSlot(i, otherItem.copy().setAmount(1), false);
-                            return true;
+                            if (filter == null || (filter.isBlackList && !filter.contains(otherItem)) || (!filter.isBlackList && filter.contains(otherItem))) {
+                                otherInv.remove(i2, 1);
+                                inv.addToSlot(i, otherItem.copy().setAmount(1), false);
+                                return true;
+                            }
                         }
                     }
                 }
@@ -132,7 +137,7 @@ public class ItemConduitTileEntity extends TileEntity {
         return false;
     }
 
-    private List<ItemConduitTileEntity> getNetwork(List<Pos2> exclusions) {
+    private List<ItemConduitTileEntity> getNetwork(List<Pos2> exclusions) { //TODO: Cache this
         ConduitConnections conduitConnections = world.getState(layer, x, y).get(CONNECTIONS);
         ArrayList<ItemConduitTileEntity> network = new ArrayList<>();
         exclusions.add(new Pos2(x, y));

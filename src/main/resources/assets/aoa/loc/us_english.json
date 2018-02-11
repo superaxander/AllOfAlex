@@ -168,7 +168,8 @@
       "bright_log": "Bright Log",
       "bright_leaves": "Bright Leaves",
       "bright_sapling": "Bright Sapling",
-      "note_tile": "Note Tile"
+      "note_tile": "Note Tile",
+      "filter": "Filter"
     },
     "key.": {
       "rotate": "Rotate",

@@ -12,6 +12,7 @@ public class Keys {
     public static Keybind KEY_OPEN_BOMB_LAUNCHER_INVENTORY;
     public static Keybind KEY_CHANGE_NOTE;
     public static Keybind KEY_CHANGE_INSTRUMENT;
+    public static Keybind KEY_REMOVE_FILTER;
 
     public static void init() {
         KEY_ROTATE = new Keybind(resourceRotateKey, GLFW_KEY_LEFT_CONTROL, false);
@@ -20,9 +21,11 @@ public class Keys {
         KEY_OPEN_BOMB_LAUNCHER_INVENTORY = new Keybind(resourceOpenBombLauncherInventoryKey, GLFW_KEY_LEFT_SHIFT, false);
         KEY_CHANGE_NOTE = new Keybind(resourceChangeNoteKey, GLFW_KEY_LEFT_CONTROL, false);
         KEY_CHANGE_INSTRUMENT = new Keybind(resourceChangeInstrumentKey, GLFW_KEY_LEFT_ALT, false);
+        KEY_REMOVE_FILTER = new Keybind(resourceRemoveFilterKey, GLFW_KEY_LEFT_CONTROL, false);
         KEY_ROTATE.register();
         KEY_SET_WAYPOINT.register();
         KEY_CONDUIT_LAYER.register();
         KEY_OPEN_BOMB_LAUNCHER_INVENTORY.register();
+        KEY_REMOVE_FILTER.register();
     }
 }

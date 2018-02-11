@@ -117,6 +117,10 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName resourceFilter;
     public static IResourceName resourceFilterGui;
     public static IResourceName resourceFilterContainer;
+    public static IResourceName resourceRemoveFilterKey;
+    public static IResourceName resourceIsBlacklist;
+    public static IResourceName resourceIgnoreData;
+    public static IResourceName resourceIgnoreMeta;
 
     public static void init() {
         resourceDryFarmland = createRes("dry_farmland");
@@ -231,5 +235,9 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         resourceFilter = createRes("filter");
         resourceFilterGui = createRes("filter_gui");
         resourceFilterContainer = createRes("filter_container");
+        resourceRemoveFilterKey = createRes("remove_filter");
+        resourceIsBlacklist = createRes("isBlacklist");
+        resourceIgnoreData = createRes("ignoreData");
+        resourceIgnoreMeta = createRes("ignoreMeta");
     }
 }
