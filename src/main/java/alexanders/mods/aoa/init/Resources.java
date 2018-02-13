@@ -121,6 +121,10 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
     public static IResourceName resourceIsBlacklist;
     public static IResourceName resourceIgnoreData;
     public static IResourceName resourceIgnoreMeta;
+    public static IResourceName resourceJukebox;
+    public static IResourceName resourceCycleJukeboxKey;
+    public static IResourceName resourceJukeboxGui;
+    public static IResourceName resourceConfigGui;
 
     public static void init() {
         resourceDryFarmland = createRes("dry_farmland");
@@ -239,5 +243,9 @@ public class Resources { // TODO: Implement this for other parts aswell? Remove 
         resourceIsBlacklist = createRes("isBlacklist");
         resourceIgnoreData = createRes("ignoreData");
         resourceIgnoreMeta = createRes("ignoreMeta");
+        resourceJukebox = createRes("jukebox");
+        resourceCycleJukeboxKey = createRes("cycle_jukebox");
+        resourceJukeboxGui = createRes("jukebox_gui");
+        resourceConfigGui = createRes("config_gui");
     }
 }

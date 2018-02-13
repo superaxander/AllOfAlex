@@ -26,7 +26,9 @@ processSources {
 
 dependencies {
     compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '0.2.8-461'
+    compile 'se.michaelthelin.spotify:spotify-web-api-java:2.0.0-RC2'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile group: 'org.bytedeco', name: 'javacv-platform', version: '1.4'
 }
 
 jar {

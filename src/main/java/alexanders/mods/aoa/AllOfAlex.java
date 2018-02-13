@@ -5,6 +5,7 @@ import alexanders.mods.aoa.gen.PearlOreGen;
 import alexanders.mods.aoa.gen.SlimePoolGen;
 import alexanders.mods.aoa.gen.VariantGen;
 import alexanders.mods.aoa.init.*;
+import alexanders.mods.aoa.render.ConfigGui;
 import de.ellpeck.rockbottom.api.IApiHandler;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
@@ -66,7 +67,7 @@ public class AllOfAlex implements IMod {
 
     @Override
     public Class<? extends Gui> getModGuiClass() {
-        return null;
+        return ConfigGui.class;
     }
 
     @Override

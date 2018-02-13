@@ -1,8 +1,17 @@
 package alexanders.mods.aoa.init;
 
+import alexanders.mods.aoa.JukeboxRunner;
 import alexanders.mods.aoa.tile.*;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import de.ellpeck.rockbottom.api.tile.TileBasic;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Paths;
+
+import static alexanders.mods.aoa.JukeboxRunner.spotify;
 import static alexanders.mods.aoa.init.Resources.*;
 
 public class Tiles {
@@ -73,6 +82,7 @@ public class Tiles {
     public static TileBasic sunYellowBlue;
     public static BombCannonTile bombCannon;
     public static NoteTile noteTile;
+    public static JukeboxTile jukebox;
 
     public static void init() {
         itemCannon = new ItemCannonTile(resourceItemCannon);
@@ -148,6 +158,7 @@ public class Tiles {
         sunYellowBlue = new TileBasic(resourceSunYellowBlue);
         bombCannon = new BombCannonTile(resourceBombCannon);
         noteTile = new NoteTile(resourceNoteTile);
+        jukebox = new JukeboxTile(resourceJukebox);
 
         itemCannon.register();
         funnelTile.register();
@@ -223,5 +234,23 @@ public class Tiles {
 
         bombCannon.register();
         noteTile.register();
+        boolean failed = false;
+        if (spotify.getAccessToken() == null) {
+            File file = Paths.get(".", "rockbottom", "aoa.dat").toFile();
+            if (file.exists()) {
+                try {
+                    BufferedReader reader = new BufferedReader(new FileReader(file));
+                    String refreshToken = reader.readLine();
+                    spotify.setRefreshToken(refreshToken);
+                    JukeboxRunner.refreshToken();
+                } catch (IOException | SpotifyWebApiException e) {
+                    e.printStackTrace();
+                    failed = true;
+                }
+            }
+        }
+        if (!failed) {
+            jukebox.register();
+        }
     }
 }
