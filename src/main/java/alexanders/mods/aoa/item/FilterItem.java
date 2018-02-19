@@ -31,7 +31,7 @@ public class FilterItem extends ItemBasic {
 
         if (world.getState(layer, x, y).getTile() == Tiles.itemConduit) {
             if (!getNet().isServer() && Keys.KEY_REMOVE_FILTER.isDown())
-                return false;
+                return true;
             ItemConduitTileEntity te = world.getTileEntity(layer, x, y, ItemConduitTileEntity.class);
             te.filter = new ItemFilter(inv, addData.getBoolean("isBlacklist"), addData.getBoolean("ignoreData"), addData.getBoolean("ignoreMeta"));
         } else {

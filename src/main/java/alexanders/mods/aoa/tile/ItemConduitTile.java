@@ -2,6 +2,7 @@ package alexanders.mods.aoa.tile;
 
 import alexanders.mods.aoa.Colours;
 import alexanders.mods.aoa.ConduitLayer;
+import alexanders.mods.aoa.init.Items;
 import alexanders.mods.aoa.init.Keys;
 import alexanders.mods.aoa.item.ItemConduitItemTile;
 import alexanders.mods.aoa.net.RemoveFilterPacket;
@@ -9,6 +10,7 @@ import alexanders.mods.aoa.render.ItemConduitTileRender;
 import alexanders.mods.aoa.tile.entity.ItemConduitTileEntity;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
+import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.item.ItemTile;
 import de.ellpeck.rockbottom.api.render.tile.ITileRenderer;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
@@ -21,6 +23,8 @@ import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 import static de.ellpeck.rockbottom.api.RockBottomAPI.getNet;
 
 public class ItemConduitTile extends ColourableTile {
+    private long lastUse = 0;
+    
     public static EnumProp<ConduitConnections> CONNECTIONS = new EnumProp<>("connections", ConduitConnections.NONE, ConduitConnections.class);
 
     public ItemConduitTile(IResourceName name) {
@@ -40,18 +44,27 @@ public class ItemConduitTile extends ColourableTile {
 
     @Override
     public boolean onInteractWith(IWorld world, int x, int y, TileLayer layer, double mouseX, double mouseY, AbstractEntityPlayer player) {
-        if (!getNet().isServer()) {
+        ItemConduitTileEntity te = world.getTileEntity(layer, x, y, ItemConduitTileEntity.class);
+        if (!getNet().isServer() || world.isLocalPlayer(player)) {
             if (Keys.KEY_REMOVE_FILTER.isDown()) {
                 RemoveFilterPacket packet = new RemoveFilterPacket(x, y);
-                if (getNet().isActive()) {
+                if (getNet().isActive() && !getNet().isServer()) {
                     getNet().sendToServer(packet);
                 } else {
                     packet.handle(RockBottomAPI.getGame(), null);
                 }
             }
         }
-        ItemConduitTileEntity te = world.getTileEntity(layer, x, y, ItemConduitTileEntity.class);
-        te.mode = (te.mode + 1) % 4;
+        ItemInstance instance;
+        if ((instance = player.getInv().get(player.getSelectedSlot())) != null && instance.getItem() == Items.filter && te.filter == null) {
+            return false;
+        }
+        
+        long now = System.currentTimeMillis();
+        if(now - lastUse > 150) {
+            lastUse = now;
+            te.mode = (te.mode + 1) % 4;
+        }
         return true;
     }
 
