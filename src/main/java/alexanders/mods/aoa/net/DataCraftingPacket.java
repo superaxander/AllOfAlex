@@ -59,7 +59,7 @@ public class DataCraftingPacket implements IPacket {
             AbstractEntityPlayer player = world.getPlayer(uuid);
             ItemInstance out = recipe.getOutputs().get(0).copy();
             out.setAdditionalData(item.getAdditionalData());
-            //RockBottomAPI.getApiHandler().construct(world, player.x, player.y, player.getInv(), recipe, 1, Collections.singletonList(new ItemUseInfo(item)), itemInstances -> Collections.singletonList(out));
+            RockBottomAPI.getApiHandler().construct(world, player.x, player.y, player.getInv(), recipe, 1, Collections.singletonList(new ItemUseInfo(item)), itemInstances -> Collections.singletonList(out));
         }
     }
 }
