@@ -178,6 +178,9 @@
       "open_bomb_launcher_inventory": "Open Bomb Launcher inventory",
       "change_note": "Change note",
       "change_instrument": "Change instrument"
+    },
+    "layer.": {
+      "conduit": "Conduit"
     }
   }
 }

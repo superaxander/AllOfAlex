@@ -234,6 +234,7 @@ public class Tiles {
 
         bombCannon.register();
         noteTile.register();
+        /*
         boolean failed = false;
         if (spotify.getAccessToken() == null) {
             File file = Paths.get(".", "rockbottom", "aoa.dat").toFile();
@@ -251,6 +252,6 @@ public class Tiles {
         }
         if (!failed) {
             jukebox.register();
-        }
+        }*/
     }
 }

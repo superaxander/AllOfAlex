@@ -66,6 +66,9 @@ public class JukeboxRunner implements Runnable {
     }
 
     public static void sync(String url, long playTime) {
+        if(playing == null) {
+            start(url);
+        }
         if (url.equals(playing)) {
             try {
                 long progress = spotify.getInformationAboutUsersCurrentPlayback().build().execute().getProgress_ms().longValue();
@@ -170,7 +173,8 @@ public class JukeboxRunner implements Runnable {
                 httpCon.getOutputStream());
         out.write(content);
         out.close();
-        httpCon.getInputStream();
+        InputStream stream = httpCon.getInputStream();
         AllOfAlex.instance.logger.config("Got response code: " + httpCon.getResponseCode());
+        stream.close();
     }
 }

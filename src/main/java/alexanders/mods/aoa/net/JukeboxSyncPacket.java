@@ -12,8 +12,10 @@ import java.io.IOException;
 public class JukeboxSyncPacket implements IPacket {
     private String url;
     private long playTime;
-    
-    public JukeboxSyncPacket(){}
+
+    public JukeboxSyncPacket() {
+    }
+
     public JukeboxSyncPacket(String url, long playTime) {
         this.url = url;
         this.playTime = playTime;
@@ -21,13 +23,21 @@ public class JukeboxSyncPacket implements IPacket {
 
     @Override
     public void toBuffer(ByteBuf buf) throws IOException {
-        NetUtil.writeStringToBuffer(url, buf);
+        if (url == null)
+            buf.writeBoolean(false);
+        else {
+            buf.writeBoolean(true);
+            NetUtil.writeStringToBuffer(url, buf);
+        }
         buf.writeLong(playTime);
     }
 
     @Override
     public void fromBuffer(ByteBuf buf) throws IOException {
-        url = NetUtil.readStringFromBuffer(buf);
+        if (buf.readBoolean())
+            url = NetUtil.readStringFromBuffer(buf);
+        else
+            url = null;
         playTime = buf.readLong();
     }
 

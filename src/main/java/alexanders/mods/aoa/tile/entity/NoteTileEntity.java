@@ -27,4 +27,9 @@ public class NoteTileEntity extends TileEntity {
         type = SoundType.values()[set.getInt("type")];
         note = Note.values()[set.getInt("note")];
     }
+
+    @Override
+    public boolean doesTick() {
+        return false;
+    }
 }

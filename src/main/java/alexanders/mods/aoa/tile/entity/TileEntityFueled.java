@@ -113,4 +113,9 @@ public abstract class TileEntityFueled extends TileEntity {
         this.coalTime = set.getInt("coal");
         this.maxCoalTime = set.getInt("max_coal");
     }
+
+    @Override
+    public boolean doesTick() {
+        return true;
+    }
 }

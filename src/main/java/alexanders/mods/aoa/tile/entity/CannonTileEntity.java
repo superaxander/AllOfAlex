@@ -87,5 +87,10 @@ public abstract class CannonTileEntity extends TileEntity {
     public IFilteredInventory getTileInventory() {
         return inventory;
     }
+
+    @Override
+    public boolean doesTick() {
+        return true;
+    }
 }
 

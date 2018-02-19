@@ -9,6 +9,8 @@ import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
 class PhantomTileEntity(world: IWorld, x: Int, y: Int, layer: TileLayer) : TileEntity(world, x, y, layer) {
+    override fun doesTick() = true
+
     var timeExisted = 0
 
     override fun save(set: DataSet, forSync: Boolean) {

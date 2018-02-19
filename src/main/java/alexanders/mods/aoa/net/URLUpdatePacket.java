@@ -1,36 +1,46 @@
 package alexanders.mods.aoa.net;
 
-import alexanders.mods.aoa.JukeboxRunner;
+import alexanders.mods.aoa.tile.entity.JukeboxTileEntity;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.net.NetUtil;
 import de.ellpeck.rockbottom.api.net.packet.IPacket;
+import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.io.IOException;
 
-public class JukeboxStopPacket implements IPacket {
+public class URLUpdatePacket implements IPacket {
+    private TileLayer layer;
+    private int x;
+    private int y;
     private String url;
 
-    public JukeboxStopPacket() {
+    public URLUpdatePacket() {
     }
 
-    public JukeboxStopPacket(String url) {
+    public URLUpdatePacket(TileLayer layer, int x, int y, String url) {
+        this.layer = layer;
+        this.x = x;
+        this.y = y;
         this.url = url;
     }
 
     @Override
     public void toBuffer(ByteBuf buf) throws IOException {
-        if (url == null)
-            buf.writeBoolean(false);
-        else {
-            buf.writeBoolean(true);
+        buf.writeInt(layer.index());
+        buf.writeInt(x);
+        buf.writeInt(y);
+        buf.writeBoolean(url != null);
+        if (url != null)
             NetUtil.writeStringToBuffer(url, buf);
-        }
     }
 
     @Override
     public void fromBuffer(ByteBuf buf) throws IOException {
+        layer = TileLayer.getAllLayers().get(buf.readInt());
+        x = buf.readInt();
+        y = buf.readInt();
         if (buf.readBoolean())
             url = NetUtil.readStringFromBuffer(buf);
         else
@@ -39,6 +49,6 @@ public class JukeboxStopPacket implements IPacket {
 
     @Override
     public void handle(IGameInstance game, ChannelHandlerContext context) {
-        JukeboxRunner.stop(url);
+        game.getWorld().getTileEntity(layer, x, y, JukeboxTileEntity.class).url = url;
     }
 }

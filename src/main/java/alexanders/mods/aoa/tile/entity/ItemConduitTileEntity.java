@@ -96,6 +96,11 @@ public class ItemConduitTileEntity extends TileEntity {
         return cooldown > 0;
     }
 
+    @Override
+    public boolean doesTick() {
+        return true;
+    }
+
     private boolean takeHerePutThere(List<ItemConduitTileEntity> eligable, IFilteredInventory inv) {
         List<Integer> outputSlots = inv.getOutputSlots(Direction.NONE); //TODO: Support directional inventories
         for (Integer i : outputSlots) {

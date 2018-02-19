@@ -27,6 +27,11 @@ public class AssimilatorTileEntity extends TileEntity {
     }
 
     @Override
+    public boolean doesTick() {
+        return true;
+    }
+
+    @Override
     public void update(IGameInstance game) {
         super.update(game);
         if (progress > 0) {

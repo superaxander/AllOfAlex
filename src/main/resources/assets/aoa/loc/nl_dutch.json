@@ -178,6 +178,9 @@
       "open_bomb_launcher_inventory": "Open Bom Lanceerapparaat inventaris",
       "change_note": "Verander noot",
       "change_instrument": "Verander instrument"
+    },
+    "layer.": {
+      "conduit": "Leiding"
     }
   }
 }

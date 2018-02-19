@@ -21,12 +21,20 @@ public class JukeboxStartPacket implements IPacket {
 
     @Override
     public void toBuffer(ByteBuf buf) throws IOException {
-        NetUtil.writeStringToBuffer(url, buf);
+        if (url == null)
+            buf.writeBoolean(false);
+        else {
+            buf.writeBoolean(true);
+            NetUtil.writeStringToBuffer(url, buf);
+        }
     }
 
     @Override
     public void fromBuffer(ByteBuf buf) throws IOException {
-        url = NetUtil.readStringFromBuffer(buf);
+        if (buf.readBoolean())
+            url = NetUtil.readStringFromBuffer(buf);
+        else
+            url = null;
     }
 
     @Override

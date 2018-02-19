@@ -108,6 +108,11 @@ public class FunnelTileEntity extends TileEntity {
         }
     }
 
+    @Override
+    public boolean doesTick() {
+        return true;
+    }
+
     private ItemInstance addExistingFirstConnectedTile(ItemInstance item) {
         Triplet<IInventory, List<Integer>, List<Integer>> triplet = null;
         switch (world.getState(x, y).get(FunnelTile.direction)) {

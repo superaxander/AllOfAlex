@@ -44,4 +44,9 @@ public class AssimilatedTileEntity extends TileEntity {
                 bb = new BoundBox(set.getDouble("minX"), set.getDouble("minY"), set.getDouble("maxX"), set.getDouble("maxY"));
         }
     }
+
+    @Override
+    public boolean doesTick() {
+        return false;
+    }
 }

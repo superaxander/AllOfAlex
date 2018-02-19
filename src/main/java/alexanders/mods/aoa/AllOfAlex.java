@@ -47,7 +47,7 @@ public class AllOfAlex implements IMod {
 
     @Override
     public String getVersion() {
-        return "0.7";
+        return "0.8";
     }
 
     @Override
@@ -67,7 +67,7 @@ public class AllOfAlex implements IMod {
 
     @Override
     public Class<? extends Gui> getModGuiClass() {
-        return ConfigGui.class;
+        return null;//ConfigGui.class;
     }
 
     @Override

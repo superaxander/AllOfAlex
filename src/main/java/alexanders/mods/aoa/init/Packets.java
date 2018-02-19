@@ -19,5 +19,7 @@ public class Packets {
         PACKET_REGISTRY.register(PACKET_REGISTRY.getNextFreeId(), RemoveFilterPacket.class);
         PACKET_REGISTRY.register(PACKET_REGISTRY.getNextFreeId(), JukeboxStartPacket.class);
         PACKET_REGISTRY.register(PACKET_REGISTRY.getNextFreeId(), JukeboxStopPacket.class);
+        PACKET_REGISTRY.register(PACKET_REGISTRY.getNextFreeId(), JukeboxSyncPacket.class);
+        PACKET_REGISTRY.register(PACKET_REGISTRY.getNextFreeId(), URLUpdatePacket.class);
     }
 }

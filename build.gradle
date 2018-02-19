@@ -16,23 +16,26 @@ buildscript {
 
 apply plugin: 'kotlin'
 
-sourceSets.main {
-    java.setOutputDir(new File("build/classes/main"))
-}
-
 processSources {
     replace("VERSION", version)
 }
 
+configurations {
+    provided
+    // Make compile extend from our provided configuration so that things added to bundled end up on the compile classpath
+    compile.extendsFrom(provided)
+}
+
 dependencies {
-    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '0.2.8-461'
-    compile 'se.michaelthelin.spotify:spotify-web-api-java:2.0.0-RC2'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    compile group: 'org.bytedeco', name: 'javacv-platform', version: '1.4'
+    compile group: 'de.ellpeck.rockbottom', name: 'RockBottomAPI', version: '0.2.11-476'
+    provided 'se.michaelthelin.spotify:spotify-web-api-java:2.0.0-RC2'
+    provided "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    //compile group: 'org.bytedeco', name: 'javacv-platform', version: '1.4'
 }
 
 jar {
-    from { configurations.compile.filter{it.name.contains("kotlin")}collect { it.isDirectory() ? it : zipTree(it) } }
+    from configurations.provided.asFileTree.files.collect { zipTree(it) }
+    //from { configurations.compile.filter{it.name.contains("kotlin") || it.name.contains("spotify") || it.name.contains("nv-i18n") || it.name.contains("mockito-all") || it.name.contains("httpclient-cache")}collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
 compileKotlin {
