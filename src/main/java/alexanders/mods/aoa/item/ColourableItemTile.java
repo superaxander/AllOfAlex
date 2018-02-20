@@ -14,4 +14,9 @@ public class ColourableItemTile extends ItemTile {
     public IResourceName getUnlocalizedName(ItemInstance instance) {
         return super.getUnlocalizedName(instance).addSuffix("." + Colours.get(instance.getMeta()).name().toLowerCase());
     }
+
+    @Override
+    public int getHighestPossibleMeta() {
+        return Colours.values().length - 1;
+    }
 }
