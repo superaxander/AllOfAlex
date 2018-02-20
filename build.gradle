@@ -1,5 +1,5 @@
 group 'alexanders.mods.aoa'
-version '0.8.1'
+version '0.8.2'
 
 apply from: "https://github.com/RockBottomGame/Gradle/raw/master/buildscript.gradle"
 

@@ -47,12 +47,12 @@ public class AllOfAlex implements IMod {
 
     @Override
     public String getVersion() {
-        return "0.8.1";
+        return "0.8.2";
     }
 
     @Override
     public String getResourceLocation() {
-        return "/assets/" + getId();
+        return "assets/" + getId();
     }
 
     @Override
