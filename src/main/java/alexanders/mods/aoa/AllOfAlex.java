@@ -5,7 +5,6 @@ import alexanders.mods.aoa.gen.PearlOreGen;
 import alexanders.mods.aoa.gen.SlimePoolGen;
 import alexanders.mods.aoa.gen.VariantGen;
 import alexanders.mods.aoa.init.*;
-import alexanders.mods.aoa.render.ConfigGui;
 import de.ellpeck.rockbottom.api.IApiHandler;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
@@ -14,7 +13,7 @@ import de.ellpeck.rockbottom.api.event.IEventHandler;
 import de.ellpeck.rockbottom.api.gui.Gui;
 import de.ellpeck.rockbottom.api.mod.IMod;
 import de.ellpeck.rockbottom.api.util.Colors;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 import java.util.logging.Logger;
 
@@ -31,8 +30,8 @@ public class AllOfAlex implements IMod {
         instance = this;
     }
 
-    public static IResourceName createRes(String name) {
-        return RockBottomAPI.createRes(instance, name);
+    public static ResourceName createRes(String name) {
+        return new ResourceName(instance, name);
     }
 
     @Override

@@ -33,8 +33,7 @@ public class CannonRightClickPacket implements IPacket {
 
     @Override
     public void toBuffer(ByteBuf buf) {
-        if (player == null || layer == null)
-            throw new IllegalStateException("Player or layer not defined");
+        if (player == null || layer == null) throw new IllegalStateException("Player or layer not defined");
         buf.writeLong(player.getMostSignificantBits());
         buf.writeLong(player.getLeastSignificantBits());
         buf.writeBoolean(doRotate);
@@ -57,9 +56,7 @@ public class CannonRightClickPacket implements IPacket {
     @Override
     public void handle(IGameInstance game, ChannelHandlerContext context) {
         IWorld world = game.getWorld();
-        if (isBombVariant)
-            Tiles.bombCannon.onRightClick(world, x, y, layer, doRotate, world.getPlayer(player));
-        else
-            Tiles.itemCannon.onRightClick(world, x, y, layer, doRotate, world.getPlayer(player));
+        if (isBombVariant) Tiles.bombCannon.onRightClick(world, x, y, layer, doRotate, world.getPlayer(player));
+        else Tiles.itemCannon.onRightClick(world, x, y, layer, doRotate, world.getPlayer(player));
     }
 }

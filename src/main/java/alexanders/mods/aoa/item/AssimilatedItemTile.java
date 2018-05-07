@@ -1,11 +1,11 @@
 package alexanders.mods.aoa.item;
 
 import de.ellpeck.rockbottom.api.item.ItemInstance;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 public class AssimilatedItemTile extends ColourableItemTile {
 
-    public AssimilatedItemTile(IResourceName name) {
+    public AssimilatedItemTile(ResourceName name) {
         super(name);
     }
 

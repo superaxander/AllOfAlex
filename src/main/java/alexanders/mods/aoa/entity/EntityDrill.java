@@ -12,34 +12,30 @@ import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.render.entity.IEntityRenderer;
 import de.ellpeck.rockbottom.api.tile.Tile;
-import de.ellpeck.rockbottom.api.util.BoundBox;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 import java.util.List;
 
-import static de.ellpeck.rockbottom.api.RockBottomAPI.createRes;
-
 public class EntityDrill extends Entity {
-    private static BoundBox bb = new BoundBox(0, 0, 3, 4);
-    public IResourceName name;
+    public ResourceName name;
     private DrillRenderer renderer;
     private TileEntityDrill tileEntity;
     private float breakProgress;
 
-    public EntityDrill(IWorld world, IResourceName name, int x, int y) {
+    public EntityDrill(IWorld world, ResourceName name, int x, int y) {
         super(world);
         renderer = new DrillRenderer(name.addSuffix(".active"));
         this.name = name;
         tileEntity = (TileEntityDrill) world.getTileEntity(x + 1, y);
-        if (tileEntity == null)
-            tileEntity = new TileEntityDrill(world, 0, 0, TileLayer.MAIN);
+        if (tileEntity == null) tileEntity = new TileEntityDrill(world, 0, 0, TileLayer.MAIN);
         tileEntity.isContained = true;
         tileEntity.entity = this;
         world.removeTileEntity(TileLayer.MAIN, x + 1, y);
         this.setPos(x, y);
         this.breakProgress = 0;
+        this.currentBounds.set(0, 0, 3, 4);
     }
 
     public EntityDrill(IWorld world) {
@@ -47,12 +43,6 @@ public class EntityDrill extends Entity {
         tileEntity = new TileEntityDrill(world, 0, 0, TileLayer.MAIN);
         tileEntity.isContained = true;
         tileEntity.entity = this;
-    }
-
-
-    @Override
-    public BoundBox getBoundingBox() {
-        return bb;
     }
 
     @Override
@@ -68,7 +58,7 @@ public class EntityDrill extends Entity {
     @Override
     public void load(DataSet set) {
         super.load(set);
-        name = createRes(set.getString("resourceName"));
+        name = new ResourceName(set.getString("resourceName"));
         renderer = new DrillRenderer(name.addSuffix(".active"));
         tileEntity = new TileEntityDrill(world, 0, 0, TileLayer.MAIN); // The location doesn't matter since we update when we stop moving
         tileEntity.isContained = true;
@@ -89,24 +79,20 @@ public class EntityDrill extends Entity {
                     int x2 = (int) (this.x + .5 * (this.x < 0 ? -1 : 1)) + x;
                     int y2 = (int) Math.round(this.y) - 1;
                     Tile tile = world.getState(TileLayer.MAIN, x2, y2).getTile();
-                    if (tile.isAir())
-                        continue;
+                    if (tile.isAir()) continue;
                     if ((breakProgress += tileEntity.tilesPerTick) >= 1f) {
                         breakProgress -= 1f;
 
                         if (canMineTile(y2, tile.getHardness(world, x2, y2, TileLayer.MAIN))) {
                             tile.doBreak(world, x2, y2, TileLayer.MAIN, null, false, false);
                             List<ItemInstance> drops = tile.getDrops(world, x2, y2, TileLayer.MAIN, null);
-                            if (drops != null)
-                                drops.forEach(drop -> {
-                                    if (drop != null) {
-                                        if (tileEntity.fuelInventory.get(0) != null)
-                                            if (drop.getItem() == tileEntity.fuelInventory.get(0).getItem())
-                                                drop = tileEntity.fuelInventory.add(drop, true);
-                                        if (drop != null)
-                                            tileEntity.inventory.add(drop, false);
-                                    }
-                                });
+                            if (drops != null) drops.forEach(drop -> {
+                                if (drop != null) {
+                                    if (tileEntity.fuelInventory.get(0) != null)
+                                        if (drop.getItem() == tileEntity.fuelInventory.get(0).getItem()) drop = tileEntity.fuelInventory.add(drop, true);
+                                    if (drop != null) tileEntity.inventory.add(drop, false);
+                                }
+                            });
                         }
                     }
                 }

@@ -26,8 +26,7 @@ public class DataConstructComponent extends ComponentConstruct {
 
     @Override
     public void render(IGameInstance game, IAssetManager manager, IRenderer g, int x, int y) {
-        if (selectedIngredient == null)
-            super.render(game, manager, g, x, y);
+        if (selectedIngredient == null) super.render(game, manager, g, x, y);
         else {
             ItemInstance outItem = dataRecipe.output.copy();
             outItem.setAdditionalData(selectedIngredient.getAdditionalData());

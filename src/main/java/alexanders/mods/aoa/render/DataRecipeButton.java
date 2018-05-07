@@ -10,14 +10,14 @@ import de.ellpeck.rockbottom.api.gui.component.ComponentButton;
 import de.ellpeck.rockbottom.api.inventory.IInventory;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.util.Colors;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 import java.util.ArrayList;
 
 public class DataRecipeButton extends ComponentButton {
     private static final int IMPOSSIBLE = Colors.rgb(1.0F, 1.0F, 1.0F, 0.5F);
-    private static final IResourceName constructs = RockBottomAPI.createInternalRes("info.constructs");
-    private static final IResourceName uses = RockBottomAPI.createInternalRes("info.uses");
+    private static final ResourceName constructs = ResourceName.intern("info.constructs");
+    private static final ResourceName uses = ResourceName.intern("info.uses");
     private final IInventory inventory;
     private final ItemInstance input;
     private final ItemInstance output;
@@ -53,9 +53,8 @@ public class DataRecipeButton extends ComponentButton {
         int empty = -1;
         for (int i = 0; i < inventory.getSlotAmount(); i++) {
             if (inventory.get(i) == null) {
-                if (empty == -1)
-                    empty = i;
-            } else if (ItemInstance.compare(inventory.get(i), output, true, true, true) && inventory.get(i).fitsAmount(output.getAmount())) {
+                if (empty == -1) empty = i;
+            } else if (ItemInstance.compare(inventory.get(i), output, true, false, true, true) && inventory.get(i).fitsAmount(output.getAmount())) {
                 return i;
             }
         }

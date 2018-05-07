@@ -44,18 +44,14 @@ public class ClearCommand extends Command {
             } catch (IllegalArgumentException ignored) {
             }
             AbstractEntityPlayer player;
-            if (uuid != null)
-                player = game.getWorld().getPlayer(uuid);
-            else
-                player = game.getWorld().getPlayer(name);
-            if (player == null)
-                return PLAYER_NOT_FOUND;
+            if (uuid != null) player = game.getWorld().getPlayer(uuid);
+            else player = game.getWorld().getPlayer(name);
+            if (player == null) return PLAYER_NOT_FOUND;
             Inventory inventory = player.getInv();
             if (args.length >= 2) {
                 try {
                     int id = Integer.parseInt(args[1]);
-                    if (id < 0 || id >= inventory.getSlotAmount())
-                        return INVALID_ID;
+                    if (id < 0 || id >= inventory.getSlotAmount()) return INVALID_ID;
                     inventory.set(id, null);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();

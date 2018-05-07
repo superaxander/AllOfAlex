@@ -8,11 +8,13 @@ import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.tile.entity.BasicFilteredInventory;
 import de.ellpeck.rockbottom.api.tile.entity.IFilteredInventory;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 import java.util.Collections;
 
+import static alexanders.mods.aoa.AllOfAlex.createRes;
 import static de.ellpeck.rockbottom.api.RockBottomAPI.getNet;
 
 public abstract class CannonTileEntity extends TileEntity {
@@ -29,8 +31,7 @@ public abstract class CannonTileEntity extends TileEntity {
     @Override
     public void save(DataSet set, boolean forSync) {
         super.save(set, forSync);
-        if (forSync)
-            dirty = false;
+        if (forSync) dirty = false;
         set.addInt("cooldown", cooldown);
         DataSet inv = new DataSet();
         inventory.save(inv);
@@ -40,8 +41,7 @@ public abstract class CannonTileEntity extends TileEntity {
     @Override
     public void load(DataSet set, boolean forSync) {
         super.load(set, forSync);
-        if (forSync)
-            dirty = false;
+        if (forSync) dirty = false;
         cooldown = set.getInt("cooldown");
         DataSet inv = set.getDataSet("inv");
         inventory.load(inv);
@@ -62,13 +62,8 @@ public abstract class CannonTileEntity extends TileEntity {
                     ItemInstance itemInstance = ii.copy();
                     if (itemInstance.getAmount() > 0) {
                         inventory.remove(0, 1);
-                        Entity entity = createEntity(world, itemInstance);
                         int degrees = world.getState(x, y).get(ItemCannonTile.rotation) * 5;
-                        entity.x = x + .75;
-                        entity.y = y + .75;
-
-                        entity.motionX = Math.cos(Math.toRadians(degrees)) / 1.5;
-                        entity.motionY = Math.sin(Math.toRadians(degrees)) / 1.5;
+                        Entity entity = createEntity(world, itemInstance, x + .75, y + .75, Math.cos(Math.toRadians(degrees)) / 1.5, Math.sin(Math.toRadians(degrees)) / 1.5);
                         world.addEntity(entity);
                         cooldown = maxCooldown;
                         dirty = true;
@@ -81,7 +76,7 @@ public abstract class CannonTileEntity extends TileEntity {
         }
     }
 
-    protected abstract Entity createEntity(IWorld world, ItemInstance itemInstance);
+    protected abstract Entity createEntity(IWorld world, ItemInstance itemInstance, double x, double y, double motionX, double motionY);
 
     @Override
     public IFilteredInventory getTileInventory() {

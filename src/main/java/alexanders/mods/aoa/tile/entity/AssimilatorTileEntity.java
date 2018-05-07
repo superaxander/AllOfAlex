@@ -9,6 +9,8 @@ import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
+import static alexanders.mods.aoa.render.AssimilatedTileRenderer.TILE_NAME;
+
 public class AssimilatorTileEntity extends TileEntity {
     public Inventory inventory;
     public int progress = 0;
@@ -39,7 +41,7 @@ public class AssimilatorTileEntity extends TileEntity {
             changed = true;
         } else if (progress == 0 && inventory.get(2) == null) {
             if (firstItem != null && secondItem != null) {
-                firstItem.getOrCreateAdditionalData().addString("tileName", secondItem.getItem().getName().toString());
+                firstItem.getOrCreateAdditionalData().addString(TILE_NAME, secondItem.getItem().getName().toString());
                 inventory.set(2, firstItem);
                 firstItem = null;
                 secondItem = null;
@@ -59,8 +61,7 @@ public class AssimilatorTileEntity extends TileEntity {
     @Override
     public void save(DataSet set, boolean forSync) {
         super.save(set, forSync);
-        if (forSync)
-            changed = false;
+        if (forSync) changed = false;
         DataSet inv = new DataSet();
         inventory.save(inv);
         set.addDataSet("inventory", inv);
@@ -70,8 +71,7 @@ public class AssimilatorTileEntity extends TileEntity {
     @Override
     public void load(DataSet set, boolean forSync) {
         super.load(set, forSync);
-        if (forSync)
-            changed = false; // This is probably unneeded
+        if (forSync) changed = false; // This is probably unneeded
         inventory.load(set.getDataSet("inventory"));
         progress = set.getInt("progress");
     }

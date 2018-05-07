@@ -43,8 +43,7 @@ public class JukeboxTileEntity extends TileEntity {
                     startPlayback();
                     isPlaying = true;
                 }
-                if (url == null)
-                    stopPlayback();
+                if (url == null) stopPlayback();
 
                 if (lastSync + 5000 < (now = System.currentTimeMillis())) {
                     lastSync = now;
@@ -62,7 +61,7 @@ public class JukeboxTileEntity extends TileEntity {
                 }
             }
         } else {
-            if(!Objects.equals(url, lastUrl)) {
+            if (!Objects.equals(url, lastUrl)) {
                 lastUrl = url;
                 getNet().sendToServer(new URLUpdatePacket(layer, x, y, url));
             }
@@ -90,15 +89,12 @@ public class JukeboxTileEntity extends TileEntity {
         JukeboxSyncPacket packet = new JukeboxSyncPacket(url, now - startTime);
         System.out.println(endTime - now);
         IGameInstance game = getGame();
-        if (getNet().isActive())
-            getNet().sendToAllPlayersWithLoadedPos(world, packet, x, y);
-        if (!game.isDedicatedServer())
-            packet.handle(game, null);
+        if (getNet().isActive()) getNet().sendToAllPlayersWithLoadedPos(world, packet, x, y);
+        if (!game.isDedicatedServer()) packet.handle(game, null);
     }
 
     private long getPlayTime() {
-        if (JukeboxRunner.spotify.getAccessToken() == null)
-            throw new RuntimeException("Jukeboxes are disabled on a server without spotify connection");
+        if (JukeboxRunner.spotify.getAccessToken() == null) throw new RuntimeException("Jukeboxes are disabled on a server without spotify connection");
         try {
             long duration = JukeboxRunner.spotify.getTrack(url.substring(14)).build().execute().getDurationMs();
             startTime = lastSync = System.currentTimeMillis();
@@ -114,20 +110,16 @@ public class JukeboxTileEntity extends TileEntity {
     private void startPlayback() {
         JukeboxStartPacket packet = new JukeboxStartPacket(url);
         IGameInstance game = getGame();
-        if (getNet().isActive())
-            getNet().sendToAllPlayersWithLoadedPos(world, packet, x, y);
-        if (!game.isDedicatedServer())
-            packet.handle(game, null);
+        if (getNet().isActive()) getNet().sendToAllPlayersWithLoadedPos(world, packet, x, y);
+        if (!game.isDedicatedServer()) packet.handle(game, null);
         getPlayTime();
     }
 
     private void stopPlayback() {
         JukeboxStopPacket packet = new JukeboxStopPacket(lastUrl);
         IGameInstance game = getGame();
-        if (getNet().isActive())
-            getNet().sendToAllPlayersWithLoadedPos(world, packet, x, y);
-        if (!game.isDedicatedServer())
-            packet.handle(game, null);
+        if (getNet().isActive()) getNet().sendToAllPlayersWithLoadedPos(world, packet, x, y);
+        if (!game.isDedicatedServer()) packet.handle(game, null);
         startTime = lastSync = endTime = 0;
     }
 }

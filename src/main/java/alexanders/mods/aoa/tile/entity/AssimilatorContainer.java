@@ -6,21 +6,22 @@ import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.gui.container.ItemContainer;
 import de.ellpeck.rockbottom.api.inventory.IInventory;
 import de.ellpeck.rockbottom.api.item.ItemTile;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 import static alexanders.mods.aoa.init.Resources.resourceAssimilator;
 
 public class AssimilatorContainer extends ItemContainer {
     public AssimilatorContainer(AbstractEntityPlayer player, IInventory containedInventory) {
-        super(player, player.getInv(), containedInventory);
-        this.addSlot(new RestrictedSlot(containedInventory, 0, 40, 0, (slot, item) -> item.getItem() instanceof ItemTile && ((ItemTile) item.getItem()).getTile() == Tiles.assimilatedTile));
+        super(player);
+        this.addSlot(new RestrictedSlot(containedInventory, 0, 40, 0,
+                                        (slot, item) -> item.getItem() instanceof ItemTile && ((ItemTile) item.getItem()).getTile() == Tiles.assimilatedTile));
         this.addSlot(new RestrictedSlot(containedInventory, 1, 140, 0, (slot, item) -> item.getItem() instanceof ItemTile));
         this.addSlot(new RestrictedSlot(containedInventory, 2, 90, 20, (slot, item) -> false));
         this.addPlayerInventory(player, 20, 50);
     }
 
     @Override
-    public IResourceName getName() {
+    public ResourceName getName() {
         return resourceAssimilator;
     }
 }

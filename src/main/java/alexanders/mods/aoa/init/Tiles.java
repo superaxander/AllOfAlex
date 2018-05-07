@@ -1,17 +1,8 @@
 package alexanders.mods.aoa.init;
 
-import alexanders.mods.aoa.JukeboxRunner;
 import alexanders.mods.aoa.tile.*;
-import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import de.ellpeck.rockbottom.api.tile.TileBasic;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Paths;
-
-import static alexanders.mods.aoa.JukeboxRunner.spotify;
 import static alexanders.mods.aoa.init.Resources.*;
 
 public class Tiles {

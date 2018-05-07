@@ -6,11 +6,11 @@ import de.ellpeck.rockbottom.api.IRenderer
 import de.ellpeck.rockbottom.api.assets.IAssetManager
 import de.ellpeck.rockbottom.api.particle.Particle
 import de.ellpeck.rockbottom.api.util.Util
-import de.ellpeck.rockbottom.api.util.reg.IResourceName
+import de.ellpeck.rockbottom.api.util.reg.ResourceName
 import de.ellpeck.rockbottom.api.world.IWorld
 
 
-open class PearlParticle(val name: IResourceName, world: IWorld, x: Double, y: Double, motionX: Double = randomSignedDouble() * .3,
+open class PearlParticle(val name: ResourceName, world: IWorld, x: Double, y: Double, motionX: Double = randomSignedDouble() * .3,
                          motionY: Double = (Util.RANDOM.nextDouble()) * .3, maxLife: Int = 60) : Particle(world, x, y, motionX, motionY, maxLife) {
     companion object {
         fun randomSignedDouble(): Double = if (Util.RANDOM.nextBoolean()) Util.RANDOM.nextDouble() else -Util.RANDOM.nextDouble()

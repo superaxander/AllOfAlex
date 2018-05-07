@@ -11,7 +11,7 @@ import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.render.item.IItemRenderer;
 import de.ellpeck.rockbottom.api.tile.Tile;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
@@ -19,13 +19,13 @@ import static alexanders.mods.aoa.init.Tiles.brightLeaves;
 
 public class ShearsItem extends ItemBasic implements IDamageable {
 
-    public ShearsItem(IResourceName name) {
+    public ShearsItem(ResourceName name) {
         super(name);
         this.maxAmount = 1;
     }
 
     @Override
-    protected IItemRenderer createRenderer(IResourceName name) {
+    protected IItemRenderer createRenderer(ResourceName name) {
         return new DamageableRenderer<ShearsItem>(name);
     }
 

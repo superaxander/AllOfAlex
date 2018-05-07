@@ -19,7 +19,7 @@ class SlimePoolGen : IWorldGenerator {
     override fun generate(world: IWorld, chunk: IChunk) {
         rand.setSeed(Util.scrambleSeed(chunk.x, chunk.y, world.seed))
         val randX = chunk.x + 8 + rand.nextInt(16)
-        val randY = world.getLowestAirUpwards(TileLayer.MAIN, randX, 0)
+        val randY = world.getExpectedSurfaceHeight(TileLayer.MAIN, randX)
         if (randY in 1..15) {
             this.generateAt(world, chunk, randX, randY, rand)
         }

@@ -16,18 +16,17 @@ import de.ellpeck.rockbottom.api.render.tile.ITileRenderer;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
 import de.ellpeck.rockbottom.api.tile.state.EnumProp;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 import static de.ellpeck.rockbottom.api.RockBottomAPI.getNet;
 
 public class ItemConduitTile extends ColourableTile {
-    private long lastUse = 0;
-    
     public static EnumProp<ConduitConnections> CONNECTIONS = new EnumProp<>("connections", ConduitConnections.NONE, ConduitConnections.class);
+    private long lastUse = 0;
 
-    public ItemConduitTile(IResourceName name) {
+    public ItemConduitTile(ResourceName name) {
         super(name);
         addProps(CONNECTIONS);
     }
@@ -59,9 +58,9 @@ public class ItemConduitTile extends ColourableTile {
         if ((instance = player.getInv().get(player.getSelectedSlot())) != null && instance.getItem() == Items.filter && te.filter == null) {
             return false;
         }
-        
+
         long now = System.currentTimeMillis();
-        if(now - lastUse > 150) {
+        if (now - lastUse > 150) {
             lastUse = now;
             te.mode = (te.mode + 1) % 4;
         }
@@ -76,14 +75,14 @@ public class ItemConduitTile extends ColourableTile {
             ConduitConnections myConnections = myState.get(CONNECTIONS);
             TileState changedTile = world.getState(changedLayer, changedX, changedY);
             ConduitConnections newConnections;
-            if (changedTile.getTile() == this && (changedTile.get(COLOUR) == Colours.WHITE || myState.get(COLOUR) == Colours.WHITE || changedTile.get(COLOUR) == myState.get(COLOUR))) { // If this is another conduit
+            if (changedTile.getTile() == this && (changedTile.get(COLOUR) == Colours.WHITE || myState.get(COLOUR) == Colours.WHITE || changedTile.get(COLOUR) == myState
+                    .get(COLOUR))) { // If this is another conduit
                 newConnections = myConnections.addConnection(changedX - x, changedY - y);
             } else {
                 newConnections = myConnections.removeConnection(changedX - x, changedY - y);
 
             }
-            if (myConnections != newConnections)
-                world.setState(layer, x, y, myState.prop(CONNECTIONS, newConnections));
+            if (myConnections != newConnections) world.setState(layer, x, y, myState.prop(CONNECTIONS, newConnections));
         }
     }
 
@@ -93,7 +92,7 @@ public class ItemConduitTile extends ColourableTile {
     }
 
     @Override
-    protected ITileRenderer createRenderer(IResourceName name) {
+    protected ITileRenderer createRenderer(ResourceName name) {
         return new ItemConduitTileRender(name);
     }
 

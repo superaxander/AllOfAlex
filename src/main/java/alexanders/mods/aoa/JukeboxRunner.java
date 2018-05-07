@@ -20,11 +20,8 @@ import java.util.Stack;
 public class JukeboxRunner implements Runnable {
     private static final Stack<String> queue = new Stack<>();
     private static final ArrayList<String> urls = new ArrayList<>();
-    public static SpotifyApi spotify = new SpotifyApi.Builder()
-            .setClientId(HiddenSettings.clientID)
-            .setClientSecret(HiddenSettings.clientSecret)
-            .setRedirectUri(HiddenSettings.redirectURI)
-            .build();
+    public static SpotifyApi spotify = new SpotifyApi.Builder().setClientId(HiddenSettings.clientID).setClientSecret(HiddenSettings.clientSecret)
+            .setRedirectUri(HiddenSettings.redirectURI).build();
     private static URL PLAYBACK_URL;
     private static URL PAUSE_URL;
     private static String SEEK_STRING = "https://api.spotify.com/v1/me/player/seek";
@@ -66,24 +63,22 @@ public class JukeboxRunner implements Runnable {
     }
 
     public static void sync(String url, long playTime) {
-        if(playing == null) {
+        if (playing == null) {
             start(url);
         }
         if (url.equals(playing)) {
             try {
                 long progress = spotify.getInformationAboutUsersCurrentPlayback().build().execute().getProgress_ms().longValue();
-                if (progress + 5000 < playTime || progress - 5000 > playTime)
-                    sendPutRequest(new URL(SEEK_STRING+"?position_ms="+String.valueOf(playTime)), "");
-                    //spotify.seekToPositionInCurrentlyPlayingTrack((int) playTime).build().execute();
-            } catch (IOException | SpotifyWebApiException|IllegalStateException e) {
+                if (progress + 5000 < playTime || progress - 5000 > playTime) sendPutRequest(new URL(SEEK_STRING + "?position_ms=" + String.valueOf(playTime)), "");
+                //spotify.seekToPositionInCurrentlyPlayingTrack((int) playTime).build().execute();
+            } catch (IOException | SpotifyWebApiException | IllegalStateException e) {
                 e.printStackTrace();
             }
         }
     }
 
     public static void stop(String url) {
-        if (url.equals(playing))
-            playing = null;
+        if (url.equals(playing)) playing = null;
         synchronized (urls) {
             urls.remove(url);
         }
@@ -94,6 +89,21 @@ public class JukeboxRunner implements Runnable {
         spotify.setAccessToken(credentials.getAccessToken());
         spotify.setRefreshToken(credentials.getRefreshToken());
         nextTokenRefresh = System.currentTimeMillis() + credentials.getExpiresIn() * 1000;
+    }
+
+    private static void sendPutRequest(URL url, String content) throws IOException {
+        HttpsURLConnection httpCon = (HttpsURLConnection) url.openConnection();
+        httpCon.setDoOutput(true);
+        httpCon.setRequestMethod("PUT");
+        httpCon.setRequestProperty("Accept", "application/json");
+        httpCon.setRequestProperty("Content-Type", "application/json");
+        httpCon.setRequestProperty("Authorization", "Bearer " + spotify.getAccessToken());
+        OutputStreamWriter out = new OutputStreamWriter(httpCon.getOutputStream());
+        out.write(content);
+        out.close();
+        InputStream stream = httpCon.getInputStream();
+        AllOfAlex.instance.logger.config("Got response code: " + httpCon.getResponseCode());
+        stream.close();
     }
 
     @Override
@@ -118,16 +128,14 @@ public class JukeboxRunner implements Runnable {
             if (Keys.KEY_CYCLE_JUKEBOX.isPressed()) {
                 synchronized (urls) {
                     int i = urls.indexOf(playing);
-                    if (!urls.isEmpty())
-                        playing = urls.get((i + 1) % urls.size());
+                    if (!urls.isEmpty()) playing = urls.get((i + 1) % urls.size());
                 }
             }
             if (playing == null && wasActuallyPlaying) {
                 wasActuallyPlaying = false;
                 if (spotify.getAccessToken() != null) {
                     try {
-                        if (spotify.getInformationAboutUsersCurrentPlayback().build().execute().getIs_playing())
-                            sendPutRequest(PAUSE_URL, "");
+                        if (spotify.getInformationAboutUsersCurrentPlayback().build().execute().getIs_playing()) sendPutRequest(PAUSE_URL, "");
                     } catch (IOException | SpotifyWebApiException e) {
                         e.printStackTrace();
                     }
@@ -143,8 +151,7 @@ public class JukeboxRunner implements Runnable {
                         p.add("position", new JsonPrimitive(0));
                         all.add("uris", a);
                         all.add("offset", p);
-                        if (spotify.getInformationAboutUsersCurrentPlayback().build().execute().getIs_playing())
-                            sendPutRequest(PAUSE_URL, "");
+                        if (spotify.getInformationAboutUsersCurrentPlayback().build().execute().getIs_playing()) sendPutRequest(PAUSE_URL, "");
                         sendPutRequest(PLAYBACK_URL, Util.GSON.toJson(all));
                         //spotify.startResumeUsersPlayback().uris(a).offset(p).build().execute(); // TODO: check if album or playlist and start playing at same position
                     } catch (IOException | SpotifyWebApiException e) {
@@ -160,21 +167,5 @@ public class JukeboxRunner implements Runnable {
                 e.printStackTrace();
             }
         }
-    }
-
-    private static void sendPutRequest(URL url, String content) throws IOException {
-        HttpsURLConnection httpCon = (HttpsURLConnection) url.openConnection();
-        httpCon.setDoOutput(true);
-        httpCon.setRequestMethod("PUT");
-        httpCon.setRequestProperty("Accept", "application/json");
-        httpCon.setRequestProperty("Content-Type", "application/json");
-        httpCon.setRequestProperty("Authorization", "Bearer " + spotify.getAccessToken());
-        OutputStreamWriter out = new OutputStreamWriter(
-                httpCon.getOutputStream());
-        out.write(content);
-        out.close();
-        InputStream stream = httpCon.getInputStream();
-        AllOfAlex.instance.logger.config("Got response code: " + httpCon.getResponseCode());
-        stream.close();
     }
 }

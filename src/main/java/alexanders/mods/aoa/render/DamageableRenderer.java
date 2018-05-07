@@ -8,11 +8,11 @@ import de.ellpeck.rockbottom.api.item.Item;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.render.item.DefaultItemRenderer;
 import de.ellpeck.rockbottom.api.util.Colors;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 public class DamageableRenderer<T extends Item & IDamageable> extends DefaultItemRenderer<T> {
 
-    public DamageableRenderer(IResourceName name) {
+    public DamageableRenderer(ResourceName name) {
         super(name);
     }
 

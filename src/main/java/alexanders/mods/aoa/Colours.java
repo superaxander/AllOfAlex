@@ -1,7 +1,7 @@
 package alexanders.mods.aoa;
 
 import de.ellpeck.rockbottom.api.util.Colors;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 import static alexanders.mods.aoa.AllOfAlex.createRes;
 
@@ -15,7 +15,7 @@ public enum Colours {
     public int g = Colors.getGInt(colour);
     public int b = Colors.getBInt(colour);
     public int a = Colors.getAInt(colour);
-    public IResourceName resourceName;
+    public ResourceName resourceName;
 
     Colours(int colour) {
         this.colour = colour;

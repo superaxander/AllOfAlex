@@ -17,8 +17,8 @@ import de.ellpeck.rockbottom.api.net.chat.component.ChatComponentText;
 import de.ellpeck.rockbottom.api.tile.Tile;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
 import de.ellpeck.rockbottom.api.util.Util;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
 import de.ellpeck.rockbottom.api.util.reg.NameRegistry;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 
 import java.lang.reflect.Array;
@@ -34,8 +34,10 @@ import static de.ellpeck.rockbottom.api.RockBottomAPI.*;
 public class SpawnCommand extends Command {
     private static final ChatComponentText USAGE = new ChatComponentText(FormattingCode.RED + "Usage: spawn [override] <x> <y> <entity> [params]");
     private static final ChatComponentText NOT_FOUND = new ChatComponentText(FormattingCode.RED + "The specified entity wasn't found");
-    private static final ChatComponentText SOMETHING_WENT_WRONG = new ChatComponentText(FormattingCode.RED + "Something went wrong, either your entity parameters didn't fit the entity or the entity is invalid.");
-    private static final ChatComponentText OVERRIDE_REQUIRED = new ChatComponentText(FormattingCode.RED + "Only the default constructor is available(or your parameters weren't accepted) please set override to true to use that constructor");
+    private static final ChatComponentText SOMETHING_WENT_WRONG = new ChatComponentText(
+            FormattingCode.RED + "Something went wrong, either your entity parameters didn't fit the entity or the entity is invalid.");
+    private static final ChatComponentText OVERRIDE_REQUIRED = new ChatComponentText(
+            FormattingCode.RED + "Only the default constructor is available(or your parameters weren't accepted) please set override to true to use that constructor");
 
     public SpawnCommand() {
         super(createRes("spawn"), "Spawns an entity. Params: [override] <x> <y> <entity> [params]", 8);
@@ -50,13 +52,10 @@ public class SpawnCommand extends Command {
                 case 0:
                     return Arrays.asList(String.valueOf(Util.floor(player.x)), "true");
                 case 1:
-                    if (offset == 1)
-                        return Collections.singletonList(String.valueOf(Util.floor(player.x)));
-                    else
-                        return Collections.singletonList(String.valueOf(Util.floor(player.y)));
+                    if (offset == 1) return Collections.singletonList(String.valueOf(Util.floor(player.x)));
+                    else return Collections.singletonList(String.valueOf(Util.floor(player.y)));
                 case 2:
-                    if (offset == 1)
-                        return Collections.singletonList(String.valueOf(Util.floor(player.y)));
+                    if (offset == 1) return Collections.singletonList(String.valueOf(Util.floor(player.y)));
                     break;
             }
         }
@@ -111,7 +110,7 @@ public class SpawnCommand extends Command {
 
     private List<String> registryToStrings(NameRegistry<?> registry) {
         List<String> list = new ArrayList<>();
-        for (IResourceName resourceName : registry.getUnmodifiable().keySet()) {
+        for (ResourceName resourceName : registry.getUnmodifiable().keySet()) {
             String toString = resourceName.toString();
             list.add(toString);
         }
@@ -119,22 +118,18 @@ public class SpawnCommand extends Command {
     }
 
     private Constructor<?>[] getConstructors(String entityName) throws NoClassDefFoundError {
-        Class<? extends Entity> clazz = ENTITY_REGISTRY.get(RockBottomAPI.createRes(entityName));
-        if (clazz == null)
-            throw new NoClassDefFoundError("Can't find class for that entity name");
+        Class<? extends Entity> clazz = ENTITY_REGISTRY.get(new ResourceName(entityName));
+        if (clazz == null) throw new NoClassDefFoundError("Can't find class for that entity name");
         return clazz.getConstructors();
     }
 
     @Override
     public ChatComponent execute(String[] args, ICommandSender sender, String playerName, IGameInstance game, IChatLog chat) {
-        if (args.length < 1)
-            return USAGE;
+        if (args.length < 1) return USAGE;
         int offset = 0;
-        if (args[0].equals("true"))
-            offset = 1;
+        if (args[0].equals("true")) offset = 1;
         IWorld world = game.getWorld();
-        if (args.length < 3 + offset)
-            return USAGE;
+        if (args.length < 3 + offset) return USAGE;
         try {
             double x = Double.parseDouble(args[offset]);
             double y = Double.parseDouble(args[offset + 1]);
@@ -147,8 +142,7 @@ public class SpawnCommand extends Command {
                 Class<?>[] parameterTypes = c.getParameterTypes();
                 if (parameterTypes.length == 1) {
                     defaultConstructor = c;
-                    if (args.length <= 3 + offset)
-                        break;
+                    if (args.length <= 3 + offset) break;
                 } else {
                     boolean matches = true;
                     Object[] params = new Object[parameterTypes.length];
@@ -171,18 +165,13 @@ public class SpawnCommand extends Command {
                             }
                         }
                     }
-                    if (matches)
-                        e = (Entity) c.newInstance(params);
+                    if (matches) e = (Entity) c.newInstance(params);
 
                 }
             }
-            if (e == null)
-                if (defaultConstructor == null)
-                    return SOMETHING_WENT_WRONG;
-                else if (offset == 1)
-                    e = (Entity) defaultConstructor.newInstance(world);
-                else
-                    return OVERRIDE_REQUIRED;
+            if (e == null) if (defaultConstructor == null) return SOMETHING_WENT_WRONG;
+            else if (offset == 1) e = (Entity) defaultConstructor.newInstance(world);
+            else return OVERRIDE_REQUIRED;
             e.x = x;
             e.y = y;
             world.addEntity(e);
@@ -280,8 +269,8 @@ public class SpawnCommand extends Command {
         } catch (IllegalArgumentException ignored) {
         }
         try {
-            IResourceName name = RockBottomAPI.createRes(arg);
-            map.put(IResourceName.class, name);
+            ResourceName name = new ResourceName(arg);
+            map.put(ResourceName.class, name);
             Tile tile = TILE_REGISTRY.get(name);
             if (tile != null) {
                 map.put(Tile.class, tile);

@@ -13,7 +13,7 @@ import static alexanders.mods.aoa.init.Resources.resourceMagnetPulse;
 public class MagnetPulseRenderer implements IEntityRenderer<MagnetPulseEntity> {
     @Override
     public void render(IGameInstance game, IAssetManager manager, IRenderer g, IWorld world, MagnetPulseEntity entity, float x, float y, int light) {
-        BoundBox box = entity.getBoundingBox();
+        BoundBox box = entity.currentBounds;
         manager.getTexture(resourceMagnetPulse).draw(x - (float) box.getWidth() / 2f, y - (float) box.getHeight() / 2f, (float) box.getWidth(), (float) box.getHeight(), light);
     }
 }

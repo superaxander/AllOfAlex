@@ -6,29 +6,31 @@ import de.ellpeck.rockbottom.api.IRenderer;
 import de.ellpeck.rockbottom.api.assets.IAssetManager;
 import de.ellpeck.rockbottom.api.assets.texture.ITexture;
 import de.ellpeck.rockbottom.api.data.set.DataSet;
+import de.ellpeck.rockbottom.api.data.set.ModBasedDataSet;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.item.Item;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.render.item.DefaultItemRenderer;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
+import static alexanders.mods.aoa.AllOfAlex.createRes;
 import static alexanders.mods.aoa.init.Resources.cooldownResource;
 
 public class CooldownableRenderer<T extends Item & ICooldownable> extends DefaultItemRenderer<T> {
-    public CooldownableRenderer(IResourceName name) {
+    private static final ResourceName COOLDOWN = createRes("cooldown");
+    public CooldownableRenderer(ResourceName name) {
         super(name);
     }
 
     @Override
     public void render(IGameInstance game, IAssetManager manager, IRenderer g, T item, ItemInstance instance, float x, float y, float scale, int filter) {
         super.render(game, manager, g, item, instance, x, y, scale, filter);
-        if (instance.getAmount() == -1)
-            return;
+        if (instance.getAmount() == -1) return;
 
-        DataSet addData = instance.getAdditionalData();
-        if (addData != null && addData.getInt("cooldown") > 0) {
+        ModBasedDataSet addData = instance.getAdditionalData();
+        if (addData != null && addData.getInt(COOLDOWN) > 0) {
             ITexture image = manager.getTexture(cooldownResource);
-            image.draw(x, y, scale, (scale / item.getMaxCooldown() * addData.getInt("cooldown")), filter);
+            image.draw(x, y, scale, (scale / item.getMaxCooldown() * addData.getInt(COOLDOWN)), filter);
         }
     }
 

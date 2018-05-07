@@ -5,12 +5,12 @@ import alexanders.mods.aoa.tile.entity.ItemCannonContainer;
 import alexanders.mods.aoa.tile.entity.ItemCannonTileEntity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 public class ItemCannonTile extends CannonTile {
-    public ItemCannonTile(IResourceName name) {
+    public ItemCannonTile(ResourceName name) {
         super(name);
     }
 

@@ -9,7 +9,7 @@ import de.ellpeck.rockbottom.api.tile.TileBasic;
 import de.ellpeck.rockbottom.api.tile.TileLiquid;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
 import de.ellpeck.rockbottom.api.util.BoundBox;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
@@ -25,7 +25,7 @@ public class BrightLogTile extends TileBasic {
     }
 
     @Override
-    protected ITileRenderer createRenderer(IResourceName name) {
+    protected ITileRenderer createRenderer(ResourceName name) {
         return new LogRenderer(name);
     }
 
@@ -39,17 +39,14 @@ public class BrightLogTile extends TileBasic {
 
     @Override
     public BoundBox getBoundBox(IWorld world, int x, int y, TileLayer layer) {
-        if (getType(world, x, y, layer).isNatural())
-            return null;
+        if (getType(world, x, y, layer).isNatural()) return null;
         return super.getBoundBox(world, x, y, layer);
     }
 
     @Override
     public float getHardness(IWorld world, int x, int y, TileLayer layer) {
-        if (getType(world, x, y, layer).isNatural())
-            return 9.0f;
-        else
-            return 3.0f;
+        if (getType(world, x, y, layer).isNatural()) return 9.0f;
+        else return 3.0f;
     }
 
     @Override
@@ -77,8 +74,7 @@ public class BrightLogTile extends TileBasic {
 
     @Override
     public void onScheduledUpdate(IWorld world, int x, int y, TileLayer layer, int scheduledMeta) {
-        if (!world.isClient() && getType(world, x, y, layer).isNatural())
-            world.destroyTile(x, y, layer, null, true);
+        if (!world.isClient() && getType(world, x, y, layer).isNatural()) world.destroyTile(x, y, layer, null, true);
     }
 
     public final boolean hasSolidSurface(IWorld world, int x, int y, TileLayer layer) {

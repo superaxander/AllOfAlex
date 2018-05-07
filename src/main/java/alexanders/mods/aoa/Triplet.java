@@ -45,7 +45,8 @@ public class Triplet<A, B, C> {
 
         Triplet<?, ?, ?> triplet = (Triplet<?, ?, ?>) o;
 
-        return (a != null ? a.equals(triplet.a) : triplet.a == null) && (b != null ? b.equals(triplet.b) : triplet.b == null) && (c != null ? c.equals(triplet.c) : triplet.c == null);
+        return (a != null ? a.equals(triplet.a) : triplet.a == null) && (b != null ? b.equals(triplet.b) : triplet.b == null) && (c != null ? c.equals(triplet.c) :
+                triplet.c == null);
     }
 
     @Override
@@ -58,10 +59,6 @@ public class Triplet<A, B, C> {
 
     @Override
     public String toString() {
-        return "Triplet{" +
-                "a=" + a +
-                ", b=" + b +
-                ", c=" + c +
-                '}';
+        return "Triplet{" + "a=" + a + ", b=" + b + ", c=" + c + '}';
     }
 }

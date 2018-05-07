@@ -5,7 +5,7 @@ import alexanders.mods.aoa.render.RandomMenuTheme;
 import alexanders.mods.aoa.render.SpiralMenuTheme;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -32,15 +32,13 @@ public class MenuThemes {
                             for (int x = 0; x < 16; x++) {
                                 for (int y = 0; y < 16; y++) {
                                     char c = dataInputStream.readChar();
-                                    if (c == '\n')
-                                        throw new IOException("Invalid file size!");
+                                    if (c == '\n') throw new IOException("Invalid file size!");
                                     charArray[x][y] = c;
                                 }
                             }
                             char c3 = dataInputStream.readChar();
-                            if (c3 != '\n')
-                                throw new IOException("Invalid file format!");
-                            HashMap<Character, IResourceName> translationMap = new HashMap<>();
+                            if (c3 != '\n') throw new IOException("Invalid file format!");
+                            HashMap<Character, ResourceName> translationMap = new HashMap<>();
                             translationMap.put('-', null);
                             StringBuilder builder = null;
                             char c = '\n';
@@ -52,14 +50,12 @@ public class MenuThemes {
                                     }
                                     builder = new StringBuilder();
                                     char c2;
-                                    while ((c2 = dataInputStream.readChar()) != '\n')
-                                        builder.append(c2);
-                                    translationMap.put(c, RockBottomAPI.createRes(builder.toString()));
+                                    while ((c2 = dataInputStream.readChar()) != '\n') builder.append(c2);
+                                    translationMap.put(c, new ResourceName(builder.toString()));
                                     builder = null;
                                 }
                             } catch (EOFException e) {
-                                if (builder != null)
-                                    translationMap.put(c, RockBottomAPI.createRes(builder.toString()));
+                                if (builder != null) translationMap.put(c, new ResourceName(builder.toString()));
                             }
                             TileState[][] map = new TileState[16][16];
                             for (int x = 0; x < 16; x++) {

@@ -1,12 +1,13 @@
 package alexanders.mods.aoa.item
 
+import alexanders.mods.aoa.AllOfAlex.createRes
 import alexanders.mods.aoa.entity.BouncyPearlEntity
 import alexanders.mods.aoa.init.Resources.bouncyPearlDescResource
 import alexanders.mods.aoa.init.Resources.bouncyPearlResource
 import alexanders.mods.aoa.net.CooldownUpdatePacket
 import alexanders.mods.aoa.render.CooldownableRenderer
 import de.ellpeck.rockbottom.api.assets.IAssetManager
-import de.ellpeck.rockbottom.api.data.set.DataSet
+import de.ellpeck.rockbottom.api.data.set.ModBasedDataSet
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer
 import de.ellpeck.rockbottom.api.item.ItemBasic
 import de.ellpeck.rockbottom.api.item.ItemInstance
@@ -16,19 +17,21 @@ import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
 class BouncyPearlItem : ItemBasic(bouncyPearlResource), Useable, ICooldownable {
+    val COOLDOWN = createRes("cooldown")
+
     override fun getMaxCooldown() = 60f
 
     val renderer = CooldownableRenderer<BouncyPearlItem>(bouncyPearlResource)
     override fun use(itemInstance: ItemInstance, mouseDirection: FloatArray, player: AbstractEntityPlayer) {
         if (itemInstance.additionalData == null) {
-            itemInstance.additionalData = DataSet()
-            itemInstance.additionalData.addInt("cooldown", 0)
+            itemInstance.additionalData = ModBasedDataSet()
+            itemInstance.additionalData.addInt(COOLDOWN, 0)
         }
-        val cooldown = itemInstance.additionalData.getInt("cooldown")
+        val cooldown = itemInstance.additionalData.getInt(COOLDOWN)
         if (cooldown <= 0) {
             val pearlEntity = BouncyPearlEntity(player.world, player.uniqueId, mouseDirection)
             player.world.addEntity(pearlEntity)
-            itemInstance.additionalData.addInt("cooldown", 60)
+            itemInstance.additionalData.addInt(COOLDOWN, 60)
             if (itemInstance.removeAmount(1).amount <= 0)
                 player.inv[player.selectedSlot] = null
             player.sendPacket(CooldownUpdatePacket(60, player.selectedSlot))

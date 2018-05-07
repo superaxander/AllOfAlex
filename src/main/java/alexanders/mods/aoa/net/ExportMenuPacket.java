@@ -39,7 +39,7 @@ public class ExportMenuPacket implements IPacket {
     }
 
     @Override
-    public void toBuffer(ByteBuf buf) throws IOException {
+    public void toBuffer(ByteBuf buf) {
         char[] locBuf = new char[8];
         saveLocation.getChars(0, 8, locBuf, 0);
         buf.writeCharSequence(new String(locBuf), StandardCharsets.UTF_8);
@@ -50,7 +50,7 @@ public class ExportMenuPacket implements IPacket {
     }
 
     @Override
-    public void fromBuffer(ByteBuf buf) throws IOException {
+    public void fromBuffer(ByteBuf buf) {
         saveLocation = buf.readCharSequence(8, StandardCharsets.UTF_8).toString().replace("\0", ""); // Remove any trimmings
         for (char c : saveLocation.toCharArray())
             if (!Character.isLetterOrDigit(c)) // Protection from malicious servers
@@ -74,22 +74,18 @@ public class ExportMenuPacket implements IPacket {
             int endX = Math.max(x1, x2);
             int startY = Math.min(y1, y2);
             int endY = Math.max(y1, y2);
-            if (endY - startY != 16 || endX - startX != 16)
-                throw new RuntimeException("Invalid menu size");
+            if (endY - startY != 16 || endX - startX != 16) throw new RuntimeException("Invalid menu size");
             try {
                 Path dir = Paths.get("rockbottom", "themes");
-                if (!Files.isDirectory(dir))
-                    Files.createDirectory(dir);
+                if (!Files.isDirectory(dir)) Files.createDirectory(dir);
                 int i = 0;
                 DataOutputStream stream = new DataOutputStream(new FileOutputStream(dir.resolve(saveLocation).toFile()));
                 for (int y = startY; y < endY; y++) {
                     for (int x = startX; x < endX; x++) {
                         TileState state = world.getState(TileLayer.MAIN, x, y);
-                        if (state == null)
-                            stream.writeChar('-');
+                        if (state == null) stream.writeChar('-');
                         else {
-                            if (!t_s.containsKey(state))
-                                t_s.put(state, (next = (char) loc++) == '\n' || next == '=' || next == '-' ? (char) loc++ : next);
+                            if (!t_s.containsKey(state)) t_s.put(state, (next = (char) loc++) == '\n' || next == '=' || next == '-' ? (char) loc++ : next);
                             stream.writeChar(t_s.get(state));
                         }
                         i++;

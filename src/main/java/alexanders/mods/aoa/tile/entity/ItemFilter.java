@@ -31,8 +31,7 @@ public class ItemFilter {
 
     public boolean contains(ItemInstance item) {
         for (ItemInstance instance : itemInstances) {
-            if (ItemInstance.compare(item, instance, true, !ignoreMeta, !ignoreData))
-                return true;
+            if (ItemInstance.compare(item, instance, true, false, !ignoreMeta, !ignoreData)) return true;
         }
         return false;
     }

@@ -11,14 +11,17 @@ import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
 import de.ellpeck.rockbottom.api.util.Colors;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
+import static alexanders.mods.aoa.AllOfAlex.createRes;
 import static alexanders.mods.aoa.tile.ColourableTile.COLOUR;
 
 public class AssimilatedTileRenderer extends ColourableTileRenderer<AssimilatedTile> {
-    public AssimilatedTileRenderer(IResourceName texture) {
+    public static final ResourceName TILE_NAME = createRes("tileName");
+    
+    public AssimilatedTileRenderer(ResourceName texture) {
         super(texture);
     }
 
@@ -35,8 +38,8 @@ public class AssimilatedTileRenderer extends ColourableTileRenderer<AssimilatedT
 
     @Override
     public void renderItem(IGameInstance game, IAssetManager manager, IRenderer g, AssimilatedTile tile, ItemInstance instance, float x, float y, float scale, int filter) {
-        IResourceName name;
-        if (instance.hasAdditionalData() && (name = RockBottomAPI.createRes(instance.getAdditionalData().getString("tileName"))) != null) {
+        ResourceName name;
+        if (instance.hasAdditionalData() && (name = new ResourceName(instance.getAdditionalData().getString(TILE_NAME))) != null) {//TODO: Fix this broken logic
             manager.getTexture(name.addPrefix("tiles.")).draw(x, y, scale, scale, Colors.multiply(Colours.get(instance.getMeta()).colour, filter));
         } else {
             super.renderItem(game, manager, g, tile, instance, x, y, scale, filter);

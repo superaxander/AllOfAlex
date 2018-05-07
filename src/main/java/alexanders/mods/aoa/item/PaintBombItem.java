@@ -4,17 +4,17 @@ import alexanders.mods.aoa.Colours;
 import alexanders.mods.aoa.entity.PaintBombEntity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 public class PaintBombItem extends BombItem {
-    public PaintBombItem(IResourceName name) {
+    public PaintBombItem(ResourceName name) {
         super(name);
     }
 
     @Override
-    public IResourceName getUnlocalizedName(ItemInstance instance) {
+    public ResourceName getUnlocalizedName(ItemInstance instance) {
         return super.getUnlocalizedName(instance).addSuffix("." + Colours.get(instance.getMeta()));
     }
 

@@ -8,22 +8,21 @@ import de.ellpeck.rockbottom.api.assets.IAssetManager;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.render.tile.DefaultTileRenderer;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 public class CannonRenderer extends DefaultTileRenderer<CannonTile> {
     private RotateableTexture t;
 
-    public CannonRenderer(IResourceName name) {
+    public CannonRenderer(ResourceName name) {
         super(name);
     }
 
     @Override
     public void render(IGameInstance game, IAssetManager manager, IRenderer g, IWorld world, CannonTile tile, TileState state, int x, int y, TileLayer layer, float renderX, float renderY, float scale, int[] light) {
         super.render(game, manager, g, world, tile, state, x, y, layer, renderX, renderY, scale, light);
-        if (t == null)
-            t = new RotateableTexture(manager.getTexture(texture.addSuffix(".head")));
+        if (t == null) t = new RotateableTexture(manager.getTexture(texture.addSuffix(".head")));
         //t.setRotationCenter(scale * 0.5f, scale / 2);
         //g.rotate(360 - state.get(ItemCannonTile.rotation) * 5);
         //g.translate(centerX, centerY);

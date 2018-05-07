@@ -6,14 +6,17 @@ import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.entity.Entity;
 import de.ellpeck.rockbottom.api.util.BoundBox;
 import de.ellpeck.rockbottom.api.util.Util;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
+import static alexanders.mods.aoa.AllOfAlex.createRes;
 import static alexanders.mods.aoa.init.Resources.bombResource;
 
 public class BombEntity extends Entity {
     private static final int FUSE_TIME = 250;
     private static final int RADIUS = 4;
+    private static final ResourceName RES_RADIUS = createRes("radius");
     private static final BoundBox UNIT_BOUND_BOX = new BoundBox(-1, -1, 1, 1);
     protected BombRenderer renderer;
 
@@ -30,16 +33,13 @@ public class BombEntity extends Entity {
     @Override
     public void update(IGameInstance game) {
         if (ticksExisted >= FUSE_TIME) {
-            int r = getOrCreateAdditionalData().getInt("radius");
-            if (r % 32 == 0)
-                firstRound(r / 32);
+            int r = getOrCreateAdditionalData().getInt(RES_RADIUS);
+            if (r % 32 == 0) firstRound(r / 32);
             else if (r % 32 == 16) {
-                if (r > 16)
-                    secondRound((r - 16) / 32);
-                else
-                    secondRound(0);
+                if (r > 16) secondRound((r - 16) / 32);
+                else secondRound(0);
             }
-            getAdditionalData().addInt("radius", r + 1);
+            getAdditionalData().addInt(RES_RADIUS, r + 1);
             if (r >= RADIUS * 32) {
                 kill();
                 super.update(game);
@@ -80,8 +80,7 @@ public class BombEntity extends Entity {
                 err += dx - (r << 1);
             }
         }
-        if (r == 0)
-            damageAndDestroy(Util.floor(x), Util.floor(y));
+        if (r == 0) damageAndDestroy(Util.floor(x), Util.floor(y));
     }
 
     private void secondRound(int r) {
@@ -107,8 +106,7 @@ public class BombEntity extends Entity {
                 err += dx - (r << 1);
             }
         }
-        if (r == 0)
-            damageAndDestroy(Util.floor(x), Util.floor(y));
+        if (r == 0) damageAndDestroy(Util.floor(x), Util.floor(y));
     }
 
     protected void damageAndDestroy(int x, int y) {

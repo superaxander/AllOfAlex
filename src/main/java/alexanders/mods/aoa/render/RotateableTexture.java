@@ -107,14 +107,11 @@ public class RotateableTexture implements ITexture {
     }
 
     public void draw(float x, float y, float x2, float y2, float x3, float y3, float x4, float y4, float srcX, float srcY, float srcX2, float srcY2, int[] light, int filter) {
-        texture.draw(x + rotateX(centerX, centerY, 0, 0, sinAngle, cosAngle),
-                y + rotateY(centerX, centerY, 0, 0, sinAngle, cosAngle),
-                x + rotateX(centerX, centerY, 0, y3 - y, sinAngle, cosAngle),
-                y + rotateY(centerX, centerY, 0, y3 - y, sinAngle, cosAngle),
-                x + rotateX(centerX, centerY, x4 - x, y3 - y, sinAngle, cosAngle),
-                y + rotateY(centerX, centerY, x4 - x, y3 - y, sinAngle, cosAngle),
-                x + rotateX(centerX, centerY, x4 - x, 0, sinAngle, cosAngle),
-                y + rotateY(centerX, centerY, x4 - x, 0, sinAngle, cosAngle), srcX, srcY, srcX2, srcY2, light, filter);
+        texture.draw(x + rotateX(centerX, centerY, 0, 0, sinAngle, cosAngle), y + rotateY(centerX, centerY, 0, 0, sinAngle, cosAngle),
+                     x + rotateX(centerX, centerY, 0, y3 - y, sinAngle, cosAngle), y + rotateY(centerX, centerY, 0, y3 - y, sinAngle, cosAngle),
+                     x + rotateX(centerX, centerY, x4 - x, y3 - y, sinAngle, cosAngle), y + rotateY(centerX, centerY, x4 - x, y3 - y, sinAngle, cosAngle),
+                     x + rotateX(centerX, centerY, x4 - x, 0, sinAngle, cosAngle), y + rotateY(centerX, centerY, x4 - x, 0, sinAngle, cosAngle), srcX, srcY, srcX2, srcY2, light,
+                     filter);
     }
 
     public void rotate(double angle) {

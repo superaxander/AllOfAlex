@@ -8,7 +8,7 @@ import de.ellpeck.rockbottom.api.assets.IAssetManager;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.gui.GuiContainer;
 import de.ellpeck.rockbottom.api.gui.component.ComponentProgressBar;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 import static alexanders.mods.aoa.init.Resources.resourceAssimilator;
 import static de.ellpeck.rockbottom.api.util.Colors.RED;
@@ -34,7 +34,7 @@ public class AssimilatorGui extends GuiContainer {
     }
 
     @Override
-    public IResourceName getName() {
+    public ResourceName getName() {
         return resourceAssimilator;
     }
 }

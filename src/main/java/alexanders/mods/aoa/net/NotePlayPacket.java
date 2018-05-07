@@ -31,7 +31,7 @@ public class NotePlayPacket implements IPacket {
     }
 
     @Override
-    public void toBuffer(ByteBuf buf) throws IOException {
+    public void toBuffer(ByteBuf buf) {
         buf.writeInt(type.ordinal());
         buf.writeInt(note.ordinal());
         buf.writeInt(x);
@@ -40,7 +40,7 @@ public class NotePlayPacket implements IPacket {
     }
 
     @Override
-    public void fromBuffer(ByteBuf buf) throws IOException {
+    public void fromBuffer(ByteBuf buf) {
         type = SoundType.values()[buf.readInt()];
         note = Note.values()[buf.readInt()];
         x = buf.readInt();

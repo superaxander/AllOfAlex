@@ -39,7 +39,7 @@ public class FireBombPacket implements IPacket {
     }
 
     @Override
-    public void toBuffer(ByteBuf buf) throws IOException {
+    public void toBuffer(ByteBuf buf) {
         buf.writeDouble(x);
         buf.writeDouble(y);
         buf.writeFloat(angle[0]);
@@ -49,7 +49,7 @@ public class FireBombPacket implements IPacket {
     }
 
     @Override
-    public void fromBuffer(ByteBuf buf) throws IOException {
+    public void fromBuffer(ByteBuf buf) {
         x = buf.readDouble();
         y = buf.readDouble();
         angle[0] = buf.readFloat();

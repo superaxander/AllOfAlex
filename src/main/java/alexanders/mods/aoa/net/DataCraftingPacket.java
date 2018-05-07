@@ -4,12 +4,15 @@ import alexanders.mods.aoa.DataRecipe;
 import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.construction.resource.ItemUseInfo;
+import de.ellpeck.rockbottom.api.data.set.DataSet;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.net.NetUtil;
 import de.ellpeck.rockbottom.api.net.packet.IPacket;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufInputStream;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.io.IOException;
@@ -31,23 +34,27 @@ public class DataCraftingPacket implements IPacket {
     }
 
     @Override
-    public void toBuffer(ByteBuf buf) throws IOException {
+    public void toBuffer(ByteBuf buf) {
         NetUtil.writeStringToBuffer(recipe.getName().toString(), buf);
         boolean hasData = item.hasAdditionalData();
         NetUtil.writeStringToBuffer(item.getItem().getName().toString(), buf);
         buf.writeInt(item.getMeta());
         buf.writeBoolean(hasData);
-        if (hasData) NetUtil.writeSetToBuffer(item.getAdditionalData(), buf);
+        DataSet temp = new DataSet(); //TODO: Change this back once method is available
+        temp.addModBasedDataSet("t", item.getAdditionalData());
+        if (hasData) NetUtil.writeSetToBuffer(temp, buf);
         buf.writeLong(uuid.getMostSignificantBits());
         buf.writeLong(uuid.getLeastSignificantBits());
     }
 
     @Override
-    public void fromBuffer(ByteBuf buf) throws IOException {
-        RockBottomAPI.ALL_CONSTRUCTION_RECIPES.get(RockBottomAPI.createRes(NetUtil.readStringFromBuffer(buf)));
-        item = new ItemInstance(RockBottomAPI.ITEM_REGISTRY.get(RockBottomAPI.createRes(NetUtil.readStringFromBuffer(buf))), 1, buf.readInt());
+    public void fromBuffer(ByteBuf buf) {
+        RockBottomAPI.ALL_CONSTRUCTION_RECIPES.get(new ResourceName(NetUtil.readStringFromBuffer(buf)));
+        item = new ItemInstance(RockBottomAPI.ITEM_REGISTRY.get(new ResourceName(NetUtil.readStringFromBuffer(buf))), 1, buf.readInt());
         if (buf.readBoolean()) {
-            NetUtil.readSetFromBuffer(item.getAdditionalData(), buf);
+            DataSet temp = new DataSet();
+            NetUtil.readSetFromBuffer(temp, buf);
+            item.setAdditionalData(temp.getModBasedDataSet("t"));
         }
         uuid = new UUID(buf.readLong(), buf.readLong());
     }
@@ -59,7 +66,8 @@ public class DataCraftingPacket implements IPacket {
             AbstractEntityPlayer player = world.getPlayer(uuid);
             ItemInstance out = recipe.getOutputs().get(0).copy();
             out.setAdditionalData(item.getAdditionalData());
-            RockBottomAPI.getApiHandler().construct(world, player.x, player.y, player.getInv(), recipe, 1, Collections.singletonList(new ItemUseInfo(item)), itemInstances -> Collections.singletonList(out));
+            RockBottomAPI.getApiHandler().construct(world, player.x, player.y, player.getInv(), recipe, 1, Collections.singletonList(new ItemUseInfo(item)),
+                                                    itemInstances -> Collections.singletonList(out));
         }
     }
 }

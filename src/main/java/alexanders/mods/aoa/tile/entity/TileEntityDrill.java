@@ -69,8 +69,7 @@ public class TileEntityDrill extends TileEntityFueled {
     @Override
     public void save(DataSet set, boolean forSync) {
         super.save(set, forSync);
-        if (!forSync)
-            System.out.println("Saving");
+        if (!forSync) System.out.println("Saving");
         set.addInt("maxHardness", maxHardness);
         set.addInt("inventorySize", inventorySize);
         DataSet fuelInv = new DataSet();

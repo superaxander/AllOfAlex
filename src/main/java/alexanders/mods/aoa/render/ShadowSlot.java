@@ -16,7 +16,7 @@ public class ShadowSlot extends ContainerSlot {
     }
 
     @Override
-    public boolean canRemove() {
+    public boolean canRemove(int amount) {
         inventory.set(slot, null);
         return false;
     }

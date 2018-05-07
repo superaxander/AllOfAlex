@@ -3,8 +3,7 @@ package alexanders.mods.aoa.tile;
 public enum ConduitConnections {
     NONE("none", 0), TOP("top", 0), TOP_BOTTOM("top_bottom", 0), TOP_RIGHT("top_right", 0), TOP_LEFT("top_right", 270), TOP_RIGHT_BOTTOM("top_right_bottom", 0),
     TOP_RIGHT_LEFT("top_right_bottom", 270), TOP_BOTTOM_LEFT("top_right_bottom", 180), TOP_RIGHT_BOTTOM_LEFT("top_right_bottom_left", 0), RIGHT("top", 90),
-    RIGHT_BOTTOM("top_right", 90),
-    RIGHT_LEFT("top_bottom", 90), RIGHT_BOTTOM_LEFT("top_right_bottom", 90), BOTTOM("top", 180), BOTTOM_LEFT("top_right", 180), LEFT("top", 270);
+    RIGHT_BOTTOM("top_right", 90), RIGHT_LEFT("top_bottom", 90), RIGHT_BOTTOM_LEFT("top_right_bottom", 90), BOTTOM("top", 180), BOTTOM_LEFT("top_right", 180), LEFT("top", 270);
 
     public final String suffix;
     public final int rotation;

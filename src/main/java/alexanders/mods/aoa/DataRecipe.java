@@ -12,22 +12,20 @@ import de.ellpeck.rockbottom.api.gui.component.construction.ComponentIngredient;
 import de.ellpeck.rockbottom.api.inventory.IInventory;
 import de.ellpeck.rockbottom.api.inventory.Inventory;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static de.ellpeck.rockbottom.api.RockBottomAPI.getNet;
-
 public class DataRecipe extends BasicRecipe {
     public final ItemInstance output;
     public final ItemInstance input;
-    private final IResourceName name;
+    private final ResourceName name;
 
     public DataConstructComponent currentComponent = null;
 
-    public DataRecipe(IResourceName name, ItemInstance output, ItemInstance input) {
+    public DataRecipe(ResourceName name, ItemInstance output, ItemInstance input) {
         super(name, output, new ItemUseInfo(input));
         this.name = name;
         this.output = output;
@@ -38,12 +36,11 @@ public class DataRecipe extends BasicRecipe {
     public List<IUseInfo> getActualInputs(IInventory inventory) {
         int amount = inventory.getSlotAmount();
         for (int i = 0; i < amount; i++) {
-            if (ItemInstance.compare(inventory.get(i), input, true, true, false))
-                return Collections.singletonList(new ItemUseInfo(inventory.get(i)));
+            if (ItemInstance.compare(inventory.get(i), input, true, false, true, false)) return Collections.singletonList(new ItemUseInfo(inventory.get(i)));
         }
         return super.getActualInputs(inventory);
     }
-    
+
     @Override
     public ComponentConstruct getConstructButton(Gui gui, AbstractEntityPlayer player, boolean canConstruct) {
         return currentComponent = new DataConstructComponent(this, gui, player, canConstruct);
@@ -72,7 +69,7 @@ public class DataRecipe extends BasicRecipe {
     }
 
     @Override
-    public IResourceName getName() {
+    public ResourceName getName() {
         return name;
     }
 }

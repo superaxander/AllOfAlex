@@ -17,7 +17,8 @@ public class BombCannonTileEntity extends CannonTileEntity {
     }
 
     @Override
-    protected Entity createEntity(IWorld world, ItemInstance itemInstance) {
-        return itemInstance.getItem() == Items.bombItem ? new BombEntity(world) : itemInstance.getItem() == Items.paintBombItem ? new PaintBombEntity(world, Colours.get(itemInstance.getMeta())) : new MiningBombEntity(world);
+    protected Entity createEntity(IWorld world, ItemInstance itemInstance, double x, double y, double motionX, double motionY) {
+        return itemInstance.getItem() == Items.bombItem ? new BombEntity(world) :
+                itemInstance.getItem() == Items.paintBombItem ? new PaintBombEntity(world, Colours.get(itemInstance.getMeta())) : new MiningBombEntity(world);
     }
 }

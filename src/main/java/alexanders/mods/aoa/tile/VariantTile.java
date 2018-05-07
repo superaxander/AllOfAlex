@@ -9,14 +9,14 @@ import de.ellpeck.rockbottom.api.tile.state.IntProp;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
 import de.ellpeck.rockbottom.api.util.BoundBox;
 import de.ellpeck.rockbottom.api.util.Util;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 public class VariantTile extends Tile {
     public IntProp variant;
 
-    public VariantTile(IResourceName name) {
+    public VariantTile(ResourceName name) {
         super(name);
         this.variant = new IntProp("variant", 0, FoliageAssets.valueOf(name.getResourceName()).amount * 2);
         this.addProps(this.variant);
@@ -47,9 +47,9 @@ public class VariantTile extends Tile {
     }
 
     @Override
-    public boolean canPlace(IWorld world, int x, int y, TileLayer layer) {
+    public boolean canPlace(IWorld world, int x, int y, TileLayer layer, AbstractEntityPlayer player) {
         Tile below = world.getState(TileLayer.MAIN, x, y - 1).getTile();
-        return (below.canKeepPlants(world, x, y - 1, TileLayer.MAIN)) && super.canPlace(world, x, y, layer);
+        return (below.canKeepPlants(world, x, y - 1, TileLayer.MAIN)) && super.canPlace(world, x, y, layer, player);
     }
 
     @Override

@@ -29,11 +29,10 @@ public class VariantGen implements IWorldGenerator {
                     if (rand.nextInt(asset.chance) == 0) {
                         //System.out.println("Generating");
                         int x = chunk.getX() + rand.nextInt(31);
-                        int y = world.getLowestAirUpwards(TileLayer.MAIN, x, 0);
+                        int y = world.getExpectedSurfaceHeight(TileLayer.MAIN, x);
                         //System.out.println(x+":"+y);
-                        if (y <= 31 && y >= 0)
-                            if (asset.tile.canPlace(world, x, y, TileLayer.MAIN))
-                                chunk.setState(TileLayer.MAIN, x, y, asset.tile.getDefState().prop(asset.tile.variant, rand.nextInt(asset.amount * 2))); // I do chunk.setState so that I notice when I bleed into other chunks 
+                        if (y <= 31 && y >= 0) if (asset.tile.canPlace(world, x, y, TileLayer.MAIN, null)) chunk.setState(TileLayer.MAIN, x, y, asset.tile.getDefState()
+                                .prop(asset.tile.variant, rand.nextInt(asset.amount * 2))); // I do chunk.setState so that I notice when I bleed into other chunks 
                     }
                 }
             }

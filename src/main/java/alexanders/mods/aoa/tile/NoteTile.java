@@ -6,14 +6,14 @@ import alexanders.mods.aoa.tile.entity.NoteTileEntity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.tile.TileBasic;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 import static de.ellpeck.rockbottom.api.RockBottomAPI.getGame;
 
 public class NoteTile extends TileBasic { // Add a jukebox too that can stream audio from files and the internet
-    public NoteTile(IResourceName name) {
+    public NoteTile(ResourceName name) {
         super(name);
         this.setForceDrop();
     }
@@ -39,8 +39,7 @@ public class NoteTile extends TileBasic { // Add a jukebox too that can stream a
                 } else if (Keys.KEY_CHANGE_INSTRUMENT.isDown()) {
                     te.type = Util.cycleEnum(te.type);
                 }
-                if (!world.isClient())
-                    world.playSound(te.type.name.addSuffix(te.note.name), x + .5, y + .5, layer.index(), 1, 1);
+                if (!world.isClient()) world.playSound(te.type.name.addSuffix(te.note.name), x + .5, y + .5, layer.index(), 1, 1);
             }
         }
         return true;

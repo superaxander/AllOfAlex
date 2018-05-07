@@ -26,14 +26,14 @@ public class PaintBombParticlePacket implements IPacket {
     }
 
     @Override
-    public void toBuffer(ByteBuf buf) throws IOException {
+    public void toBuffer(ByteBuf buf) {
         buf.writeInt(x);
         buf.writeInt(y);
         buf.writeInt(colour.ordinal());
     }
 
     @Override
-    public void fromBuffer(ByteBuf buf) throws IOException {
+    public void fromBuffer(ByteBuf buf) {
         x = buf.readInt();
         y = buf.readInt();
         colour = Colours.get(buf.readInt());
@@ -41,6 +41,8 @@ public class PaintBombParticlePacket implements IPacket {
 
     @Override
     public void handle(IGameInstance game, ChannelHandlerContext context) {
-        game.getParticleManager().addParticle(new PaintBombParticle(game.getWorld(), x, game.getWorld().getLowestAirUpwards(TileLayer.MAIN, x, y, true) + .5, Util.RANDOM.nextDouble() - .5, Util.RANDOM.nextDouble(), 100, colour));
+        game.getParticleManager().addParticle( // TODO: GET THE ACTUAL LOWEST AIR UPWARDS!!!
+                new PaintBombParticle(game.getWorld(), x, game.getWorld().getExpectedSurfaceHeight(TileLayer.MAIN, x) + .5, Util.RANDOM.nextDouble() - .5,
+                                      Util.RANDOM.nextDouble(), 100, colour));
     }
 }

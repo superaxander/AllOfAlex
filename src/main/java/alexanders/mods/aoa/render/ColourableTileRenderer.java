@@ -11,14 +11,14 @@ import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.render.tile.DefaultTileRenderer;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
 import de.ellpeck.rockbottom.api.util.Colors;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 import static alexanders.mods.aoa.tile.ColourableTile.COLOUR;
 
 public class ColourableTileRenderer<T extends ColourableTile> extends DefaultTileRenderer<T> {
-    public ColourableTileRenderer(IResourceName texture) {
+    public ColourableTileRenderer(ResourceName texture) {
         super(texture);
     }
 

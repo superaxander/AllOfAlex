@@ -1,7 +1,8 @@
 package alexanders.mods.aoa.tile
 
+import alexanders.mods.aoa.AllOfAlex.createRes
 import alexanders.mods.aoa.init.Resources
-import de.ellpeck.rockbottom.api.data.set.DataSet
+import de.ellpeck.rockbottom.api.data.set.ModBasedDataSet
 import de.ellpeck.rockbottom.api.entity.Entity
 import de.ellpeck.rockbottom.api.item.ToolType
 import de.ellpeck.rockbottom.api.tile.TileBasic
@@ -12,6 +13,8 @@ import de.ellpeck.rockbottom.api.world.layer.TileLayer
 
 
 class SlimeTile : TileBasic(Resources.slimeResource) {
+    val LAST_TIME_BOUNCED = createRes("lastTimeBounced")
+
     init {
         this.setHardness(.5f)
         this.addEffectiveTool(ToolType.PICKAXE, 0)
@@ -21,8 +24,8 @@ class SlimeTile : TileBasic(Resources.slimeResource) {
     override fun onCollideWithEntity(world: IWorld, x: Int, y: Int, layer: TileLayer, state: TileState, entityBox: BoundBox, entityBoxMotion: BoundBox, tileBoxes: List<BoundBox>,
                                      entity: Entity) {
         if (entity.additionalData == null)
-            entity.additionalData = DataSet()
-        val lastTimeBounced = entity.additionalData.getLong("lastTimeBounced")
+            entity.additionalData = ModBasedDataSet()
+        val lastTimeBounced = entity.additionalData.getLong(LAST_TIME_BOUNCED)
         val now = System.currentTimeMillis()
         if (lastTimeBounced + 100 < now) {
             if (entity.motionY < 0) {
@@ -31,7 +34,7 @@ class SlimeTile : TileBasic(Resources.slimeResource) {
 
                 entity.applyMotion()
             }
-            entity.additionalData.addLong("lastTimeBounced", now)
+            entity.additionalData.addLong(LAST_TIME_BOUNCED, now)
         }
     }
 

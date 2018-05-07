@@ -42,12 +42,9 @@ public class BrightTreeGen implements IWorldGenerator {
             // Generate tree
             for (int attempt = 0; attempt < SPAWN_ATTEMPTS; attempt++) {
                 int x = chunkRandom.nextInt(22) + 5;
-                int y = chunk.getLowestAirUpwardsInner(TileLayer.MAIN, x, 1, true);
-                if (y < 0)
-                    continue;
-                if (chunk.getBiomeInner(x, y).canTreeGrow(world, chunk, x, y))
-                    if (trySpawnTree(world, chunk, x, y))
-                        break;
+                int y = chunk.getExpectedSurfaceHeight(TileLayer.MAIN, x);
+                if (y < 0) continue;
+                if (chunk.getBiomeInner(x, y).canTreeGrow(world, chunk, x, y)) if (trySpawnTree(world, chunk, x, y)) break;
             }
         }
     }
@@ -58,13 +55,10 @@ public class BrightTreeGen implements IWorldGenerator {
         int rootDirection = posRandom.nextInt(4); // 0: no roots, 1: left, 2: right, 3: L+R
         boolean branches = posRandom.nextBoolean();
         for (int i = 0; i < height; i++)
-            if (checkTile(world, chunk, x, y + i))
-                return false;
+            if (checkTile(world, chunk, x, y + i)) return false;
 
-        if (checkTile(world, chunk, x - 1, y) || checkTile(world, chunk, x + 1, y))
-            return false;
-        if (checkTile(world, chunk, x - 1, y + height - 1) || checkTile(world, chunk, x - 1, y + height - 1))
-            return false;
+        if (checkTile(world, chunk, x - 1, y) || checkTile(world, chunk, x + 1, y)) return false;
+        if (checkTile(world, chunk, x - 1, y + height - 1) || checkTile(world, chunk, x - 1, y + height - 1)) return false;
 
         // All log tiles clear place tree
         place(world, chunk, x, y, logBottom);
@@ -73,18 +67,14 @@ public class BrightTreeGen implements IWorldGenerator {
         place(world, chunk, x, y + height - 1, logTop);
         switch (rootDirection) {
             case 1:
-                if (chunk.getStateInner(TileLayer.MAIN, x - 1, y - 1).getTile().isFullTile())
-                    place(world, chunk, x - 1, y, rootLeft);
+                if (chunk.getStateInner(TileLayer.MAIN, x - 1, y - 1).getTile().isFullTile()) place(world, chunk, x - 1, y, rootLeft);
                 break;
             case 2:
-                if (chunk.getStateInner(TileLayer.MAIN, x + 1, y - 1).getTile().isFullTile())
-                    place(world, chunk, x + 1, y, rootRight);
+                if (chunk.getStateInner(TileLayer.MAIN, x + 1, y - 1).getTile().isFullTile()) place(world, chunk, x + 1, y, rootRight);
                 break;
             case 3:
-                if (chunk.getStateInner(TileLayer.MAIN, x - 1, y - 1).getTile().isFullTile())
-                    place(world, chunk, x - 1, y, rootLeft);
-                if (chunk.getStateInner(TileLayer.MAIN, x + 1, y - 1).getTile().isFullTile())
-                    place(world, chunk, x + 1, y, rootRight);
+                if (chunk.getStateInner(TileLayer.MAIN, x - 1, y - 1).getTile().isFullTile()) place(world, chunk, x - 1, y, rootLeft);
+                if (chunk.getStateInner(TileLayer.MAIN, x + 1, y - 1).getTile().isFullTile()) place(world, chunk, x + 1, y, rootRight);
                 break;
         }
         if (branches) {
@@ -102,8 +92,7 @@ public class BrightTreeGen implements IWorldGenerator {
     }
 
     private void checkAndPlace(IWorld world, IChunk chunk, int x, int y, TileState state) {
-        if (!checkTile(world, chunk, x, y))
-            place(world, chunk, x, y, state);
+        if (!checkTile(world, chunk, x, y)) place(world, chunk, x, y, state);
     }
 
     private void place(IWorld world, IChunk chunk, int x, int y, TileState state) {

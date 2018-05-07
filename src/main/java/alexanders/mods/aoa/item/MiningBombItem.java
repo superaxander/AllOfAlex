@@ -4,12 +4,12 @@ import alexanders.mods.aoa.entity.BombEntity;
 import alexanders.mods.aoa.entity.MiningBombEntity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 public class MiningBombItem extends BombItem {
-    public MiningBombItem(IResourceName name) {
+    public MiningBombItem(ResourceName name) {
         super(name);
     }
 

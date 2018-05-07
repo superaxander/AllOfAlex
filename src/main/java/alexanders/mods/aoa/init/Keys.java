@@ -16,14 +16,14 @@ public class Keys {
     public static Keybind KEY_CYCLE_JUKEBOX;
 
     public static void init() {
-        KEY_ROTATE = new Keybind(resourceRotateKey, GLFW_KEY_LEFT_CONTROL, false);
-        KEY_SET_WAYPOINT = new Keybind(resourceSetWaypointKey, GLFW_KEY_LEFT_SHIFT, false);
-        KEY_CONDUIT_LAYER = new Keybind(resourceConduitLayerKey, GLFW_KEY_H, false);
-        KEY_OPEN_BOMB_LAUNCHER_INVENTORY = new Keybind(resourceOpenBombLauncherInventoryKey, GLFW_KEY_LEFT_SHIFT, false);
-        KEY_CHANGE_NOTE = new Keybind(resourceChangeNoteKey, GLFW_KEY_LEFT_CONTROL, false);
-        KEY_CHANGE_INSTRUMENT = new Keybind(resourceChangeInstrumentKey, GLFW_KEY_LEFT_ALT, false);
-        KEY_REMOVE_FILTER = new Keybind(resourceRemoveFilterKey, GLFW_KEY_LEFT_CONTROL, false);
-        KEY_CYCLE_JUKEBOX = new Keybind(resourceCycleJukeboxKey, GLFW_KEY_J, false);
+        KEY_ROTATE = new Keybind(resourceRotateKey, GLFW_KEY_LEFT_CONTROL);
+        KEY_SET_WAYPOINT = new Keybind(resourceSetWaypointKey, GLFW_KEY_LEFT_SHIFT);
+        KEY_CONDUIT_LAYER = new Keybind(resourceConduitLayerKey, GLFW_KEY_H);
+        KEY_OPEN_BOMB_LAUNCHER_INVENTORY = new Keybind(resourceOpenBombLauncherInventoryKey, GLFW_KEY_LEFT_SHIFT);
+        KEY_CHANGE_NOTE = new Keybind(resourceChangeNoteKey, GLFW_KEY_LEFT_CONTROL);
+        KEY_CHANGE_INSTRUMENT = new Keybind(resourceChangeInstrumentKey, GLFW_KEY_LEFT_ALT);
+        KEY_REMOVE_FILTER = new Keybind(resourceRemoveFilterKey, GLFW_KEY_LEFT_CONTROL);
+        KEY_CYCLE_JUKEBOX = new Keybind(resourceCycleJukeboxKey, GLFW_KEY_J);
         KEY_ROTATE.register();
         KEY_SET_WAYPOINT.register();
         KEY_CONDUIT_LAYER.register();

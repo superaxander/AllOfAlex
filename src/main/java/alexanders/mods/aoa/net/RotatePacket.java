@@ -27,9 +27,8 @@ public class RotatePacket implements IPacket {
     }
 
     @Override
-    public void toBuffer(ByteBuf buf) throws IOException {
-        if (layer == null)
-            throw new IllegalStateException("Layer is null!");
+    public void toBuffer(ByteBuf buf) {
+        if (layer == null) throw new IllegalStateException("Layer is null!");
         buf.writeInt(x);
         buf.writeInt(y);
         buf.writeInt(layer.index());
@@ -37,7 +36,7 @@ public class RotatePacket implements IPacket {
     }
 
     @Override
-    public void fromBuffer(ByteBuf buf) throws IOException {
+    public void fromBuffer(ByteBuf buf) {
         x = buf.readInt();
         y = buf.readInt();
         layer = TileLayer.getAllLayers().get(buf.readInt());

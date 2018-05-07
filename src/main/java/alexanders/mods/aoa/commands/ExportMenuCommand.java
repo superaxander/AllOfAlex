@@ -46,25 +46,19 @@ public class ExportMenuCommand extends Command {
     @Override
     public ChatComponent execute(String[] args, ICommandSender sender, String playerName, IGameInstance game, IChatLog chat) {
         AbstractEntityPlayer player = RockBottomAPI.getGame().getWorld().getPlayer(sender.getUniqueId());
-        if (player == null)
-            return new ChatComponentText(FormattingCode.RED + "Only players can execute this command");
-        if (args.length != 5)
-            return USAGE;
+        if (player == null) return new ChatComponentText(FormattingCode.RED + "Only players can execute this command");
+        if (args.length != 5) return USAGE;
         try {
             int x1 = Integer.parseInt(args[0]);
             int y1 = Integer.parseInt(args[1]);
             int x2 = Integer.parseInt(args[2]);
             int y2 = Integer.parseInt(args[3]);
-            if (Math.abs(x1 - x2) != 16 || Math.abs(y1 - y2) != 16)
-                return INVALID_SIZE;
+            if (Math.abs(x1 - x2) != 16 || Math.abs(y1 - y2) != 16) return INVALID_SIZE;
             for (char c : args[4].toCharArray())
-                if (!Character.isLetterOrDigit(c))
-                    return INVALID_FILENAME;
+                if (!Character.isLetterOrDigit(c)) return INVALID_FILENAME;
             IPacket packet = new ExportMenuPacket(args[4], x1, y1, x2, y2);
-            if (game.isDedicatedServer() || game.getPlayer() != sender)
-                player.sendPacket(packet);
-            else
-                packet.handle(game, null);
+            if (game.isDedicatedServer() || game.getPlayer() != sender) player.sendPacket(packet);
+            else packet.handle(game, null);
         } catch (IllegalArgumentException e) {
             return USAGE;
         }

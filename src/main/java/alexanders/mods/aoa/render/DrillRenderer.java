@@ -5,13 +5,13 @@ import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.IRenderer;
 import de.ellpeck.rockbottom.api.assets.IAssetManager;
 import de.ellpeck.rockbottom.api.render.entity.IEntityRenderer;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 
 public class DrillRenderer implements IEntityRenderer<EntityDrill> {
-    public final IResourceName texture;
+    public final ResourceName texture;
 
-    public DrillRenderer(IResourceName texture) {
+    public DrillRenderer(ResourceName texture) {
         this.texture = texture;
     }
 

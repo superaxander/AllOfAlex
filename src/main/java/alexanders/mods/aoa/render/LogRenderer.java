@@ -7,17 +7,17 @@ import de.ellpeck.rockbottom.api.StaticTileProps;
 import de.ellpeck.rockbottom.api.assets.IAssetManager;
 import de.ellpeck.rockbottom.api.render.tile.DefaultTileRenderer;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 public class LogRenderer extends DefaultTileRenderer<BrightLogTile> {
-    private final IResourceName[] textures;
+    private final ResourceName[] textures;
 
-    public LogRenderer(IResourceName name) {
+    public LogRenderer(ResourceName name) {
         super(name);
         StaticTileProps.LogType[] types = StaticTileProps.LogType.values();
-        this.textures = new IResourceName[types.length];
+        this.textures = new ResourceName[types.length];
 
         for (int i = 0; i < this.textures.length; ++i) {
             switch (types[i]) {

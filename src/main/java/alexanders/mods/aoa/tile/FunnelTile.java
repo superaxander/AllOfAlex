@@ -11,7 +11,7 @@ import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
 import de.ellpeck.rockbottom.api.tile.state.IntProp;
 import de.ellpeck.rockbottom.api.util.BoundBox;
 import de.ellpeck.rockbottom.api.util.Direction;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
@@ -21,7 +21,7 @@ public class FunnelTile extends TileBasic {
     public static final IntProp direction = new IntProp("direction", 0, 3);
     public static final BoundBox BB = new BoundBox(1 / 12f, 0, 11 / 12f, 10 / 12f);
 
-    public FunnelTile(IResourceName name) {
+    public FunnelTile(ResourceName name) {
         super(name);
         this.setForceDrop();
         addProps(direction);
@@ -31,8 +31,7 @@ public class FunnelTile extends TileBasic {
     public void doPlace(IWorld world, int x, int y, TileLayer layer, ItemInstance instance, AbstractEntityPlayer placer) {
         super.doPlace(world, x, y, layer, instance, placer);
         int dir = facingToDir(placer.facing);
-        if (getNet().isClient())
-            getNet().sendToServer(new RotatePacket(x, y, layer, dir));
+        if (getNet().isClient()) getNet().sendToServer(new RotatePacket(x, y, layer, dir));
         else if (!getNet().isActive()) {
             world.setState(layer, x, y, getDefState().prop(direction, dir));
         }
@@ -63,7 +62,7 @@ public class FunnelTile extends TileBasic {
     }
 
     @Override
-    protected ITileRenderer createRenderer(IResourceName name) {
+    protected ITileRenderer createRenderer(ResourceName name) {
         return new FunnelTileRenderer(name);
     }
 

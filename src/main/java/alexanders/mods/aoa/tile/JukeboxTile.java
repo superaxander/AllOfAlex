@@ -5,12 +5,12 @@ import alexanders.mods.aoa.tile.entity.JukeboxTileEntity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.tile.TileBasic;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
-public class JukeboxTile extends TileBasic{
-    public JukeboxTile(IResourceName name) {
+public class JukeboxTile extends TileBasic {
+    public JukeboxTile(ResourceName name) {
         super(name);
     }
 

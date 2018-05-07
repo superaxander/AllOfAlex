@@ -22,13 +22,13 @@ public class RemoveFilterPacket implements IPacket {
     }
 
     @Override
-    public void toBuffer(ByteBuf buf) throws IOException {
+    public void toBuffer(ByteBuf buf) {
         buf.writeInt(x);
         buf.writeInt(y);
     }
 
     @Override
-    public void fromBuffer(ByteBuf buf) throws IOException {
+    public void fromBuffer(ByteBuf buf) {
         x = buf.readInt();
         y = buf.readInt();
     }

@@ -3,7 +3,7 @@ package alexanders.mods.aoa.tile.entity;
 import alexanders.mods.aoa.Triplet;
 import alexanders.mods.aoa.tile.FunnelTile;
 import de.ellpeck.rockbottom.api.IGameInstance;
-import de.ellpeck.rockbottom.api.entity.EntityItem;
+import de.ellpeck.rockbottom.api.entity.AbstractEntityItem;
 import de.ellpeck.rockbottom.api.inventory.IInventory;
 import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.tile.entity.IFilteredInventory;
@@ -84,16 +84,16 @@ public class FunnelTileEntity extends TileEntity {
     public void update(IGameInstance game) {
         super.update(game);
         if (!getNet().isClient()) {
-            List<EntityItem> entityList = world.getEntities(FunnelTile.BB.copy().add(x, y + 1).expand(1), EntityItem.class);
-            for (EntityItem entityItem : entityList) {
+            List<AbstractEntityItem> entityList = world.getEntities(FunnelTile.BB.copy().add(x, y + 1).expand(1), AbstractEntityItem.class);
+            for (AbstractEntityItem entityItem : entityList) {
                 if (entityItem.canPickUp()) {
                     if (Util.distanceSq(entityItem.x, entityItem.y, this.x + .5, this.y + .5) <= .4) {
-                        ItemInstance remaining = addExistingFirstConnectedTile(entityItem.item);
+                        ItemInstance remaining = addExistingFirstConnectedTile(entityItem.getItem());
 
                         if (remaining == null) {
                             entityItem.kill();
                         } else {
-                            entityItem.item = remaining;
+                            entityItem.setItem(remaining);
                         }
                     } else {
                         double x = this.x + .5 - entityItem.x;
@@ -126,8 +126,7 @@ public class FunnelTileEntity extends TileEntity {
                 triplet = getInventory(world, x - 1, y, item, Direction.LEFT);
                 break;
         }
-        if (triplet == null)
-            return item;
+        if (triplet == null) return item;
         return addExistingFirst(triplet.a, triplet.b, item, false);
     }
 }

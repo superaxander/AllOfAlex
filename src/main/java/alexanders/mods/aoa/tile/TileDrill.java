@@ -11,7 +11,7 @@ import de.ellpeck.rockbottom.api.item.ItemInstance;
 import de.ellpeck.rockbottom.api.tile.MultiTile;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
 import de.ellpeck.rockbottom.api.util.Pos2;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
@@ -20,17 +20,17 @@ import java.util.List;
 import static alexanders.mods.aoa.AllOfAlex.createRes;
 
 public class TileDrill extends MultiTile {
-    private static final IResourceName DESC1_RESOURCE = createRes("desc.drill1");
-    private static final IResourceName DESC2_RESOURCE = createRes("desc.drill2");
-    private static final IResourceName DESC3_RESOURCE = createRes("desc.drill3");
-    private static final IResourceName DESC4_RESOURCE = createRes("desc.drill4");
+    private static final ResourceName DESC1_RESOURCE = createRes("desc.drill1");
+    private static final ResourceName DESC2_RESOURCE = createRes("desc.drill2");
+    private static final ResourceName DESC3_RESOURCE = createRes("desc.drill3");
+    private static final ResourceName DESC4_RESOURCE = createRes("desc.drill4");
 
     private final int maxHardness;
     private final int inventorySize;
     private final float tilesPerTick;
     private final float fuelModifier;
 
-    public TileDrill(IResourceName name, int maxHardness, float tilesPerTick, float fuelModifier, int inventorySize) {
+    public TileDrill(ResourceName name, int maxHardness, float tilesPerTick, float fuelModifier, int inventorySize) {
         super(name);
         this.maxHardness = maxHardness;
         this.inventorySize = inventorySize;
@@ -72,12 +72,7 @@ public class TileDrill extends MultiTile {
 
     @Override
     protected boolean[][] makeStructure() {
-        return new boolean[][]{
-                {true, true, true},
-                {true, true, true},
-                {true, true, true},
-                {false, true, false}
-        };
+        return new boolean[][]{{true, true, true}, {true, true, true}, {true, true, true}, {false, true, false}};
     }
 
     @Override

@@ -29,8 +29,7 @@ public class BrightLeavesTile extends TileBasic {
 
     @Override
     public BoundBox getBoundBox(IWorld world, int x, int y, TileLayer layer) {
-        if (isNatural(world, x, y, layer))
-            return null;
+        if (isNatural(world, x, y, layer)) return null;
         return super.getBoundBox(world, x, y, layer);
     }
 
@@ -49,8 +48,7 @@ public class BrightLeavesTile extends TileBasic {
         if (!world.isClient() && isNatural(world, x, y, layer)) {
             for (int i = -2; i < 2; i++) {
                 for (int j = -4; j < 4; j++) {
-                    if (world.getState(layer, x + i, y + j).getTile().doesSustainLeaves(world, x + i, y + j, layer))
-                        return;
+                    if (world.getState(layer, x + i, y + j).getTile().doesSustainLeaves(world, x + i, y + j, layer)) return;
                 }
             }
             world.scheduleUpdate(x, y, layer, Util.RANDOM.nextInt(25) + 5);
@@ -59,7 +57,6 @@ public class BrightLeavesTile extends TileBasic {
 
     @Override
     public void onScheduledUpdate(IWorld world, int x, int y, TileLayer layer, int scheduledMeta) {
-        if (!world.isClient() && isNatural(world, x, y, layer))
-            world.destroyTile(x, y, layer, null, true);
+        if (!world.isClient() && isNatural(world, x, y, layer)) world.destroyTile(x, y, layer, null, true);
     }
 }

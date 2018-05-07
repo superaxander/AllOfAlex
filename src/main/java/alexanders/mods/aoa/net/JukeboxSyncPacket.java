@@ -22,9 +22,8 @@ public class JukeboxSyncPacket implements IPacket {
     }
 
     @Override
-    public void toBuffer(ByteBuf buf) throws IOException {
-        if (url == null)
-            buf.writeBoolean(false);
+    public void toBuffer(ByteBuf buf) {
+        if (url == null) buf.writeBoolean(false);
         else {
             buf.writeBoolean(true);
             NetUtil.writeStringToBuffer(url, buf);
@@ -33,11 +32,9 @@ public class JukeboxSyncPacket implements IPacket {
     }
 
     @Override
-    public void fromBuffer(ByteBuf buf) throws IOException {
-        if (buf.readBoolean())
-            url = NetUtil.readStringFromBuffer(buf);
-        else
-            url = null;
+    public void fromBuffer(ByteBuf buf) {
+        if (buf.readBoolean()) url = NetUtil.readStringFromBuffer(buf);
+        else url = null;
         playTime = buf.readLong();
     }
 

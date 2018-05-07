@@ -27,24 +27,21 @@ public class URLUpdatePacket implements IPacket {
     }
 
     @Override
-    public void toBuffer(ByteBuf buf) throws IOException {
+    public void toBuffer(ByteBuf buf) {
         buf.writeInt(layer.index());
         buf.writeInt(x);
         buf.writeInt(y);
         buf.writeBoolean(url != null);
-        if (url != null)
-            NetUtil.writeStringToBuffer(url, buf);
+        if (url != null) NetUtil.writeStringToBuffer(url, buf);
     }
 
     @Override
-    public void fromBuffer(ByteBuf buf) throws IOException {
+    public void fromBuffer(ByteBuf buf) {
         layer = TileLayer.getAllLayers().get(buf.readInt());
         x = buf.readInt();
         y = buf.readInt();
-        if (buf.readBoolean())
-            url = NetUtil.readStringFromBuffer(buf);
-        else
-            url = null;
+        if (buf.readBoolean()) url = NetUtil.readStringFromBuffer(buf);
+        else url = null;
     }
 
     @Override

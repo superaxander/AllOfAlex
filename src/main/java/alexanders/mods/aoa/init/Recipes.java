@@ -3,7 +3,9 @@ package alexanders.mods.aoa.init;
 import alexanders.mods.aoa.Colours;
 import alexanders.mods.aoa.DataRecipe;
 import de.ellpeck.rockbottom.api.GameContent;
+import de.ellpeck.rockbottom.api.RockBottomAPI;
 import de.ellpeck.rockbottom.api.construction.BasicRecipe;
+import de.ellpeck.rockbottom.api.construction.resource.IResourceRegistry;
 import de.ellpeck.rockbottom.api.construction.resource.ItemUseInfo;
 import de.ellpeck.rockbottom.api.construction.resource.ResUseInfo;
 import de.ellpeck.rockbottom.api.item.Item;
@@ -16,9 +18,10 @@ public class Recipes {
     public static DataRecipe[] dataRecipes;
 
     public static void init() {
-        GameContent.TILE_STONE.addResource("stone");
-        GameContent.TILE_LOG.addResource("log");
-        GameContent.TILE_SAND.addResource("sand");
+        IResourceRegistry reg = RockBottomAPI.getResourceRegistry();
+        reg.addResources("stone", GameContent.TILE_STONE);
+        reg.addResources("log", GameContent.TILE_LOG);
+        reg.addResources("sand", GameContent.TILE_SAND);
         new BasicRecipe(new ItemInstance(Items.shearsItem), new ResUseInfo("stone", 6), new ResUseInfo("log", 3)).registerManual();
 
         Colours[] values = Colours.values();

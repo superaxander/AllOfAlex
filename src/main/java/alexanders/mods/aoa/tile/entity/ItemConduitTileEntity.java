@@ -40,12 +40,10 @@ public class ItemConduitTileEntity extends TileEntity {
                 List<ItemConduitTileEntity> network = getNetwork(new ArrayList<>());
                 switch (mode) {
                     case 1:
-                        if (takeHerePutThere(network.stream().filter((it) -> it.mode == 2 || it.mode == 3).collect(Collectors.toList()), inv))
-                            cooldown = 20;
+                        if (takeHerePutThere(network.stream().filter((it) -> it.mode == 2 || it.mode == 3).collect(Collectors.toList()), inv)) cooldown = 20;
                         break;
                     case 2:
-                        if (takeTherePutHere(network.stream().filter((it) -> it.mode == 1 || it.mode == 3).collect(Collectors.toList()), inv))
-                            cooldown = 20;
+                        if (takeTherePutHere(network.stream().filter((it) -> it.mode == 1 || it.mode == 3).collect(Collectors.toList()), inv)) cooldown = 20;
                         break;
                     default:
                         break;
@@ -56,8 +54,7 @@ public class ItemConduitTileEntity extends TileEntity {
 
     private IFilteredInventory getConnectedInventory() {
         TileEntity te = world.getTileEntity(TileLayer.MAIN, x, y);
-        if (te == null)
-            return null;
+        if (te == null) return null;
         return te.getTileInventory();
     }
 

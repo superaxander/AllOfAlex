@@ -12,16 +12,19 @@ import de.ellpeck.rockbottom.api.net.chat.component.ChatComponentText;
 import de.ellpeck.rockbottom.api.render.tile.ITileRenderer;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
 import de.ellpeck.rockbottom.api.util.BoundBox;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 import java.util.List;
 
+import static alexanders.mods.aoa.AllOfAlex.createRes;
+
 public class AssimilatedTile extends ColourableTile {
     private static final ChatComponentText displayMessage = new ChatComponentText("This is a temporary way to cycle between colors! It will use crafting in the future!");
+    private static final ResourceName TILE_NAME = createRes("tileName");
 
-    public AssimilatedTile(IResourceName name) {
+    public AssimilatedTile(ResourceName name) {
         super(name);
     }
 
@@ -37,8 +40,7 @@ public class AssimilatedTile extends ColourableTile {
     @Override
     public BoundBox getBoundBox(IWorld world, int x, int y, TileLayer layer) {
         AssimilatedTileEntity te = world.getTileEntity(layer, x, y, AssimilatedTileEntity.class);
-        if (te.override)
-            return te.bb;
+        if (te.override) return te.bb;
         try {
             return RockBottomAPI.TILE_REGISTRY.get(te.tileName).getBoundBox(world, x, y, layer);
         } catch (Throwable ignored) {
@@ -54,9 +56,9 @@ public class AssimilatedTile extends ColourableTile {
     @Override
     public void doPlace(IWorld world, int x, int y, TileLayer layer, ItemInstance instance, AbstractEntityPlayer placer) {
         super.doPlace(world, x, y, layer, instance, placer);
-        if (instance.hasAdditionalData() && instance.getAdditionalData().hasKey("tileName")) {
+        if (instance.hasAdditionalData() && instance.getAdditionalData().hasKey(TILE_NAME.toString())) {
             AssimilatedTileEntity te = (AssimilatedTileEntity) world.getTileEntity(layer, x, y);
-            te.tileName = RockBottomAPI.createRes(instance.getAdditionalData().getString("tileName"));
+            te.tileName = new ResourceName(instance.getAdditionalData().getString(TILE_NAME));
         }
     }
 
@@ -64,8 +66,7 @@ public class AssimilatedTile extends ColourableTile {
     public List<ItemInstance> getDrops(IWorld world, int x, int y, TileLayer layer, Entity destroyer) {
         List<ItemInstance> drops = super.getDrops(world, x, y, layer, destroyer);
         AssimilatedTileEntity te = (AssimilatedTileEntity) world.getTileEntity(layer, x, y);
-        if (te.tileName != null)
-            drops.forEach(itemInstance -> itemInstance.getOrCreateAdditionalData().addString("tileName", te.tileName.toString()));
+        if (te.tileName != null) drops.forEach(itemInstance -> itemInstance.getOrCreateAdditionalData().addString(TILE_NAME, te.tileName.toString()));
         return drops;
     }
 
@@ -80,7 +81,7 @@ public class AssimilatedTile extends ColourableTile {
     }
 
     @Override
-    protected ITileRenderer createRenderer(IResourceName name) {
+    protected ITileRenderer createRenderer(ResourceName name) {
         return new AssimilatedTileRenderer(name);
     }
 }

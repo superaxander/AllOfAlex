@@ -5,7 +5,7 @@ import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.gui.Gui;
 import de.ellpeck.rockbottom.api.gui.component.ComponentButton;
 import de.ellpeck.rockbottom.api.gui.component.ComponentInputField;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 import static alexanders.mods.aoa.init.Resources.resourceJukeboxGui;
 
@@ -36,7 +36,7 @@ public class JukeboxGui extends Gui {
     }
 
     @Override
-    public IResourceName getName() {
+    public ResourceName getName() {
         return resourceJukeboxGui;
     }
 }

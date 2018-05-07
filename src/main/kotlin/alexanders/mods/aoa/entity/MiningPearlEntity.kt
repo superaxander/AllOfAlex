@@ -1,36 +1,46 @@
 package alexanders.mods.aoa.entity
 
-import alexanders.mods.aoa.init.Items.miningPearlItem
+import alexanders.mods.aoa.AllOfAlex.createRes
+import alexanders.mods.aoa.PLAYER_UUID
+import alexanders.mods.aoa.init.Resources
 import alexanders.mods.aoa.render.PearlParticle
+import alexanders.mods.aoa.render.PearlRenderer
 import alexanders.mods.aoa.render.TeleportationParticle
 import de.ellpeck.rockbottom.api.IGameInstance
 import de.ellpeck.rockbottom.api.RockBottomAPI
-import de.ellpeck.rockbottom.api.data.set.DataSet
-import de.ellpeck.rockbottom.api.entity.EntityItem
+import de.ellpeck.rockbottom.api.data.set.ModBasedDataSet
+import de.ellpeck.rockbottom.api.entity.Entity
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer
-import de.ellpeck.rockbottom.api.item.ItemInstance
+import de.ellpeck.rockbottom.api.render.entity.IEntityRenderer
 import de.ellpeck.rockbottom.api.world.IWorld
 import de.ellpeck.rockbottom.api.world.layer.TileLayer
 import java.util.*
 
 
-class MiningPearlEntity(world: IWorld, player: UUID? = null, mouseDirection: FloatArray = floatArrayOf(0f, 0f)) : EntityItem(world, ItemInstance(miningPearlItem)) {
+class MiningPearlEntity(world: IWorld, player: UUID? = null, mouseDirection: FloatArray = floatArrayOf(0f, 0f)) : Entity(world) {
+    val TILES_BROKEN = createRes("tilesBroken")
+
+    val renderer = PearlRenderer<BouncyPearlEntity>(Resources.miningPearlResource)
+
+    override fun getRenderer(): IEntityRenderer<*> {
+        return renderer
+    }
 
     init {
         if (this.additionalData == null) {
-            this.additionalData = DataSet()
+            this.additionalData = ModBasedDataSet()
             if (player != null)
-                this.additionalData.addUniqueId("playerUUID", player)
-            this.additionalData.addInt("tilesBroken", 0)
+                this.additionalData.addUniqueId(PLAYER_UUID, player)
+            this.additionalData.addInt(TILES_BROKEN, 0)
         }
-        this.item.amount = -1
+
         this.motionX = 0.5 * mouseDirection[0]
         this.motionY = -0.5 * mouseDirection[1]
         if (player != null) {
             val ePlayer = world.getEntity(player)
             this.setPos(ePlayer.x, ePlayer.y + 1.5)
-        } else if (this.additionalData.getUniqueId("playerUUID") != null) {
-            val ePlayer = world.getEntity(this.additionalData.getUniqueId("playerUUID"))
+        } else if (this.additionalData.getUniqueId(PLAYER_UUID) != null) {
+            val ePlayer = world.getEntity(this.additionalData.getUniqueId(PLAYER_UUID))
             this.setPos(ePlayer.x, ePlayer.y)
         }
         //println("$x , $y")
@@ -49,13 +59,13 @@ class MiningPearlEntity(world: IWorld, player: UUID? = null, mouseDirection: Flo
             motionY = recoveryY
             applyMotion()
             this.onGround = false
-            val tilesBroken = this.additionalData.getInt("tilesBroken")
-            val uuid = this.additionalData.getUniqueId("playerUUID")
+            val tilesBroken = this.additionalData.getInt(TILES_BROKEN)
+            val uuid = this.additionalData.getUniqueId(PLAYER_UUID)
             //println("$x , $y")
             if (uuid != null) {
                 val player = world.getEntity(uuid)
                 if (player is AbstractEntityPlayer && (RockBottomAPI.getNet().isServer || !RockBottomAPI.getNet().isActive) && breakAround(player))
-                    this.additionalData.addInt("tilesBroken", tilesBroken + 1)
+                    this.additionalData.addInt(TILES_BROKEN, tilesBroken + 1)
             }
             if (this.motionX == .0 && motionY == .0 || tilesBroken >= 6)
                 this.kill()
@@ -76,7 +86,5 @@ class MiningPearlEntity(world: IWorld, player: UUID? = null, mouseDirection: Flo
         return out
     }
 
-    override fun canPickUp(): Boolean {
-        return false
-    }
+
 }

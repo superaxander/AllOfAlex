@@ -12,7 +12,7 @@ import de.ellpeck.rockbottom.api.net.chat.component.ChatComponentText;
 import de.ellpeck.rockbottom.api.tile.Tile;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
 import de.ellpeck.rockbottom.api.util.Util;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 import java.util.ArrayList;
@@ -52,16 +52,15 @@ public class FillCommand extends Command {
                 return layers;
             case 5:
                 List<String> tiles = new ArrayList<>();
-                for (IResourceName resourceName : RockBottomAPI.TILE_REGISTRY.getUnmodifiable().keySet()) {
+                for (ResourceName resourceName : RockBottomAPI.TILE_REGISTRY.getUnmodifiable().keySet()) {
                     tiles.add(resourceName.toString());
                 }
                 return tiles;
             case 6:
                 List<String> states = new ArrayList<>();
-                for (IResourceName resourceName : RockBottomAPI.TILE_STATE_REGISTRY.getUnmodifiable().keySet()) {
+                for (ResourceName resourceName : RockBottomAPI.TILE_STATE_REGISTRY.getUnmodifiable().keySet()) {
                     String name = resourceName.toString();
-                    if (name.startsWith(args[5]))
-                        states.add(name.split(";", 2)[1]);
+                    if (name.startsWith(args[5])) states.add(name.split(";", 2)[1]);
                 }
                 return states;
         }
@@ -70,20 +69,18 @@ public class FillCommand extends Command {
 
     @Override
     public ChatComponent execute(String[] args, ICommandSender sender, String playerName, IGameInstance game, IChatLog chat) {
-        if (args.length < 6)
-            return USAGE;
+        if (args.length < 6) return USAGE;
         try {
             int x1 = Integer.parseInt(args[0]);
             int y1 = Integer.parseInt(args[1]);
             int x2 = Integer.parseInt(args[2]);
             int y2 = Integer.parseInt(args[3]);
             TileLayer layer = getLayer(args[4]);
-            Tile tile = RockBottomAPI.TILE_REGISTRY.get(RockBottomAPI.createRes(args[5]));
-            if (!tile.canPlaceInLayer(layer))
-                return CANT_BE_PLACED;
+            Tile tile = RockBottomAPI.TILE_REGISTRY.get(new ResourceName(args[5]));
+            if (!tile.canPlaceInLayer(layer)) return CANT_BE_PLACED;
             TileState state = null;
             if (args.length > 6) {
-                state = RockBottomAPI.TILE_STATE_REGISTRY.get(RockBottomAPI.createRes(args[5] + ";" + args[6]));
+                state = RockBottomAPI.TILE_STATE_REGISTRY.get(new ResourceName(args[5] + ";" + args[6]));
             }
             if (state == null) {
                 state = tile.getDefState();
@@ -110,10 +107,8 @@ public class FillCommand extends Command {
         }
         List<TileLayer> layers = TileLayer.getAllLayers();
         for (TileLayer layer : layers) {
-            if (domain != null && !layer.getName().getDomain().equalsIgnoreCase(domain))
-                continue;
-            if (layer.getName().getResourceName().equalsIgnoreCase(layerName))
-                return layer;
+            if (domain != null && !layer.getName().getDomain().equalsIgnoreCase(domain)) continue;
+            if (layer.getName().getResourceName().equalsIgnoreCase(layerName)) return layer;
         }
         throw new IllegalArgumentException();
     }

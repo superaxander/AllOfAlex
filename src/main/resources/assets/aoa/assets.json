@@ -5,12 +5,12 @@
     "us_english": "/loc/us_english.json"
   },
   "tex.": {
-    "isBlacklist":"/buttons/whitelist.png",
-    "isBlacklist_toggled":"/buttons/blacklist.png",
-    "ignoreData":"/buttons/data.png",
-    "ignoreData_toggled":"/buttons/ignoredata.png",
-    "ignoreMeta":"/buttons/meta.png",
-    "ignoreMeta_toggled":"/buttons/ignoremeta.png",
+    "isBlacklist": "/buttons/whitelist.png",
+    "isBlacklist_toggled": "/buttons/blacklist.png",
+    "ignoreData": "/buttons/data.png",
+    "ignoreData_toggled": "/buttons/ignoredata.png",
+    "ignoreMeta": "/buttons/meta.png",
+    "ignoreMeta_toggled": "/buttons/ignoremeta.png",
     "magnet_pulse": {
       "path": "/magnet_pulse.png",
       "should_stitch": false

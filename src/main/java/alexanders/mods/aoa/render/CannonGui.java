@@ -5,7 +5,7 @@ import de.ellpeck.rockbottom.api.IGameInstance;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.gui.GuiContainer;
 import de.ellpeck.rockbottom.api.gui.component.ComponentProgressBar;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 
 import static alexanders.mods.aoa.AllOfAlex.PROGRESS_COLOR;
 import static alexanders.mods.aoa.init.Resources.resourceCannonGui;
@@ -28,7 +28,7 @@ public class CannonGui extends GuiContainer {
     }
 
     @Override
-    public IResourceName getName() {
+    public ResourceName getName() {
         return resourceCannonGui;
     }
 }

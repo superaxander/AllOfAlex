@@ -12,7 +12,7 @@ import de.ellpeck.rockbottom.api.net.chat.component.ChatComponentText;
 import de.ellpeck.rockbottom.api.tile.Tile;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
 import de.ellpeck.rockbottom.api.util.Util;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 import java.util.ArrayList;
@@ -50,16 +50,15 @@ public class SetTileCommand extends Command {
                 return layers;
             case 3:
                 List<String> tiles = new ArrayList<>();
-                for (IResourceName resourceName : RockBottomAPI.TILE_REGISTRY.getUnmodifiable().keySet()) {
+                for (ResourceName resourceName : RockBottomAPI.TILE_REGISTRY.getUnmodifiable().keySet()) {
                     tiles.add(resourceName.toString());
                 }
                 return tiles;
             case 4:
                 List<String> states = new ArrayList<>();
-                for (IResourceName resourceName : RockBottomAPI.TILE_STATE_REGISTRY.getUnmodifiable().keySet()) {
+                for (ResourceName resourceName : RockBottomAPI.TILE_STATE_REGISTRY.getUnmodifiable().keySet()) {
                     String name = resourceName.toString();
-                    if (name.startsWith(args[5]))
-                        states.add(name.split(";", 2)[1]);
+                    if (name.startsWith(args[5])) states.add(name.split(";", 2)[1]);
                 }
                 return states;
         }
@@ -68,17 +67,15 @@ public class SetTileCommand extends Command {
 
     @Override
     public ChatComponent execute(String[] args, ICommandSender sender, String playerName, IGameInstance game, IChatLog chat) {
-        if (args.length < 4)
-            return USAGE;
+        if (args.length < 4) return USAGE;
         try {
             int x = Integer.parseInt(args[0]);
             int y = Integer.parseInt(args[1]);
             TileLayer layer = getLayer(args[2]);
-            Tile tile = RockBottomAPI.TILE_REGISTRY.get(RockBottomAPI.createRes(args[3]));
-            if (!tile.canPlaceInLayer(layer))
-                return CANT_BE_PLACED;
+            Tile tile = RockBottomAPI.TILE_REGISTRY.get(new ResourceName(args[3]));
+            if (!tile.canPlaceInLayer(layer)) return CANT_BE_PLACED;
             if (args.length > 4) {
-                TileState state = RockBottomAPI.TILE_STATE_REGISTRY.get(RockBottomAPI.createRes(args[3] + ";" + args[4]));
+                TileState state = RockBottomAPI.TILE_STATE_REGISTRY.get(new ResourceName(args[3] + ";" + args[4]));
                 RockBottomAPI.getGame().getWorld().setState(layer, x, y, state);
             } else {
                 RockBottomAPI.getGame().getWorld().setState(layer, x, y, tile.getDefState());
@@ -98,10 +95,8 @@ public class SetTileCommand extends Command {
         }
         List<TileLayer> layers = TileLayer.getAllLayers();
         for (TileLayer layer : layers) {
-            if (domain != null && !layer.getName().getDomain().equalsIgnoreCase(domain))
-                continue;
-            if (layer.getName().getResourceName().equalsIgnoreCase(layerName))
-                return layer;
+            if (domain != null && !layer.getName().getDomain().equalsIgnoreCase(domain)) continue;
+            if (layer.getName().getResourceName().equalsIgnoreCase(layerName)) return layer;
         }
         throw new IllegalArgumentException();
     }

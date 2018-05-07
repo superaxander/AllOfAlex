@@ -12,7 +12,7 @@ import de.ellpeck.rockbottom.api.render.tile.ITileRenderer;
 import de.ellpeck.rockbottom.api.tile.TileBasic;
 import de.ellpeck.rockbottom.api.tile.state.EnumProp;
 import de.ellpeck.rockbottom.api.tile.state.TileState;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
@@ -25,14 +25,14 @@ public class ColourableTile extends TileBasic {
     public boolean fullTile = true;
     public boolean obscuresBackground = false;
 
-    public ColourableTile(IResourceName name) {
+    public ColourableTile(ResourceName name) {
         super(name);
         addProps(COLOUR);
         this.setForceDrop();
     }
 
     @Override
-    protected ITileRenderer createRenderer(IResourceName name) {
+    protected ITileRenderer createRenderer(ResourceName name) {
         return new ColourableTileRenderer(name);
     }
 

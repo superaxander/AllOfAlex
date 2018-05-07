@@ -5,13 +5,13 @@ import alexanders.mods.aoa.tile.entity.BombCannonContainer;
 import alexanders.mods.aoa.tile.entity.BombCannonTileEntity;
 import de.ellpeck.rockbottom.api.entity.player.AbstractEntityPlayer;
 import de.ellpeck.rockbottom.api.tile.entity.TileEntity;
-import de.ellpeck.rockbottom.api.util.reg.IResourceName;
+import de.ellpeck.rockbottom.api.util.reg.ResourceName;
 import de.ellpeck.rockbottom.api.world.IWorld;
 import de.ellpeck.rockbottom.api.world.layer.TileLayer;
 
 public class BombCannonTile extends CannonTile {
 
-    public BombCannonTile(IResourceName name) {
+    public BombCannonTile(ResourceName name) {
         super(name);
     }
 
